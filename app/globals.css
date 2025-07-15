@@ -120,3 +120,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* global.css ya custom.css mein */
+.custom-dashed-line {
+  border-bottom: 2px dashed #94a3b8; /* Tailwind's slate-400 */
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
