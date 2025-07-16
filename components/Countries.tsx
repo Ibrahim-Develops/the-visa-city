@@ -75,9 +75,7 @@ import tr from '../assets/tr.png';
 import us from '../assets/us.png';
 import Image from 'next/image';
 
-const Countries = () => {
-
-    const regions = [
+const regions = [
         'All',
         'Australia',
         'Antarctica',
@@ -135,6 +133,8 @@ const Countries = () => {
         { name: 'USA', image: USA, flag: us, price: 180000 },
     ];
 
+const Countries = () => {
+
     const [selected, setSelected] = useState('Region');
     const [active, setActive] = useState('Leisure');
     const [visibleCount, setVisibleCount] = useState(10);
@@ -145,7 +145,7 @@ const Countries = () => {
     };
 
     return (
-        <div className='px-6 md:px-20 lg:px-40 w-full'>
+        <div className=''>
 
             <div className='flex justify-between'>
                 <div className="flex gap-10 overflow-x-auto">

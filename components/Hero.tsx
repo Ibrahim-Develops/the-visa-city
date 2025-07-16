@@ -12,7 +12,7 @@ import { IoSearchOutline } from "react-icons/io5"
 
 const Hero = () => {
   return (
-    <div className="w-full px-6 md:px-20 lg:px-32 pb-10">
+    <div className="w-full pb-10">
       <div className="flex flex-wrap justify-between items-center gap-8">
         <Image src={Hero1} alt="hero-left" width={500} className="max-w-full" />
 
