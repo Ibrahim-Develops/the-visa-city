@@ -121,11 +121,45 @@
   }
 }
 
-/* global.css ya custom.css mein */
 .custom-dashed-line {
-  border-bottom: 2px dashed #94a3b8; /* Tailwind's slate-400 */
+  border-bottom: 2px dashed #94a3b8; 
   width: 100%;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+.custom-swiper .swiper-button-next,
+.custom-swiper .swiper-button-prev {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+
+.custom-swiper .swiper-button-next::after,
+.custom-swiper .swiper-button-prev::after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.custom-swiper-pagination .swiper-pagination-bullet {
+  background-color: #cbd5e0;
+  opacity: 1;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.custom-swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #072343;
+  width: 24px;
+  border-radius: 6px;
+}
+
 

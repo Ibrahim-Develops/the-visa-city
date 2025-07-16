@@ -12,7 +12,7 @@ import { IoSearchOutline } from "react-icons/io5"
 
 const Hero = () => {
   return (
-    <div className="w-full px-6 md:px-20 lg:px-40 pb-10">
+    <div className="w-full px-6 md:px-20 lg:px-32 pb-10">
       <div className="flex flex-wrap justify-between items-center gap-8">
         <Image src={Hero1} alt="hero-left" width={500} className="max-w-full" />
 
@@ -43,7 +43,7 @@ const Hero = () => {
           <div className="w-full max-w-xl border border-gray-300 rounded-2xl px-6 py-3 flex items-center justify-between gap-4 shadow-sm bg-white">
             <div className="flex items-center gap-4 flex-1">
               <FaPlaneDeparture className="text-[#4b6391] text-2xl" />
-              <div className="w-full">
+              <div className="w-full text-left">
                 <label className="text-xs text-gray-500 font-medium block mb-1">
                   Travelling To
                 </label>
