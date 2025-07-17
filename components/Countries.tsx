@@ -148,7 +148,7 @@ const Countries = () => {
         <div className=''>
 
             <div className='flex justify-between'>
-                <div className="flex gap-10 overflow-x-auto">
+                <div className="flex gap-10 overflow-x-auto ">
                     {tabs.map(({ label, icon: Icon }) => (
                         <div
                             key={label}
@@ -200,7 +200,7 @@ const Countries = () => {
 
             <div className="flex flex-wrap gap-5 py-5 justify-between">
                 {countries.slice(0, visibleCount).map((item, i) => (
-                    <div key={i} className="w-[250px]">
+                    <div key={i} className="w-[250px] duration-300 hover:scale-105 cursor-pointer">
                         <div className="relative w-[250px] h-[180px] rounded-xl overflow-hidden">
                             <Image
                                 src={item.image}

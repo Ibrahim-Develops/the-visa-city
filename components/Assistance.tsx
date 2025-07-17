@@ -35,16 +35,22 @@ const Assistance = () => {
                     <p className="text-gray-600 text-sm md:text-base mb-6">
                         We're here to simplify the process by bringing the visa application right to your office doorstep. Our mission is to make obtaining business travel visas seamless and convenient so you can focus on what matters most - your business.
                     </p>
-                    <button className="bg-[#072343] hover:bg-gray-700 cursor-pointer text-white font-medium py-2 px-4 rounded-lg text-sm">
-                        Book a Free Consultation
-                    </button>
+                    <a
+                        href="https://wa.me/971547499849"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <button className="bg-[#072343] duration-300 hover:scale-105 cursor-pointer text-white font-medium py-2 px-4 rounded-lg text-sm">
+                            Book a Free Consultation
+                        </button>
+                    </a>
                 </div>
 
                 <div className="flex-1 space-y-3">
                     {services.map((item, idx) => (
                         <div
                             key={idx}
-                            className="flex items-center gap-3 p-6 bg-white rounded-lg shadow-sm border hover:shadow-md transition"
+                            className="flex items-center gap-3 p-6 bg-white rounded-lg shadow-sm border hover:shadow-md transition duration-300 hover:scale-105 cursor-pointer"
                         >
                             <div className="text-xl text-[#4b6391]">{item.icon}</div>
                             <span className="text-gray-800 text- font-medium">{item.title}</span>
