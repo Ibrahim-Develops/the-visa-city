@@ -53,10 +53,12 @@ const Sidebar = () => {
 
   const pathname = usePathname();
 
-  const getIconClass = (path: string) =>
-    pathname === path
+  const getIconClass = (allowedPaths: string | string[]) => {
+    return allowedPaths.includes(pathname)
       ? 'border-2 border-[#101d2c] rounded-xl p-2 bg-gray-100'
       : 'hover:bg-gray-100 p-2 rounded-xl';
+  }
+
 
   return (
     <>
@@ -68,7 +70,7 @@ const Sidebar = () => {
         <Image src={Logo2} alt="Logo" className='px-1' />
         <div className="text-2xl flex flex-col gap-6 text-[#101d2c]">
           <Link href="/dashboard">
-            <div className={getIconClass('/dashboard')}>
+            <div className={getIconClass(["/login", '/dashboard'])}>
               <LuLayoutDashboard />
             </div>
           </Link>
@@ -108,7 +110,7 @@ const Sidebar = () => {
           </SheetHeader>
 
           <div className="px-10 gap-8 mt-10 text-[#4b6391] flex flex-col justify-center">
-            <Link href="/dashboard" onClick={() => setOpen(false)} className='hover:border-[#4b6391] hover:border-2 rounded-2xl hover:p-2 duration-200'>
+            <Link href="/login" onClick={() => setOpen(false)} className='hover:border-[#4b6391] hover:border-2 rounded-2xl hover:p-2 duration-200'>
               <div className="flex items-center gap-3 cursor-pointer">
                 <LuLayoutDashboard className='text-[#101d2c] text-xl' /> Dashboard
               </div>
