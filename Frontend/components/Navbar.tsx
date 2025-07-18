@@ -59,7 +59,6 @@ const Sidebar = () => {
       : 'hover:bg-gray-100 p-2 rounded-xl';
   }
 
-
   return (
     <>
       <div

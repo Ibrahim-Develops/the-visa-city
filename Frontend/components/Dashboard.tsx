@@ -6,7 +6,11 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Button } from '@/components/ui/button'
 import { BsThreeDots } from 'react-icons/bs'
 import Image from 'next/image'
+import { IoTrashBinOutline } from "react-icons/io5";
 import Link from 'next/link'
+import Finland from '../assets/finland.webp'
+import fi from '../assets/fi.png'
+import fr from '../assets/fr.png'
 
 const TableHeadData = [
   "Main Image",
@@ -15,6 +19,7 @@ const TableHeadData = [
   "Flag",
   "Name",
   "Price",
+  "",
 ];
 
 const Dashboard = () => {
@@ -23,10 +28,10 @@ const Dashboard = () => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <h1 className="text-3xl sm:text-5xl font-bold">Countries</h1>
         <Link
-          href="/dashboard/adduser"
+          href="/dashboard/addcountry"
           className="bg-[#072343] px-6 sm:px-16 py-3 sm:py-4 text-white rounded-xl font-bold text-center"
         >
-          + Add User
+          + Add Country
         </Link>
       </div>
 
@@ -35,7 +40,7 @@ const Dashboard = () => {
           <TableHeader className="bg-gray-100">
             <TableRow>
               {TableHeadData.map((title, idx) => (
-                <TableHead key={idx} className="text-[#707070cb] whitespace-nowrap">{title}</TableHead>
+                <TableHead key={idx} className="text-[#707070cb] bg-gray-200 whitespace-nowrap">{title}</TableHead>
               ))}
             </TableRow>
           </TableHeader>
@@ -44,54 +49,44 @@ const Dashboard = () => {
             <TableRow>
               <TableCell>
                 <Image
-                  src="https://github.com/shadcn.png"
+                  src={Finland}
                   alt="Avatar"
-                  width={50}
-                  height={50}
+                  width={100}
+                  height={100}
                   className="rounded-full object-cover"
                 />
               </TableCell>
               <TableCell>
                 <Image
-                  src="https://github.com/shadcn.png"
+                  src={Finland}
                   alt="Avatar"
-                  width={50}
-                  height={50}
+                  width={100}
+                  height={100}
                   className="rounded-full object-cover"
                 />
               </TableCell>
               <TableCell>
                 <Image
-                  src="https://github.com/shadcn.png"
+                  src={Finland}
                   alt="Avatar"
-                  width={50}
-                  height={50}
+                  width={100}
+                  height={100}
                   className="rounded-full object-cover"
                 />
               </TableCell>
               <TableCell>
                 <Image
-                  src="https://github.com/shadcn.png"
+                  src={fi}
                   alt="Avatar"
-                  width={50}
-                  height={50}
-                  className="rounded-full object-cover"
+                  width={100}
+                  height={100}
+                  className="object-cover border-[1px] border-gray-400"
                 />
               </TableCell>
-              <TableCell>Manager</TableCell>
-              <TableCell>Manager</TableCell>
+              <TableCell>Finland</TableCell>
+              <TableCell>1000</TableCell>
               <TableCell>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button variant="ghost" size="icon" className="hover:bg-gray-100">
-                      <BsThreeDots />
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-32 p-2 flex flex-col gap-2">
-                    <button className="text-blue-500 text-sm font-semibold hover:underline">Update</button>
-                    <button className="text-red-500 text-sm font-semibold hover:underline">Delete</button>
-                  </PopoverContent>
-                </Popover>
+                <IoTrashBinOutline className='text-2xl text-red-500 cursor-pointer'/>
               </TableCell>
             </TableRow>
           </TableBody>
