@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from 'src/user/entities/user.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, FindOptionsWhere, DataSource, FindOptionsSelect } from 'typeorm';
 
 @Entity()
 export class Country {
@@ -12,6 +13,9 @@ export class Country {
   price: string;
 
   @Column()
+  category: string;
+
+  @Column()
   mainImage: string;
 
   @Column({ nullable: true })
@@ -22,4 +26,20 @@ export class Country {
 
   @Column()
   flag: string;
+
+
+  static async existingUCountry(options: {
+    where: FindOptionsWhere<Country>,
+    select?: (keyof Country)[] | FindOptionsSelect<Country>,
+    relations?: string[]
+  }, dataSource: DataSource
+  ) {
+    const repo = dataSource.getRepository(Country);
+    const user = await repo.findOne({
+      where: options.where,
+      select: options.select,
+      relations: options.relations,
+    });
+    return user
+  }
 }

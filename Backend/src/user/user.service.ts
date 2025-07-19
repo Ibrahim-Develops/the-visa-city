@@ -38,7 +38,6 @@ export class UserService {
     return { userId: newUser.id }
   }
 
-
   async login(loginUserDto: LoginUserDto) {
     const { userName, password } = loginUserDto;
 
@@ -52,9 +51,9 @@ export class UserService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const payload = { sub: user.id, userName: user.userName };
-    const token = await this.jwtService.signAsync(payload);
-    
+    const payload = { id: user.id, username: user.userName };
+    const token = this.jwtService.sign(payload);
+     
     return token;
   }
 }

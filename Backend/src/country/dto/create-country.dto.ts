@@ -11,4 +11,9 @@ export class CreateCountryDto {
   @IsNotEmpty()
   @IsString()
   price: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  category: string;
 }

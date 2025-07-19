@@ -1,4 +1,5 @@
-import { Column, DataSource, Entity, FindOptionsSelect, FindOptionsWhere, PrimaryGeneratedColumn } from "typeorm";
+import { Country } from "src/country/entities/country.entity";
+import { Column, DataSource, Entity, FindOptionsSelect, FindOptionsWhere, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class User {

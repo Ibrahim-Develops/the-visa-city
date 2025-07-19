@@ -7,7 +7,9 @@ import { apiResponse } from 'src/helper'
 export class JwtMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
     const authHeader = req.headers.authorization;
+    
     const token = authHeader && authHeader.split(' ')[1];
+    
 
     if (!token) {
       return res

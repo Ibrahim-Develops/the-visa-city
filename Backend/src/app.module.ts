@@ -1,20 +1,23 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { User } from './user/entities/user.entity';
 import { CountryModule } from './country/country.module';
+import { JwtMiddleware } from './middlewares/jwt.middleware';
+import { Country } from './country/entities/country.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: '127.0.0.1',   
-      port: 3306,          
-      username: 'root',    
+      host: '127.0.0.1',
+      port: 3306,
+      username: 'root',
       password: '',
-      database: 'visa', 
-      autoLoadEntities: true,  
-      synchronize: true,       
+      database: 'visa',
+      entities: [User, Country],
+      autoLoadEntities: true,
+      synchronize: true,
     }),
     UserModule,
     CountryModule,
@@ -22,4 +25,14 @@ import { CountryModule } from './country/country.module';
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(JwtMiddleware)
+      .exclude(
+        { path: 'user/login', method: RequestMethod.POST },
+      )
+      .forRoutes('*');
+  }
+}
