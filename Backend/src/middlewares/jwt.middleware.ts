@@ -10,7 +10,6 @@ export class JwtMiddleware implements NestMiddleware {
     
     const token = authHeader && authHeader.split(' ')[1];
     
-
     if (!token) {
       return res
         .status(401)

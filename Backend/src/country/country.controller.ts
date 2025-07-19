@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UploadedFiles, UseInterceptors, Delete, Req, Param } from '@nestjs/common';
+import { Controller, Post, Body, UploadedFiles, UseInterceptors, Delete, Req, Param, Get, Query } from '@nestjs/common';
 import { CountryService } from './country.service';
 import { CreateCountryDto } from './dto/create-country.dto';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
@@ -8,7 +8,7 @@ import { ApiBearerAuth } from '@nestjs/swagger';
 @ApiBearerAuth()
 @Controller('country')
 export class CountryController {
-  constructor(private readonly countryService: CountryService) {}
+  constructor(private readonly countryService: CountryService) { }
 
   @Post('create')
   @UseInterceptors(
@@ -24,6 +24,18 @@ export class CountryController {
     @Body() createCountryDto: CreateCountryDto,
   ) {
     return this.countryService.create(files, createCountryDto);
+  }
+
+  @Get('filter')
+  async filterByCategory(@Query('category') category: string) {
+    const countries = await this.countryService.findByCategory(category);
+    return apiResponse(true, `Countries under ${category} fetched successfully`, countries);
+  }
+
+  @Get('all')
+  async findAll() {
+    const countries = await this.countryService.findAll();
+    return apiResponse(true, 'All countries fetched successfully', countries);
   }
 
   @Delete('delete/:id')

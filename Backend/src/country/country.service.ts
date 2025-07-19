@@ -46,7 +46,15 @@ export class CountryService {
     return this.countryRepository.save(country);
   }
 
-  
+  async findByCategory(category: string): Promise<Country[]> {
+    return this.countryRepository.find({
+      where: { category },
+    });
+  }
+
+  async findAll(): Promise<Country[]> {
+    return this.countryRepository.find();
+  }
 
   async remove(id: number): Promise<void> {
     const result = await this.countryRepository.delete(id);

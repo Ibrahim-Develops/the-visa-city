@@ -2,7 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['github.com'],
+    
+    domains: ['github.com', 'res.cloudinary.com'],
   },
 };
 

@@ -69,7 +69,7 @@ const Sidebar = () => {
         <Image src={Logo2} alt="Logo" className='px-1' />
         <div className="text-2xl flex flex-col gap-6 text-[#101d2c]">
           <Link href="/dashboard">
-            <div className={getIconClass(["/login", '/dashboard'])}>
+            <div className={getIconClass(["/login", '/dashboard', '/dashboard/addcountry'])}>
               <LuLayoutDashboard />
             </div>
           </Link>
