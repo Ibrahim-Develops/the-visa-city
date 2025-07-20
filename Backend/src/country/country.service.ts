@@ -25,18 +25,24 @@ export class CountryService {
   }
 
   async create(files: any, createCountryDto: CreateCountryDto) {
-    const name = createCountryDto.name
-    const price = createCountryDto.price
-    const category = createCountryDto.category
     const mainImageUrl = await this.uploadToCloudinary(files.mainImage[0]);
     const extraImg1Url = files.extraImg1 ? await this.uploadToCloudinary(files.extraImg1[0]) : null;
     const extraImg2Url = files.extraImg2 ? await this.uploadToCloudinary(files.extraImg2[0]) : null;
     const flagUrl = await this.uploadToCloudinary(files.flag[0]);
 
+    const category = Array.isArray(createCountryDto.category)
+      ? createCountryDto.category
+      : (createCountryDto.category as string).split(',').map(c => c.trim());
+
+    const region = Array.isArray(createCountryDto.region)
+      ? createCountryDto.region
+      : (createCountryDto.region as string).split(',').map(r => r.trim());
+
     const country = this.countryRepository.create({
-      name: name,
-      price: price,
-      category: category,
+      name: createCountryDto.name,
+      price: createCountryDto.price,
+      category,
+      region,
       mainImage: mainImageUrl,
       extraImg1: extraImg1Url,
       extraImg2: extraImg2Url,
@@ -46,10 +52,24 @@ export class CountryService {
     return this.countryRepository.save(country);
   }
 
-  async findByCategory(category: string): Promise<Country[]> {
-    return this.countryRepository.find({
-      where: { category },
-    });
+  async filterCountries(category?: string, region?: string): Promise<Country[]> {
+    const query = this.countryRepository.createQueryBuilder('country');
+
+    if (category) {
+      const categories = category.split(',').map(c => c.trim());
+      for (const cat of categories) {
+        query.andWhere('country.category LIKE :cat', { cat: `%${cat}%` });
+      }
+    }
+
+    if (region) {
+      const regions = region.split(',').map(r => r.trim());
+      for (const reg of regions) {
+        query.andWhere('country.region LIKE :reg', { reg: `%${reg}%` });
+      }
+    }
+
+    return query.getMany();
   }
 
   async findAll(): Promise<Country[]> {

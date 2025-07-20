@@ -27,9 +27,12 @@ export class CountryController {
   }
 
   @Get('filter')
-  async filterByCategory(@Query('category') category: string) {
-    const countries = await this.countryService.findByCategory(category);
-    return apiResponse(true, `Countries under ${category} fetched successfully`, countries);
+  async filterCountries(
+    @Query('category') category?: string,
+    @Query('region') region?: string,
+  ) {
+    const countries = await this.countryService.filterCountries(category, region);
+    return apiResponse(true, 'Countries fetched successfully with filters', countries);
   }
 
   @Get('all')

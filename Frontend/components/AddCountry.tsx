@@ -1,6 +1,6 @@
 "use client";
 
-import React, { JSX } from "react";
+import React, { JSX, useState } from "react";
 import Link from "next/link";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FaArrowLeftLong } from "react-icons/fa6";
@@ -9,13 +9,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { IoCashOutline } from "react-icons/io5";
 import { GrGlobe } from "react-icons/gr";
 import { CiFlag1, CiImageOn } from "react-icons/ci";
-import { FaCheckToSlot } from "react-icons/fa6";
+import Select from "react-select";
 import axios from "axios";
 
 interface FormValues {
   countryName: string;
   visaAmount: string;
-  category: string;
   countryflag: FileList;
   countrydisplayimage: FileList;
   countryextraimage1: FileList;
@@ -78,21 +77,47 @@ const fields: {
   },
 ];
 
+// Multi-select options
+const categoryOptions = [
+  { value: "Visa Free", label: "Visa Free" },
+  { value: "Quick", label: "Quick" },
+  { value: "On Arrival", label: "On Arrival" },
+  { value: "eVisa", label: "eVisa" },
+  { value: "Short Stay", label: "Short Stay" },
+  { value: "Trending", label: "Trending" },
+  { value: "Tropical", label: "Tropical" },
+  { value: "Winter", label: "Winter" },
+  { value: "Leisure", label: "Leisure" },
+  { value: "Adventure", label: "Adventure" },
+];
+
+const regionOptions = [
+  { value: "All", label: "All" },
+  { value: "Australia", label: "Australia" },
+  { value: "Antarctica", label: "Antarctica" },
+  { value: "South America", label: "South America" },
+  { value: "Africa", label: "Africa" },
+  { value: "Europe", label: "Europe" },
+  { value: "Asia", label: "Asia" },
+];
+
 const AddCountry = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }, reset,
   } = useForm<FormValues>();
 
-  const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    console.log(data);
+  const [selectedCategories, setSelectedCategories] = useState<any[]>([]);
+  const [selectedRegions, setSelectedRegions] = useState<any[]>([]);
 
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       const formData = new FormData();
       formData.append("name", data.countryName);
       formData.append("price", data.visaAmount);
-      formData.append("category", data.category);
+      formData.append("category", JSON.stringify(selectedCategories.map(c => c.value)));
+      formData.append("region", JSON.stringify(selectedRegions.map(r => r.value)));
       formData.append("flag", data.countryflag[0]);
       formData.append("mainImage", data.countrydisplayimage[0]);
       formData.append("extraImg1", data.countryextraimage1[0]);
@@ -148,27 +173,34 @@ const AddCountry = () => {
             </button>
           </div>
 
-          <div className="grid grid-cols-3 w-full gap-10">
-            <div className="flex flex-col gap-2 w-full">
-              <label className="font-semibold text-lg">Category</label>
-              <div className="border-[1px] border-gray-300 flex items-center gap-3 p-4 rounded-lg">
-                <FaCheckToSlot className="text-2xl" />
-                <select
-                  className="outline-none w-full bg-transparent"
-                  {...register("category", { required: "Country Category is required" })}
-                >
-                  <option value="">Select Category</option>
-                  <option value="Tropical">Tropical</option>
-                  <option value="Historic">Historic</option>
-                  <option value="Adventure">Adventure</option>
-                  <option value="Luxury">Luxury</option>
-                </select>
-              </div>
-              {errors.category && (
-                <p className="text-red-500 text-sm">{errors.category.message}</p>
-              )}
-            </div>
+          {/* Category Multi-select */}
+          <div className="flex flex-col gap-2 w-full">
+            <label className="font-semibold text-lg">Category</label>
+            <Select
+              isMulti
+              options={categoryOptions}
+              value={selectedCategories}
+              onChange={(selected) => setSelectedCategories(selected as any[])}
+              className="border-[1px] border-gray-300 rounded-lg"
+            />
+            {selectedCategories.length === 0 && <p className="text-red-500 text-sm">Please select at least one category</p>}
+          </div>
 
+          {/* Region Multi-select */}
+          <div className="flex flex-col gap-2 w-full">
+            <label className="font-semibold text-lg">Region</label>
+            <Select
+              isMulti
+              options={regionOptions}
+              value={selectedRegions}
+              onChange={(selected) => setSelectedRegions(selected as any[])}
+              className="border-[1px] border-gray-300 rounded-lg"
+            />
+            {selectedRegions.length === 0 && <p className="text-red-500 text-sm">Please select at least one region</p>}
+          </div>
+
+          {/* Other fields */}
+          <div className="grid grid-cols-3 w-full gap-10">
             {fields.map((field, i) => (
               <div key={i} className="flex flex-col gap-2 w-full">
                 <label className="font-semibold text-lg">{field.label}</label>

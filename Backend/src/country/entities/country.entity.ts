@@ -12,8 +12,11 @@ export class Country {
   @Column()
   price: string;
 
-  @Column()
-  category: string;
+  @Column('simple-array', { nullable: true })
+  category: string[] | string;
+
+  @Column('simple-array', { nullable: true })
+  region: string[] | string;
 
   @Column()
   mainImage: string;
