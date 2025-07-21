@@ -1,7 +1,8 @@
 "use client";
 
-import React, { JSX, useState } from "react";
+import React, { JSX, useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { toast, ToastContainer } from "react-toastify";
@@ -77,7 +78,6 @@ const fields: {
   },
 ];
 
-// Multi-select options
 const categoryOptions = [
   { value: "Visa Free", label: "Visa Free" },
   { value: "Quick", label: "Quick" },
@@ -102,22 +102,35 @@ const regionOptions = [
 ];
 
 const AddCountry = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
-    formState: { errors }, reset,
+    formState: { errors },
+    reset,
   } = useForm<FormValues>();
 
   const [selectedCategories, setSelectedCategories] = useState<any[]>([]);
   const [selectedRegions, setSelectedRegions] = useState<any[]>([]);
+  const [isAuthorized, setIsAuthorized] = useState<boolean | null>(null);
+
+  // Check token on mount
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.replace("/login");
+    } else {
+      setIsAuthorized(true);
+    }
+  }, [router]);
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       const formData = new FormData();
       formData.append("name", data.countryName);
       formData.append("price", data.visaAmount);
-      formData.append("category", JSON.stringify(selectedCategories.map(c => c.value)));
-      formData.append("region", JSON.stringify(selectedRegions.map(r => r.value)));
+      formData.append("category", JSON.stringify(selectedCategories.map((c) => c.value)));
+      formData.append("region", JSON.stringify(selectedRegions.map((r) => r.value)));
       formData.append("flag", data.countryflag[0]);
       formData.append("mainImage", data.countrydisplayimage[0]);
       formData.append("extraImg1", data.countryextraimage1[0]);
@@ -136,12 +149,15 @@ const AddCountry = () => {
 
       if (res.status === 201 || res.status === 200) {
         toast.success("Country added successfully!");
+        reset();
       }
     } catch (error) {
       console.error("Error:", error);
       toast.error("Failed to add country. Please try again.");
     }
   };
+
+  if (isAuthorized === null) return null;
 
   return (
     <div className="px-10 py-10">

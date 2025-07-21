@@ -41,6 +41,12 @@ export class CountryController {
     return apiResponse(true, 'All countries fetched successfully', countries);
   }
 
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    const country = await this.countryService.findOne(+id);
+    return apiResponse(true, 'Country fetched successfully', country);
+  }
+
   @Delete('delete/:id')
   async remove(@Param('id') id: string) {
     await this.countryService.remove(+id);

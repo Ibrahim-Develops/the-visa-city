@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { IoTrashBinOutline } from "react-icons/io5";
 import Link from 'next/link';
@@ -35,10 +36,25 @@ interface Country {
 }
 
 const Dashboard = () => {
+  const router = useRouter();
   const [countries, setCountries] = useState<Country[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isAuthorized, setIsAuthorized] = useState<boolean | null>(null); // To check token state
 
+  // Check token on first render
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.replace('/login');  // Redirect if no token
+    } else {
+      setIsAuthorized(true);
+    }
+  }, [router]);
+
+  // Fetch countries if authorized
+  useEffect(() => {
+    if (!isAuthorized) return;
+
     const fetchCountries = async () => {
       try {
         const token = localStorage.getItem("token")?.replace(/"/g, "");
@@ -62,7 +78,7 @@ const Dashboard = () => {
     };
 
     fetchCountries();
-  }, []);
+  }, [isAuthorized]);
 
   const handleDelete = async (id: number) => {
     if (!window.confirm("Are you sure you want to delete this country?")) return;
@@ -88,6 +104,8 @@ const Dashboard = () => {
       className="rounded-full object-cover border border-gray-200"
     />
   );
+
+  if (isAuthorized === null) return null;
 
   return (
     <div className="px-4 sm:px-10 py-10 overflow-auto">

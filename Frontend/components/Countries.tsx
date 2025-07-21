@@ -15,8 +15,9 @@ import { PiPersonSimpleThrowLight } from "react-icons/pi";
 import { FaChevronDown } from 'react-icons/fa';
 import Image from 'next/image';
 import axios from 'axios';
-
+import Link from 'next/link';
 interface Country {
+    id: number,
     name: string;
     flag: string;
     mainImage: string;
@@ -44,7 +45,6 @@ const tabs = [
     { label: 'Adventure', icon: PiPersonSimpleThrowLight },
 ];
 
-// Utility to fix stringified arrays like ['["Trending"', '"Leisure"]']
 const cleanArray = (arr: any): string[] => {
     try {
         if (Array.isArray(arr) && typeof arr[0] === 'string' && arr[0].startsWith('["')) {
@@ -59,7 +59,7 @@ const cleanArray = (arr: any): string[] => {
 const Countries = () => {
     const [countries, setCountries] = useState<Country[]>([]);
     const [selectedRegion, setSelectedRegion] = useState('Region');
-    const [activeCategory, setActiveCategory] = useState('Leisure');
+    const [activeCategory, setActiveCategory] = useState('All Visas');
     const [visibleCount, setVisibleCount] = useState(10);
     const [open, setOpen] = useState(false);
 
@@ -93,15 +93,15 @@ const Countries = () => {
 
     return (
         <div>
-            <div className='flex justify-between'>
+            <div className='flex w-full gap-20 justify-between'>
                 <div className="flex gap-10 overflow-x-auto">
                     {tabs.map(({ label, icon: Icon }) => (
                         <div
                             key={label}
                             onClick={() => setActiveCategory(label)}
                             className={`flex flex-col items-center cursor-pointer text-sm 
-              ${activeCategory === label ? 'text-[#4b6391] font-medium' : 'text-gray-500'} 
-              hover:text-[#4b6391] transition duration-200 relative`}
+                            ${activeCategory === label ? 'text-[#4b6391] font-medium' : 'text-gray-500'} 
+                            hover:text-[#4b6391] transition duration-200 relative`}
                         >
                             <Icon className="text-xl mb-1" />
                             <p>{label}</p>
@@ -138,7 +138,7 @@ const Countries = () => {
                 </div>
             </div>
 
-            <div className="flex flex-wrap gap-5 py-5 justify-between">
+            <div className="flex flex-wrap gap-5 py-5 justify-">
                 {countries.length > 0 ? (
                     countries
                         .filter((item) => {
@@ -149,31 +149,33 @@ const Countries = () => {
                         .slice(0, visibleCount)
                         .map((item, i) => (
                             <div key={i} className="w-[250px] duration-300 hover:scale-105 cursor-pointer">
-                                <div className="relative w-[250px] h-[180px] rounded-xl overflow-hidden">
-                                    <Image
-                                        src={item.mainImage}
-                                        alt={item.name}
-                                        fill
-                                        className="object-cover"
-                                        sizes="(max-width: 768px) 100vw, 270px"
-                                    />
-                                </div>
-
-                                <div className="flex justify-between items-center mt-2 px-1">
-                                    <div className="flex items-center gap-1">
+                                <Link href={`/displayvisa/${item.id}`}>
+                                    <div className="relative w-[250px] h-[180px] rounded-xl overflow-hidden">
                                         <Image
-                                            src={item.flag}
-                                            alt={`${item.name} flag`}
-                                            width={18}
-                                            height={12}
+                                            src={item.mainImage}
+                                            alt={item.name}
+                                            fill
                                             className="object-cover"
+                                            sizes="(max-width: 768px) 100vw, 270px"
                                         />
-                                        <span className="text-sm font-medium text-gray-700">{item.name}</span>
                                     </div>
-                                    <span className="text-sm font-semibold text-gray-600">
-                                        AED {Number(item.price).toLocaleString()}
-                                    </span>
-                                </div>
+
+                                    <div className="flex justify-between items-center mt-2 px-1">
+                                        <div className="flex items-center gap-1">
+                                            <Image
+                                                src={item.flag}
+                                                alt={`${item.name} flag`}
+                                                width={18}
+                                                height={12}
+                                                className="object-cover"
+                                            />
+                                            <span className="text-sm font-medium text-gray-700">{item.name}</span>
+                                        </div>
+                                        <span className="text-sm font-semibold text-gray-600">
+                                            AED {Number(item.price).toLocaleString()}
+                                        </span>
+                                    </div>
+                                </Link>
                             </div>
                         ))
                 ) : (

@@ -24,9 +24,11 @@ const Footer = () => {
                         Visa applications take time, can be complicated, and need careful attention to detail.
                         We make it easy for you by handling all the paperwork. Your vacation shouldn’t feel like more office work!
                     </p>
+                    <a href="https://wa.me/971547499849" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                     <button className="bg-white hover:scale-105 duration-300 text-black cursor-pointer transition font-bold px-6 py-3 rounded-md text-sm">
                         Apply Now
                     </button>
+                    </a>
                 </div>
                 <div className="flex-shrink-0">
                     <Image

@@ -76,6 +76,14 @@ export class CountryService {
     return this.countryRepository.find();
   }
 
+  async findOne(id: number): Promise<Country> {
+    const country = await this.countryRepository.findOne({ where: { id } });
+    if (!country) {
+      throw new NotFoundException(`Country with ID ${id} not found.`);
+    }
+    return country;
+  }
+
   async remove(id: number): Promise<void> {
     const result = await this.countryRepository.delete(id);
 

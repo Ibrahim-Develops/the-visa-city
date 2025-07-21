@@ -1,7 +1,31 @@
-import React from 'react';
+'use client'
+
+import React, { useEffect, useState } from 'react';
 import { FaMoneyBillWave, FaWhatsapp } from 'react-icons/fa';
+import { useParams } from 'next/navigation';
+import axios from 'axios';
 
 const PriceSupport = () => {
+    const { id } = useParams();
+    const [price, setPrice] = useState<number | null>(null);
+
+    useEffect(() => {
+        const fetchPrice = async () => {
+            try {
+                if (!id) return;
+                const token = localStorage.getItem("token")?.replace(/"/g, "");
+                const res = await axios.get(`http://localhost:3000/country/${id}`, {
+                    withCredentials: true,
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                setPrice(res.data.data.price);
+            } catch (error) {
+                console.error("Failed to fetch price:", error);
+            }
+        };
+        fetchPrice();
+    }, [id]);
+
     return (
         <div className="pt-40 px-6 md:px-20 flex flex-col gap-10">
             <div>
@@ -12,7 +36,7 @@ const PriceSupport = () => {
                             Visa Price
                         </h2>
                         <p className="text-3xl md:text-4xl font-bold text-[#1e2b4e]">
-                            600 AED
+                            {price !== null ? `${price} AED` : "Loading..."}
                         </p>
                         <p className="text-sm text-gray-500 mt-2">
                             This includes visa application service fees and processing charges.
@@ -32,11 +56,11 @@ const PriceSupport = () => {
                     </p>
                 </div>
                 <a
-                        href="https://wa.me/971547499849"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className='border border-green-500 text-green-600 px-4 py-1.5 rounded-md hover:bg-green-100 transition'
-                    >
+                    href="https://wa.me/971547499849"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className='border border-green-500 text-green-600 px-4 py-1.5 rounded-md hover:bg-green-100 transition'
+                >
                     Chat
                 </a>
             </div>
