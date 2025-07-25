@@ -22,7 +22,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="fixed top-0 bg-black left-0 w-full shadow-lg z-50">
+    <nav className="fixed top-0 bg-black border-b-[1px] border-gray-900 left-0 w-full shadow-lg z-50">
       <div className="flex justify-between text-center items-center px-6 py-3">
         <Image src={Logo} alt="Logo" className="h-20 w-auto" />
 
@@ -42,21 +42,21 @@ const Navbar = () => {
           </Link>
 
           <Link href="/work-permit">
-            <div className={`${getIconClass('/work-permit')} flex flex-col items-center gap-1 cursor-pointer`}>
+            <div className={`${getIconClass('/workpermit')} flex flex-col items-center gap-1 cursor-pointer`}>
               <MdWorkOutline className="text-xl" />
               <p className="text-xs font-medium">Work Permit</p>
             </div>
           </Link>
 
-          <Link href="/urgent-appointment">
-            <div className={`${getIconClass('/urgent-appointment')} flex flex-col items-center gap-1 cursor-pointer`}>
+          <Link href="/urgentappointment">
+            <div className={`${getIconClass('/urgentappointment')} flex flex-col items-center gap-1 cursor-pointer`}>
               <HiOutlineInformationCircle className="text-xl" />
               <p className="text-xs font-medium">Urgent Appointment</p>
             </div>
           </Link>
 
-          <Link href="/corporate-visa">
-            <div className={`${getIconClass('/corporate-visa')} flex flex-col items-center gap-1 cursor-pointer`}>
+          <Link href="/corporatevisa">
+            <div className={`${getIconClass('/corporatevisa')} flex flex-col items-center gap-1 cursor-pointer`}>
               <RiBuilding2Line className="text-xl" />
               <p className="text-xs font-medium">Corporate Visa</p>
             </div>

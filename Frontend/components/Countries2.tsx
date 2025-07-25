@@ -5,7 +5,7 @@ import { IoChevronForwardSharp } from 'react-icons/io5';
 
 const Countries2 = () => {
     return (
-        <div className="relative px-20 text-black overflow-hidden">
+        <div className="relative px-20 py-5 text-black overflow-hidden">
 
             <div className=" items-start justify-between relative z-10">
                 <div className='text-[#FFD700] font-bold pt-10 flex items-center gap-2 py-8'>Home <IoChevronForwardSharp className='text-white'/> Countries  </div>

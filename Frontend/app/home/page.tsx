@@ -11,16 +11,20 @@ import VisaService from "@/components/VisaService";
 import Navbar from '@/components/Navbar';
 import BG from '../../assets/herobg.png'
 import BG3 from '../../assets/herobg3.png'
+import ParticlesCanvas from '@/animations/ParticlesCanvas';
 
 const page = () => {
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <Navbar />
+      
       <div className="w-full pt-24 relative bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${BG3.src})` }}>
         <Hero />
       </div>
-      <div className="px-6 md:px-20 lg:px-[180px] pt-24 w-full bg-black">
+
+      <div className="relative px-6 md:px-20 lg:px-[180px] pt-24 w-full bg-black overflow-hidden">
+        <ParticlesCanvas />
         <Countries />
         <Carousel />
         <Assistance />
@@ -29,6 +33,7 @@ const page = () => {
         <Reviews />
         <Questions />
       </div>
+
       <div className="w-full pt-24 relative bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${BG.src})` }}>
         <Footer />
@@ -37,4 +42,4 @@ const page = () => {
   )
 }
 
-export default page
+export default page;

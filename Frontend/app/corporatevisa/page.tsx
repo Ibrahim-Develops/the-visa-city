@@ -1,10 +1,12 @@
+import CorporateVisa from '@/components/CorporateVisa'
+import CountriesCovered from '@/components/CountriesCovered'
+import CTASection from '@/components/CTASection'
+import IntroText from '@/components/IntroText'
+import ServiceCards from '@/components/ServiceCards'
 import React from 'react'
-import About from '@/components/About'
-import Footer from '@/components/Footer'
-import Navbar from '@/components/Navbar'
-import Proud from '@/components/Proud'
-import Travelers from '@/components/Travelers'
 import BG from '../../assets/herobg.png'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 import ParticlesCanvas from '@/animations/ParticlesCanvas'
 
 const page = () => {
@@ -13,9 +15,11 @@ const page = () => {
       <Navbar />
       <div className="px-6 md:px-20 lg:px-[180px] pt-24 w-full bg-black">
         <ParticlesCanvas/>
-        <About />
-        <Travelers />
-        <Proud />
+         <CorporateVisa/>
+         <IntroText/>
+         <ServiceCards/>
+         <CountriesCovered/>
+         <CTASection/>
       </div>
       <div className="w-full pt-24 relative bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${BG.src})` }}>
