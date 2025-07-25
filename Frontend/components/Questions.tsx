@@ -93,28 +93,28 @@ const Questions = () => {
 
     return (
         <div className="max-w-2xl mx-auto px-4 py-10">
-            <h2 className="text-4xl font-bold text-center mb-4 text-[#072343]">Frequently asked questions</h2>
-            <p className="text-center text-gray-600 mb-1">
+            <h2 className="text-4xl font-bold text-center mb-4 text-[#FFD700]">Frequently asked questions</h2>
+            <p className="text-center text-white mb-1">
                 We receive a lot of questions from our customers. You might also find answers to your questions here. Don’t
                 hesitate to contact us if you don’t see your answer.
             </p>
-            <p className="text-center text-gray-700 font-medium mb-10">Call us at: +971 58 5669976</p>
+            <p className="text-center text-gray-300 font-medium mb-10">Call us at: +971 58 5669976</p>
 
             <div className="space-y-6">
                 {faqs.map((item, idx) => (
                     <div
                         key={idx}
-                        className="border-b border-white border-b-gray-300 border-2 pb-4"
+                        className="border-b text-white bg-black p-4 border-[1px] border-white rounded-2xl"
                     >
                         <button
                             className="w-full flex cursor-pointer justify-between items-center text-left"
                             onClick={() => toggle(idx)}
                         >
-                            <h3 className="text-md font-semibold text-gray-900">{item.question}</h3>
+                            <h3 className="text-md font-semibold">{item.question}</h3>
                             {openIndex === idx ? (
-                                <FiMinus className="text-gray-500" />
+                                <FiMinus className="text-[#FFD700]" />
                             ) : (
-                                <FiPlus className="text-gray-500" />
+                                <FiPlus className="text-[#FFD700]" />
                             )}
                         </button>
 
@@ -122,17 +122,16 @@ const Questions = () => {
                             className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === idx ? "max-h-[200px] mt-2" : "max-h-0"
                                 }`}
                         >
-                            <p className="text-sm text-gray-600">{item.answer}</p>
+                            <p className="text-sm text-white">{item.answer}</p>
                         </div>
                     </div>
                 ))}
             </div>
 
-            <div className="bg-white p-8 flex flex-col items-center text-center">
-                <Image src={People} alt="People Illustration" className="w-32 h-16 mb-4" />
+            <div className="p-8 flex flex-col items-center text-center">
 
-                <h2 className="text-2xl font-bold text-[#072343] mb-2">Still Have Questions?</h2>
-                <p className="text-gray-600 mb-6">
+                <h2 className="text-2xl font-bold text-[#FFD700] mb-2">Still Have Questions?</h2>
+                <p className="text-white mb-6">
                     Can’t find the answer you’re looking for? Our friendly team is ready to help.
                 </p>
 
@@ -141,7 +140,7 @@ const Questions = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <button className="flex items-center gap-3 cursor-pointer bg-[#072343] text-white px-5 py-3 rounded-full transition duration-300 hover:border-[#072343] hover:border-[1px] hover:bg-white hover:text-[#072343]">
+                    <button className="flex items-center gap-3 cursor-pointer bg-[#FFD700] text-black px-5 py-3 rounded-full transition duration-300 hover:border-[#072343] hover:scale-105">
                         <BsWhatsapp className="text-xl text-green-600" />
                         <span className="font-medium text-sm">Get In Touch</span>
                     </button>

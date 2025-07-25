@@ -8,19 +8,31 @@ import Hero from "@/components/Hero";
 import Questions from "@/components/Questions";
 import Reviews from "@/components/Reviews";
 import VisaService from "@/components/VisaService";
+import Navbar from '@/components/Navbar';
+import BG from '../../assets/herobg.png'
+import BG3 from '../../assets/herobg3.png'
 
 const page = () => {
   return (
-     <div className="px-6 md:px-20 lg:px-[180px] w-full flex flex-col justify-center items-center">
-      <Hero />
-      <Countries />
-      <Carousel />
-      <Assistance />
-      <VisaService />
-      <Google />
-      <Reviews />
-      <Questions />
-      <Footer />
+    <div className="w-full flex flex-col justify-center items-center">
+      <Navbar />
+      <div className="w-full pt-24 relative bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${BG3.src})` }}>
+        <Hero />
+      </div>
+      <div className="px-6 md:px-20 lg:px-[180px] pt-24 w-full bg-black">
+        <Countries />
+        <Carousel />
+        <Assistance />
+        <VisaService />
+        <Google />
+        <Reviews />
+        <Questions />
+      </div>
+      <div className="w-full pt-24 relative bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${BG.src})` }}>
+        <Footer />
+      </div>
     </div>
   )
 }

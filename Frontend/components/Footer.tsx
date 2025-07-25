@@ -13,7 +13,7 @@ import Link from 'next/link';
 
 const Footer = () => {
     return (
-        <footer className="text-gray-800 px-6 md:px-20 py-12 space-y-12">
+        <footer className="text-white px-6 md:px-20 py-12 space-y-12">
 
             <div className="bg-black text-white w-full px-6 md:px-12 py-8 rounded-2xl flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
                 <div className="lg:max-w-xl">
@@ -25,7 +25,7 @@ const Footer = () => {
                         We make it easy for you by handling all the paperwork. Your vacation shouldn’t feel like more office work!
                     </p>
                     <a href="https://wa.me/971547499849" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                    <button className="bg-white hover:scale-105 duration-300 text-black cursor-pointer transition font-bold px-6 py-3 rounded-md text-sm">
+                    <button className="bg-[#FFD700] hover:scale-105 duration-300 text-black cursor-pointer transition font-bold px-6 py-3 rounded-md text-sm">
                         Apply Now
                     </button>
                     </a>
@@ -44,33 +44,33 @@ const Footer = () => {
 
                 <div className="flex flex-col gap-4">
                     <Image src={Logo} alt="Visa City Logo" width={180} />
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-white">
                         Hassle-free travel shouldn’t just be a dream. <br />
                         Visa City – Visa Simplified.
                     </p>
                 </div>
 
                 <div className="flex flex-col gap-3">
-                    <h4 className="text-base font-semibold text-[#072343]">Quick Links</h4>
-                    <nav className="flex flex-col gap-2 text-sm text-gray-700">
-                        <Link href="/home" className="hover:text-[#072343] cursor-pointer">
+                    <h4 className="text-base font-semibold text-[#FFD700]">Quick Links</h4>
+                    <nav className="flex flex-col gap-2 text-sm text-white">
+                        <Link href="/home" className="hover:text-[#FFD700] cursor-pointer">
                             Home
                         </Link>
-                        <Link href="/contact" className="hover:text-[#072343] cursor-pointer">
+                        <Link href="/contact" className="hover:text-[#FFD700] cursor-pointer">
                             Contact
                         </Link>
-                        <Link href="/about" className="hover:text-[#072343] cursor-pointer">
+                        <Link href="/about" className="hover:text-[#FFD700] cursor-pointer">
                             About
                         </Link>
-                        <Link href="/countries" className="hover:text-[#072343] cursor-pointer">
+                        <Link href="/countries" className="hover:text-[#FFD700] cursor-pointer">
                             Countries
                         </Link>
                     </nav>
                 </div>
 
                 <div className="flex flex-col gap-3">
-                    <h4 className="text-base font-semibold text-[#072343]">Our Services</h4>
-                    <ul className="text-sm text-gray-700 space-y-1">
+                    <h4 className="text-base font-semibold text-[#FFD700]">Our Services</h4>
+                    <ul className="text-sm text-white space-y-1">
                         <li>Immigration Works</li>
                         <li>Visas Apply</li>
                         <li>Passport Apply</li>
@@ -81,8 +81,8 @@ const Footer = () => {
                 </div>
 
                 <div className="flex flex-col gap-3">
-                    <h4 className="text-base font-semibold text-[#072343]">Our Visa</h4>
-                    <ul className="text-sm text-gray-700 space-y-1">
+                    <h4 className="text-base font-semibold text-[#FFD700]">Our Visa</h4>
+                    <ul className="text-sm text-white space-y-1">
                         <li>Residence Visa</li>
                         <li>Business Visa</li>
                         <li>Tourist Visa</li>
@@ -92,8 +92,8 @@ const Footer = () => {
                 </div>
 
                 <div className="flex flex-col gap-3">
-                    <h4 className="text-base font-semibold text-[#072343]">Support</h4>
-                    <ul className="text-sm text-gray-700 space-y-1">
+                    <h4 className="text-base font-semibold text-[#FFD700]">Support</h4>
+                    <ul className="text-sm text-white space-y-1">
                         <li>FAQ</li>
                         <li>Disclaimer</li>
                         <li>Support</li>
@@ -104,7 +104,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="gap-6 flex text-sm text-gray-700">
+            <div className="gap-6 flex text-sm text-white">
                 <div className="flex items-center gap-2">
                     <IoCallOutline className="text-xl text-blue-600" />
                     <p>+971 58 5669976</p>
@@ -122,13 +122,13 @@ const Footer = () => {
                     <IoMailOutline className="text-xl text-red-600" />
                     <p>contact@thevisacity.com</p>
                 </a>
-                <div className="flex  items-center">
+                <div className="flex justify-center items-center">
                     <IoLocationOutline className='text-xl text-yellow-500' />
                     <p className="mt-2">19th Floor, Damac Executive Heights, Al Barsha Heights, Dubai, UAE</p>
                 </div>
             </div>
 
-            <div className="text-sm flex flex-col md:flex-row justify-between items-center text-gray-400 mt-8 border-t pt-4 gap-4">
+            <div className="text-sm flex flex-col md:flex-row justify-between items-center text-white mt-8 border-t pt-4 gap-4">
                 <div>
                     © {new Date().getFullYear()} Visa City. All rights reserved.
                 </div>

@@ -1,4 +1,5 @@
 import Footer from '@/components/Footer'
+import Navbar from '@/components/Navbar'
 import PriceSupport from '@/components/PriceSupport'
 import SpecCountry from '@/components/SpecCountry'
 import VisaDocuments from '@/components/VisaDocuments'
@@ -9,6 +10,7 @@ import React from 'react'
 const page = () => {
     return (
         <div>
+            <Navbar/>
             <div className='flex px-40'>
                 <div>
                     <SpecCountry />

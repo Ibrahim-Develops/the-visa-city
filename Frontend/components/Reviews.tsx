@@ -51,7 +51,6 @@ const Reviews = () => {
             currentIndex++;
 
             if (currentIndex >= totalSlides) {
-                // Reset to beginning after short delay
                 setTimeout(() => {
                     const prevBtn = carouselRef.current?.querySelector('[data-carousel-previous]') as HTMLElement;
                     for (let i = 0; i < totalSlides; i++) {
@@ -77,14 +76,14 @@ const Reviews = () => {
                                     key={i}
                                     className="pl-2 md:basis-1/2 lg:basis-1/4"
                                 >
-                                    <Card className={`p-4 border-gray-300 flex flex-col space-y-3 transition-all duration-300 ${isExpanded ? 'max-h-full' : 'h-[250px]'} overflow-hidden relative`}>
+                                    <Card className={`p-4 bg-black border-black flex flex-col space-y-3 transition-all duration-300 ${isExpanded ? 'max-h-full' : 'h-[250px]'} overflow-hidden relative`}>
                                         <div className="flex flex-col gap-5">
                                             <div className="flex items-center justify-between">
                                                 <div className="flex items-center gap-2">
                                                     <Image src={item.image} alt={item.name} width={40} height={40} className="rounded-full" />
                                                     <div>
-                                                        <h4 className="font-semibold text-sm text-gray-800">{item.name}</h4>
-                                                        <p className="text-xs text-gray-500">{item.date}</p>
+                                                        <h4 className="font-semibold text-sm text-white">{item.name}</h4>
+                                                        <p className="text-xs text-gray-400">{item.date}</p>
                                                     </div>
                                                 </div>
                                                 <Image src={Google1} alt="Google icon" width={18} height={18} />
@@ -95,7 +94,7 @@ const Reviews = () => {
                                                 <Image src={BlueTick} alt="Verified" width={20} height={14} />
                                             </div>
 
-                                            <p className="text-sm text-gray-700 leading-snug">
+                                            <p className="text-sm text-white leading-snug">
                                                 {isExpanded || item.review.length <= 200
                                                     ? item.review
                                                     : `${item.review.slice(0, 200)}...`}

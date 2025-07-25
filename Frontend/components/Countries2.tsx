@@ -8,12 +8,12 @@ const Countries2 = () => {
         <div className="relative px-20 text-black overflow-hidden">
 
             <div className=" items-start justify-between relative z-10">
-                <div className='text-[#4b6391] font-bold pt-10 flex items-center gap-2 py-8'>Home <IoChevronForwardSharp /> Countries  </div>
+                <div className='text-[#FFD700] font-bold pt-10 flex items-center gap-2 py-8'>Home <IoChevronForwardSharp className='text-white'/> Countries  </div>
                 <div className="mb-10 md:mb-0">
-                    <h1 className="text-5xl font-bold mb-4">
-                        Our <span className="text-[#4b6391]">Countries.</span>
+                    <h1 className="text-5xl text-white font-bold mb-4">
+                        Our <span className="text-[#FFD700]">Countries.</span>
                     </h1>
-                    <div className="h-1 w-40 bg-black mb-6" />
+                    <div className="h-1 w-40 bg-[#FFD700] mb-6" />
                 </div>
             </div>
 

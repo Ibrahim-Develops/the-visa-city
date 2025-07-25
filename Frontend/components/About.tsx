@@ -5,16 +5,19 @@ import { IoChevronForwardSharp } from 'react-icons/io5'
 
 const About = () => {
     return (
-        <div>
-            <div className="relative px-20 text-black overflow-hidden">
-                <div className=" items-start justify-between relative z-10">
-                <div className='text-[#4b6391] font-bold pt-10 flex items-center gap-2 py-8'>Home <IoChevronForwardSharp /> About  </div>
+        <div className="">
+            <div className="relative px-20 text-white overflow-hidden">
+                <div className="items-start justify-between relative z-10">
+                    <div className="text-[#FFD700] font-bold pt-10 flex items-center gap-2 py-8">
+                        Home <IoChevronForwardSharp className="text-white" /> About
+                    </div>
+
                     <div className="mb-10 md:mb-0">
                         <h1 className="text-5xl font-bold mb-4">
-                            About <span className="text-[#4b6391]">The Visa City.</span>
+                            About <span className="text-[#FFD700]">The Visa City.</span>
                         </h1>
-                        <div className="h-1 w-40 bg-black mb-6" />
-                        <p className="text-lg text-gray-800 max-w-lg font-semibold">
+                        <div className="h-1 w-40 bg-[#FFD700] mb-6" />
+                        <p className="text-lg text-white max-w-lg font-semibold">
                             Hassle-free travel shouldn't just be a dream, and we know how to make it reality.
                         </p>
                     </div>

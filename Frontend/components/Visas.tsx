@@ -47,7 +47,7 @@ const VisaImages = [
 
 const Visas = () => {
   return (
-    <div className="relative w- overflow-hidden py-8 bg-white mx-20">
+    <div className="relative overflow-hidden py-8 mx-20">
       <div className="scroll-infinite flex w-max animate-scroll-left space-x-6 hover:paused">
         {[...VisaImages, ...VisaImages].map((item, i) => (
           <div key={i} className="min-w-[250px]">

@@ -11,7 +11,6 @@ import { FaPlaneDeparture } from "react-icons/fa"
 import { IoSearchOutline } from "react-icons/io5"
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
-
 interface Country {
   id: number
   name: string
@@ -24,7 +23,6 @@ const Hero = () => {
   const [query, setQuery] = useState('')
   const [showDropdown, setShowDropdown] = useState(false)
 
-  // Fetch countries
   useEffect(() => {
     const fetchCountries = async () => {
       try {
@@ -42,7 +40,6 @@ const Hero = () => {
     fetchCountries()
   }, [])
 
-  // Handle input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     setQuery(value)
@@ -64,37 +61,37 @@ const Hero = () => {
   }
 
   return (
-    <div className="w-full pb-10">
+    <div className="w-full px-40 pb-10 relative">
       <div className="flex flex-wrap justify-between items-center gap-8">
         <Image src={Hero1} alt="hero-left" width={500} className="max-w-full" />
 
         <div className="flex flex-col gap-8 justify-center items-center flex-1 text-center">
           <h1 className="text-4xl md:text-6xl font-bold flex gap-3 flex-wrap justify-center">
-            <span className="text-[#072343]">Visa</span>
-            <span className="text-[#4b6391]">Simplified</span>
+            <span className="text-[#FFD700]">Visa</span>
+            <span className="text-[#FFD700]">Simplified</span>
           </h1>
-          <p className="text-gray-600 max-w-lg">
+          <p className="text-white max-w-lg">
             The world is yours to explore, with smart and effortless visa solutions from the UAE.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-6 font-semibold text-gray-700">
+          <div className="flex flex-wrap justify-center gap-6 font-semibold text-white">
             <div className="flex gap-2 items-center">
-              <IoIosFlash className="text-xl text-[#072343]" />
+              <IoIosFlash className="text-xl text-[#FFD700]" />
               <p className="text-sm">50+ Countries</p>
             </div>
             <div className="flex gap-2 items-center">
-              <AiOutlineGlobal className="text-xl text-[#072343]" />
+              <AiOutlineGlobal className="text-xl text-[#FFD700]" />
               <p className="text-sm">Fast & Flexible</p>
             </div>
             <div className="flex gap-2 items-center">
-              <LuShieldCheck className="text-xl text-[#072343]" />
+              <LuShieldCheck className="text-xl text-[#FFD700]" />
               <p className="text-sm">Secure</p>
             </div>
           </div>
 
           <div className="relative w-full max-w-xl border border-gray-300 rounded-2xl px-6 py-3 flex items-center justify-between gap-4 shadow-sm bg-white">
             <div className="flex items-center gap-4 flex-1 relative">
-              <FaPlaneDeparture className="text-[#4b6391] text-2xl" />
+              <FaPlaneDeparture className="text-[#FFD700] text-2xl" />
               <div className="w-full text-left relative">
                 <label className="text-xs text-gray-500 font-medium block mb-1">
                   Travelling To
@@ -126,7 +123,7 @@ const Hero = () => {
             </div>
 
             <button
-              className="bg-[#072343] hover:bg-[#061a30] transition-colors duration-200 text-white p-3 rounded-full"
+              className="bg-[#FFD700] transition-colors duration-200 text-white p-3 rounded-full"
               onClick={() => {
                 const selected = countries.find(
                   (c) => c.name.toLowerCase() === query.toLowerCase()
@@ -134,7 +131,7 @@ const Hero = () => {
                 if (selected) router.push(`/display/visa/${selected.id}`)
               }}
             >
-              <IoSearchOutline className="text-xl" />
+              <IoSearchOutline className="text-xl text-black " />
             </button>
           </div>
         </div>

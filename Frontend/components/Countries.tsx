@@ -100,42 +100,42 @@ const Countries = () => {
                             key={label}
                             onClick={() => setActiveCategory(label)}
                             className={`flex flex-col items-center cursor-pointer text-sm 
-                            ${activeCategory === label ? 'text-[#4b6391] font-medium' : 'text-gray-500'} 
-                            hover:text-[#4b6391] transition duration-200 relative`}
+                            ${activeCategory === label ? 'text-[#ffd700] font-medium' : 'text-white'} 
+                            hover:text-[#ffd700] transition duration-200 relative`}
                         >
                             <Icon className="text-xl mb-1" />
                             <p>{label}</p>
-                            {activeCategory === label && <span className="w-6 h-1 bg-[#4b6391] rounded mt-1" />}
+                            {activeCategory === label && <span className="w-6 h-1 bg-[#ffd700] rounded mt-1" />}
                         </div>
                     ))}
                 </div>
 
                 <div className="relative inline-block text-left w-48">
-                    <button
-                        onClick={() => setOpen(!open)}
-                        className="w-full border border-gray-300 rounded-md shadow-sm px-4 py-2 bg-white text-gray-700 text-left flex justify-between items-center"
-                    >
-                        {selectedRegion}
-                        <FaChevronDown className={`ml-2 text-sm transition-transform duration-300 ${open ? 'rotate-180' : 'rotate-0'}`} />
-                    </button>
-
-                    {open && (
-                        <div className="absolute mt-1 w-full bg-white border border-gray-200 rounded-md shadow-lg z-10">
-                            {regions.map((region) => (
-                                <div
-                                    key={region}
-                                    onClick={() => {
-                                        setSelectedRegion(region);
-                                        setOpen(false);
-                                    }}
-                                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                                >
-                                    {region}
+                                    <button
+                                        onClick={() => setOpen(!open)}
+                                        className="w-full border border-gray-300 cursor-pointer rounded-md shadow-sm px-4 py-2 bg-black text-white text-left flex justify-between items-center"
+                                    >
+                                        {selectedRegion}
+                                        <FaChevronDown className={`ml-2 text-sm transition-transform duration-300 ${open ? 'rotate-180' : 'rotate-0'}`} />
+                                    </button>
+                
+                                    {open && (
+                                        <div className="absolute mt-1 w-full bg-black text-white border border-gray-200 rounded-md shadow-lg z-10">
+                                            {regions.map((region) => (
+                                                <div
+                                                    key={region}
+                                                    onClick={() => {
+                                                        setSelectedRegion(region);
+                                                        setOpen(false);
+                                                    }}
+                                                    className="px-4 py-2 hover:bg-gray-100 hover:text-black cursor-pointer"
+                                                >
+                                                    {region}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
-                            ))}
-                        </div>
-                    )}
-                </div>
             </div>
 
             <div className="flex flex-wrap gap-5 py-5 justify-">
@@ -169,9 +169,9 @@ const Countries = () => {
                                                 height={12}
                                                 className="object-cover"
                                             />
-                                            <span className="text-sm font-medium text-gray-700">{item.name}</span>
+                                            <span className="text-sm font-medium text-white">{item.name}</span>
                                         </div>
-                                        <span className="text-sm font-semibold text-gray-600">
+                                        <span className="text-sm font-semibold text-white">
                                             AED {Number(item.price).toLocaleString()}
                                         </span>
                                     </div>
@@ -187,7 +187,7 @@ const Countries = () => {
                 <div className="text-center py-4">
                     <button
                         onClick={handleViewMore}
-                        className="px-6 py-2 text-sm font-medium cursor-pointer bg-[#072343] text-white rounded hover:bg-gray-700 transition"
+                        className="px-6 py-2 text-sm font-medium cursor-pointer bg-[#ffd700] text-black rounded transition"
                     >
                         View More
                     </button>
