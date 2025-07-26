@@ -41,19 +41,19 @@ const Navbar = () => {
             </div>
           </Link>
 
-          <Link href="/work-permit">
+          <Link href="/workpermit">
             <div className={`${getIconClass('/workpermit')} flex flex-col items-center gap-1 cursor-pointer`}>
               <MdWorkOutline className="text-xl" />
               <p className="text-xs font-medium">Work Permit</p>
             </div>
           </Link>
 
-          <Link href="/urgentappointment">
+          <a href="https://wa.me/971547499849" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
             <div className={`${getIconClass('/urgentappointment')} flex flex-col items-center gap-1 cursor-pointer`}>
               <HiOutlineInformationCircle className="text-xl" />
               <p className="text-xs font-medium">Urgent Appointment</p>
             </div>
-          </Link>
+          </a>
 
           <Link href="/corporatevisa">
             <div className={`${getIconClass('/corporatevisa')} flex flex-col items-center gap-1 cursor-pointer`}>

@@ -45,17 +45,6 @@ const tabs = [
     { label: 'Adventure', icon: PiPersonSimpleThrowLight },
 ];
 
-const cleanArray = (arr: any): string[] => {
-    try {
-        if (Array.isArray(arr) && typeof arr[0] === 'string' && arr[0].startsWith('["')) {
-            return JSON.parse(arr.join(''));
-        }
-        return arr;
-    } catch {
-        return arr;
-    }
-};
-
 const Countries3 = () => {
     const [countries, setCountries] = useState<Country[]>([]);
     const [selectedRegion, setSelectedRegion] = useState('Region');

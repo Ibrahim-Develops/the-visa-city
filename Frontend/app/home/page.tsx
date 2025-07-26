@@ -17,29 +17,43 @@ const page = () => {
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <Navbar />
-      
-      <div className="w-full pt-24 relative bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${BG3.src})` }}>
+
+      {/* Hero Section */}
+      <div
+        className="w-full pt-24 relative bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${BG3.src})` }}
+      >
         <Hero />
       </div>
 
+      {/* Main Content Section with Particles */}
       <div className="relative px-6 md:px-20 lg:px-[180px] pt-24 w-full bg-black overflow-hidden">
-        <ParticlesCanvas />
-        <Countries />
-        <Carousel />
-        <Assistance />
-        <VisaService />
-        <Google />
-        <Reviews />
-        <Questions />
+        {/* Canvas Behind Content */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <ParticlesCanvas />
+        </div>
+
+        {/* Actual Content Above */}
+        <div className="relative z-10">
+          <Countries />
+          <Carousel />
+          <Assistance />
+          <VisaService />
+          <Google />
+          <Reviews />
+          <Questions />
+        </div>
       </div>
 
-      <div className="w-full pt-24 relative bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${BG.src})` }}>
+      {/* Footer */}
+      <div
+        className="w-full pt-24 relative bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${BG.src})` }}
+      >
         <Footer />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default page;

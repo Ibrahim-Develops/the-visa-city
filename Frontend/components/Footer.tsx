@@ -106,11 +106,11 @@ const Footer = () => {
 
             <div className="gap-6 flex text-sm text-white">
                 <div className="flex items-center gap-2">
-                    <IoCallOutline className="text-xl text-blue-600" />
+                    <IoCallOutline className="text-xl text-[#FFD700]" />
                     <p>+971 58 5669976</p>
                 </div>
                 <a href="https://wa.me/971547499849" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                    <MdWhatsapp className="text-xl text-green-600" />
+                    <MdWhatsapp className="text-xl text-[#FFD700]" />
                     <p>+971 54 7499849</p>
                 </a>
                 <a
@@ -119,11 +119,11 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2"
                 >
-                    <IoMailOutline className="text-xl text-red-600" />
+                    <IoMailOutline className="text-xl text-[#FFD700]" />
                     <p>contact@thevisacity.com</p>
                 </a>
                 <div className="flex justify-center items-center">
-                    <IoLocationOutline className='text-xl text-yellow-500' />
+                    <IoLocationOutline className='text-xl text-[#FFD700]' />
                     <p className="mt-2">19th Floor, Damac Executive Heights, Al Barsha Heights, Dubai, UAE</p>
                 </div>
             </div>
