@@ -9,8 +9,8 @@ interface Particle {
   vy: number;
 }
 
-const NUM_PARTICLES = 100;
-const MAX_DIST = 120;
+const NUM_PARTICLES = 160;
+const MAX_DIST = 180;
 
 const ParticlesCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -41,7 +41,6 @@ const ParticlesCanvas = () => {
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Move + draw particles
       for (const p of particles) {
         p.x += p.vx;
         p.y += p.vy;
@@ -49,14 +48,12 @@ const ParticlesCanvas = () => {
         if (p.x < 0 || p.x > width) p.vx *= -1;
         if (p.y < 0 || p.y > height) p.vy *= -1;
 
-        // Dot
         ctx.beginPath();
         ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
         ctx.fillStyle = 'white';
         ctx.fill();
       }
 
-      // Draw connections
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const a = particles[i];

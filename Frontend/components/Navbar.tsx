@@ -17,8 +17,8 @@ const Navbar = () => {
 
   const getIconClass = (path: string) => {
     return pathname === path
-      ? 'border-2 border-yellow-500 text-yellow-400 bg-black rounded-xl w-16 h-16 flex justify-center shadow-lg'
-      : 'hover:text-yellow-400 hover:border-yellow-400 border border-transparent flex justify-center rounded-xl w-16 h-16 transition-all duration-300';
+      ? 'border-2 border-yellow-500 text-yellow-400 bg-black rounded-xl w-20 h-20 flex justify-center shadow-lg'
+      : 'hover:text-yellow-400 hover:border-yellow-400 border border-transparent flex justify-center rounded-xl w-20 h-20 transition-all duration-300';
   }
 
   return (

@@ -47,12 +47,12 @@ const VisaSteps = () => {
 
   return (
     <div className="px-6 md:px-20 py-10">
-      <h2 className="text-2xl md:text-3xl font-bold mb-10 text-[#1e2b4e]">
+      <h2 className="text-2xl md:text-3xl font-bold mb-10 text-[#FFD700]">
         How to Apply for a Portugal Visa For UAE Residents
       </h2>
 
       <div className="relative">
-        <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-[#072343]" />
+        <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-[#FFD700]" />
 
         <div className="space-y-8">
           {steps.map((step, index) => (
@@ -62,12 +62,12 @@ const VisaSteps = () => {
                 onClick={() => toggle(index)}
               >
                 <div className="flex items-center gap-4">
-                  <div className="bg-white z-10 relative w-8 h-8 flex items-center justify-center rounded-lg border border-[#4b6391] text-[#4b6391]">
+                  <div className="bg-black z-10 relative w-8 h-8 flex items-center justify-center rounded-lg border border text-[#FFD700]">
                     {step.icon}
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Step {index + 1}:</p>
-                    <p className="text-gray-800 font-semibold">{step.title}</p>
+                    <p className="text-sm text-white">Step {index + 1}:</p>
+                    <p className="text-[#FFD700] font-semibold">{step.title}</p>
                   </div>
                 </div>
                 <div className="text-xl text-gray-500">
@@ -80,14 +80,14 @@ const VisaSteps = () => {
                   openIndex === index ? 'max-h-40 mt-3' : 'max-h-0'
                 }`}
               >
-                <p className="ml-12 text-sm text-gray-600">{step.description}</p>
+                <p className="ml-12 text-sm text-white">{step.description}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="mt-6 text-sm text-gray-500 flex items-center gap-2">
+      <div className="mt-6 text-sm text-white flex items-center gap-2">
         <svg
           className="w-4 h-4"
           fill="none"

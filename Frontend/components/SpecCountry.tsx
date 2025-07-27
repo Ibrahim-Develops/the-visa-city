@@ -53,7 +53,7 @@ const SpecCountry = () => {
     return (
         <div className="flex flex-col justify-start items-start gap-4 pt-20 px-10 w-full">
             <div>
-                <h1 className='text-4xl font-bold text-[#072343]'>Visa for {data.name}</h1>
+                <h1 className='text-4xl font-bold text-[#FFD700]'>Visa for {data.name}</h1>
                 <p>Get complete assistance for your visa from Dubai.</p>
             </div>
 
@@ -77,12 +77,6 @@ const SpecCountry = () => {
                         </div>
                     ))}
                 </div>
-            </div>
-
-            <div className="flex gap-2 items-center justify-center w-full">
-                <h2 className="text-lg font-bold text-[#072343]">EXCELLENT</h2>
-                <StarRating value={5} />
-                <Image src={Googles} alt="Google logo" width={80} />
             </div>
         </div>
     );

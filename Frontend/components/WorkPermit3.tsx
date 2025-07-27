@@ -1,10 +1,14 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 
 const WorkPermit3 = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <section className="px-6 py-10 md:px-20 text-white">
+      {/* Intro Section */}
       <div className="mb-10">
         <h2 className="text-2xl font-bold text-[#FFD700] mb-4">Work permit application</h2>
         <p className="mb-4">
@@ -19,11 +23,32 @@ const WorkPermit3 = () => {
         </p>
       </div>
 
-      <div className="bg-[#FFD700] text-black px-4 py-2 rounded flex justify-between items-center max-w-xl mb-10 cursor-pointer">
+      {/* Dropdown Trigger */}
+      <div
+        className="bg-[#FFD700] text-black px-4 py-2 rounded flex justify-between items-center max-w-xl mb-2 cursor-pointer"
+        onClick={() => setIsOpen(!isOpen)}
+      >
         <span className="font-semibold">THE WORK PERMIT APPLICATION'S DOCUMENTS</span>
-        <span className="text-xl font-bold">+</span>
+        <span className="text-xl font-bold">{isOpen ? '−' : '+'}</span>
       </div>
 
+      {/* Dropdown Content */}
+      <div
+        className={`transition-all duration-500 overflow-hidden max-w-xl mb-10 ${
+          isOpen ? 'max-h-96 p-4' : 'max-h-0 p-0'
+        } bg-[#333] text-white rounded-b`}
+      >
+        <ul className="list-disc ml-6 space-y-2">
+          <li>Application form (standard format)</li>
+          <li>Employer’s registration certificate</li>
+          <li>Employment contract or offer letter</li>
+          <li>Proof of no suitable local candidate (labor market test)</li>
+          <li>Tax payment proof for work permit request</li>
+          <li>Copy of foreign citizen’s passport</li>
+        </ul>
+      </div>
+
+      {/* Internal Procedures Section */}
       <div>
         <h2 className="text-2xl font-bold text-[#FFD700] mb-4">Internal Procedures</h2>
         <p className="mb-4">

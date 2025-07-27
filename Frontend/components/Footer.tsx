@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import F1 from '../assets/F1.png';
+import F1 from '../assets/F1.jpg';
 import Logo from '../assets/logo.png';
 import { IoCallOutline, IoMailOutline } from 'react-icons/io5';
 import { MdWhatsapp } from 'react-icons/md';
@@ -35,7 +35,7 @@ const Footer = () => {
                         src={F1}
                         alt="Travel illustration"
                         width={500}
-                        className="w-full h-auto max-w-sm lg:max-w-md"
+                        className="w-full h-auto rounded-2xl max-w-sm lg:max-w-md"
                     />
                 </div>
             </div>

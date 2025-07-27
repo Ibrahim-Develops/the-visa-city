@@ -166,7 +166,7 @@ const AddCountry = () => {
           <div className="flex flex-col gap-3">
             <Link
               href="/dashboard"
-              className="bg-[#072343] w-fit p-2 rounded-full shadow-2xl cursor-pointer"
+              className="bg-black w-fit p-2 rounded-full shadow-2xl cursor-pointer"
             >
               <FaArrowLeftLong className="text-white text-2xl" />
             </Link>
@@ -183,13 +183,13 @@ const AddCountry = () => {
             </div>
             <button
               type="submit"
-              className="bg-[#072343] px-16 py-4 text-white rounded-xl font-bold cursor-pointer"
+              className="bg-black px-16 py-4 text-white rounded-xl font-bold cursor-pointer"
             >
               Add Country
             </button>
           </div>
 
-          {/* Category Multi-select */}
+
           <div className="flex flex-col gap-2 w-full">
             <label className="font-semibold text-lg">Category</label>
             <Select
@@ -202,7 +202,7 @@ const AddCountry = () => {
             {selectedCategories.length === 0 && <p className="text-red-500 text-sm">Please select at least one category</p>}
           </div>
 
-          {/* Region Multi-select */}
+
           <div className="flex flex-col gap-2 w-full">
             <label className="font-semibold text-lg">Region</label>
             <Select
@@ -215,7 +215,7 @@ const AddCountry = () => {
             {selectedRegions.length === 0 && <p className="text-red-500 text-sm">Please select at least one region</p>}
           </div>
 
-          {/* Other fields */}
+
           <div className="grid grid-cols-3 w-full gap-10">
             {fields.map((field, i) => (
               <div key={i} className="flex flex-col gap-2 w-full">

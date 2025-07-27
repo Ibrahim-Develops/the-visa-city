@@ -37,7 +37,7 @@ const VisaDocuments = () => {
 
   return (
     <div className="px-6 md:px-20 py-20">
-      <h2 className="text-2xl md:text-3xl font-bold mb-8 text-[#1e2b4e]">
+      <h2 className="text-2xl md:text-3xl font-bold mb-8 text-[#FFD700]">
         Documents Required for Portugal Visa Application
       </h2>
 
@@ -49,10 +49,10 @@ const VisaDocuments = () => {
               onClick={() => toggleAccordion(index)}
             >
               <div className="flex items-center gap-3">
-                <div className="bg-gray-100 p-2 rounded-lg text-[#4b6391] text-lg">
+                <div className="bg-black border p-2 rounded-lg text-[#FFD700] text-lg">
                   {doc.icon}
                 </div>
-                <p className="text-gray-800 font-medium">{doc.title}</p>
+                <p className="text-[#FFD700] font-medium">{doc.title}</p>
               </div>
               <div className="text-xl text-gray-500">
                 {openIndex === index ? <IoIosArrowUp /> : <IoIosArrowDown />}
@@ -64,7 +64,7 @@ const VisaDocuments = () => {
                 openIndex === index ? 'max-h-40 mt-3' : 'max-h-0'
               }`}
             >
-              <p className="ml-12 text-sm text-gray-600">
+              <p className="ml-12 text-sm text-white">
                 {doc.content}
               </p>
             </div>

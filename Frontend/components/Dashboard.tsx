@@ -39,19 +39,17 @@ const Dashboard = () => {
   const router = useRouter();
   const [countries, setCountries] = useState<Country[]>([]);
   const [loading, setLoading] = useState(true);
-  const [isAuthorized, setIsAuthorized] = useState<boolean | null>(null); // To check token state
+  const [isAuthorized, setIsAuthorized] = useState<boolean | null>(null);
 
-  // Check token on first render
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      router.replace('/login');  // Redirect if no token
+      router.replace('/login'); 
     } else {
       setIsAuthorized(true);
     }
   }, [router]);
 
-  // Fetch countries if authorized
   useEffect(() => {
     if (!isAuthorized) return;
 
@@ -113,7 +111,7 @@ const Dashboard = () => {
         <h1 className="text-3xl sm:text-5xl font-bold">Countries</h1>
         <Link
           href="/dashboard/addcountry"
-          className="bg-[#072343] px-6 sm:px-16 py-3 sm:py-4 text-white rounded-xl font-bold text-center hover:bg-[#0a2f64] transition"
+          className="bg-black px-6 sm:px-16 py-3 sm:py-4 text-white rounded-xl font-bold text-center transition"
         >
           + Add Country
         </Link>
@@ -121,9 +119,9 @@ const Dashboard = () => {
 
       <div className="border border-gray-200 rounded-lg overflow-auto">
         {loading ? (
-          <p className="p-4 text-center text-gray-500">Loading countries...</p>
+          <p className="p-4 text-center">Loading countries...</p>
         ) : countries.length === 0 ? (
-          <p className="p-4 text-center text-gray-500">No countries found.</p>
+          <p className="p-4 text-center">No countries found.</p>
         ) : (
           <Table>
             <TableHeader className="bg-gray-100">

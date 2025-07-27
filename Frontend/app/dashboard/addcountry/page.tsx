@@ -4,9 +4,11 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>
+    <div className="w-full flex flex-col justify-center items-center">
       <Navbar />
-      <AddCountry />
+      <div className="px-6 md:px-20 lg:px-[180px] pt-24 w-full bg-white">
+        <AddCountry/>
+      </div>
     </div>
   )
 }
