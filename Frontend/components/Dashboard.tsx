@@ -44,7 +44,7 @@ const Dashboard = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      router.replace('/login'); 
+      router.replace('/login');
     } else {
       setIsAuthorized(true);
     }
@@ -109,12 +109,20 @@ const Dashboard = () => {
     <div className="px-4 sm:px-10 py-10 overflow-auto">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <h1 className="text-3xl sm:text-5xl font-bold">Countries</h1>
-        <Link
-          href="/dashboard/addcountry"
-          className="bg-black px-6 sm:px-16 py-3 sm:py-4 text-white rounded-xl font-bold text-center transition"
-        >
-          + Add Country
-        </Link>
+        <div className='flex gap-5'>
+          <Link
+            href="/dashboard/messages"
+            className="bg-black px-6 sm:px-16 py-3 sm:py-4 text-white rounded-xl font-bold text-center transition"
+          >
+            Messages
+          </Link>
+          <Link
+            href="/dashboard/addcountry"
+            className="bg-black px-6 sm:px-16 py-3 sm:py-4 text-white rounded-xl font-bold text-center transition"
+          >
+            + Add Country
+          </Link>
+        </div>
       </div>
 
       <div className="border border-gray-200 rounded-lg overflow-auto">

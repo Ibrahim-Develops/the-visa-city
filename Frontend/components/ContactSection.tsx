@@ -1,11 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import {
-  FaWhatsapp,
-  FaPhoneAlt,
-  FaEnvelope
-} from 'react-icons/fa'
+import axios from 'axios'
+import { FaWhatsapp, FaPhoneAlt, FaEnvelope } from 'react-icons/fa'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -26,22 +23,16 @@ const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-
     toast.info('Sending your message...', { autoClose: 2000 })
 
     try {
-      const response = await fetch(
-        'https://docs.google.com/spreadsheets/d/1doOUnWVUiQYby7InAm6p46VymDqK4z-C4UXm9VfRB1k/edit?usp=sharing',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(form),
-        }
-      )
+      const response = await axios.post('http://localhost:3000/contact/add', form, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
 
-      const result = await response.json()
-
-      if (result.status === 'success') {
+      if (response.data?.status === true) {
         toast.success('Message sent successfully!', { autoClose: 3000 })
         setForm({
           name: '',
@@ -55,6 +46,7 @@ const ContactSection = () => {
       }
     } catch (error) {
       toast.error('Network error. Please try again.', { autoClose: 3000 })
+      console.error('Submission error:', error)
     }
   }
 

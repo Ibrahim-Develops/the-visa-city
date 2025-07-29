@@ -5,6 +5,7 @@ import { User } from './user/entities/user.entity';
 import { CountryModule } from './country/country.module';
 import { JwtMiddleware } from './middlewares/jwt.middleware';
 import { Country } from './country/entities/country.entity';
+import { ContactModule } from './contact/contact.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { Country } from './country/entities/country.entity';
     }),
     UserModule,
     CountryModule,
+    ContactModule,
   ],
   controllers: [],
   providers: [],

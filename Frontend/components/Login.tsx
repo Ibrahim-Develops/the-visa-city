@@ -28,7 +28,8 @@ const Login = () => {
   const onSubmit = async (data: FormData) => {
     try {
       const res = await axios.post("http://localhost:3000/user/login", data, { withCredentials: true });
-
+      console.log(res.data);
+      
       if (res.data.status) {
         toast.success(res.data.message);
         localStorage.setItem("token", JSON.stringify(res.data.data.token));
@@ -47,7 +48,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="h-[90vh] mt300px-[] flex items-center justify-center">
+      <div className="h-[90vh] flex items-center justify-center">
         <div className="bg-black border p-8 rounded-2xl shadow-md w-full max-w-md">
           <div className="flex justify-center mb-6">
             <Image src={Logo} alt="Logo" width={80} height={80} />

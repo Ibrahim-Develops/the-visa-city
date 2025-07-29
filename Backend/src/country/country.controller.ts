@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UploadedFiles, UseInterceptors, Delete, Req, Param, Get, Query } from '@nestjs/common';
+import { Controller, Post, Body, UploadedFiles, UseInterceptors, Delete, Param, Get, Query } from '@nestjs/common';
 import { CountryService } from './country.service';
 import { CreateCountryDto } from './dto/create-country.dto';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
@@ -31,25 +31,20 @@ export class CountryController {
     @Query('category') category?: string,
     @Query('region') region?: string,
   ) {
-    const countries = await this.countryService.filterCountries(category, region);
-    return apiResponse(true, 'Countries fetched successfully with filters', countries);
+    const countries = await this.countryService.filterCountries(category, region)
+      return apiResponse(true, 'Countries fetched successfully with filters', countries);
   }
 
-  @Get('all')
+  @Get('all') 
   async findAll() {
-    const countries = await this.countryService.findAll();
-    return apiResponse(true, 'All countries fetched successfully', countries);
-  }
-
-  @Get(':id')
-  async findOne(@Param('id') id: string) {
-    const country = await this.countryService.findOne(+id);
-    return apiResponse(true, 'Country fetched successfully', country);
+    const countries = await this.countryService.findAll()
+      return apiResponse(true, 'All countries fetched successfully', countries);
   }
 
   @Delete('delete/:id')
   async remove(@Param('id') id: string) {
-    await this.countryService.remove(+id);
-    return apiResponse(true, 'Country Deleted Successfully');
+    await this.countryService.remove(+id).then((result) => {
+      return apiResponse(true, 'Country Deleted Successfully');
+    })
   }
 }

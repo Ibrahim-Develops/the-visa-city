@@ -75,6 +75,8 @@ const Countries = () => {
                 withCredentials: true,
                 headers: { Authorization: `Bearer ${token}` }
             });
+            console.log(res);
+            
 
             setCountries(res.data.data || []);
             setVisibleCount(10);
