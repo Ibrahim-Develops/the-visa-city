@@ -1,4 +1,5 @@
-import { IsNotEmpty, IsArray, IsString } from 'class-validator';
+import { IsArray, IsNotEmpty, IsString } from 'class-validator';
+import { Transform } from 'class-transformer';
 
 export class CreateCountryDto {
   @IsNotEmpty()
@@ -9,13 +10,25 @@ export class CreateCountryDto {
   @IsString()
   price: string;
 
-  @IsNotEmpty()
+  @Transform(({ value }) => {
+    if (typeof value === 'string') {
+      return value.split(',').map((v: string) => v.trim()).filter(Boolean);
+    }
+    return value;
+  })
   @IsArray()
   @IsString({ each: true })
-  category: string[] | string;
+  @IsNotEmpty({ each: true })
+  category: string[];
 
-  @IsNotEmpty()
+  @Transform(({ value }) => {
+    if (typeof value === 'string') {
+      return value.split(',').map((v: string) => v.trim()).filter(Boolean);
+    }
+    return value;
+  })
   @IsArray()
   @IsString({ each: true })
-  region: string[] | string;
+  @IsNotEmpty({ each: true })
+  region: string[];
 }

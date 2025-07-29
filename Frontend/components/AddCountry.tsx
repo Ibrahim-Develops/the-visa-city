@@ -114,7 +114,6 @@ const AddCountry = () => {
   const [selectedRegions, setSelectedRegions] = useState<any[]>([]);
   const [isAuthorized, setIsAuthorized] = useState<boolean | null>(null);
 
-  // Check token on mount
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {

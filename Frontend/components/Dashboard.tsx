@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { IoTrashBinOutline } from "react-icons/io5";
+import { FaRegEdit } from "react-icons/fa";
 import Link from 'next/link';
 import Image from 'next/image';
 import axios from 'axios';
@@ -20,6 +21,7 @@ const TableHeadData = [
   "Price",
   "Category",
   "Region",
+  "Update",
   "Delete",
 ];
 
@@ -154,6 +156,11 @@ const Dashboard = () => {
                   <TableCell>{country.price}</TableCell>
                   <TableCell>{country.category}</TableCell>
                   <TableCell>{country.region}</TableCell>
+                  <TableCell>
+                    <Link href={`/dashboard/updatecountry/${country.id}`}>
+                      <FaRegEdit className="text-xl text-blue-500 cursor-pointer hover:text-blue-700 transition" />
+                    </Link>
+                  </TableCell>
                   <TableCell>
                     <IoTrashBinOutline
                       className="text-2xl text-red-500 cursor-pointer hover:text-red-700 transition"

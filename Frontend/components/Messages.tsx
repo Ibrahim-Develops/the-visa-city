@@ -6,6 +6,8 @@ import { IoTrashBinOutline } from 'react-icons/io5'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import Link from 'next/link'
+import { FaArrowLeftLong } from 'react-icons/fa6'
 
 interface Message {
   id: number
@@ -57,8 +59,15 @@ const Messages = () => {
 
   return (
     <div className="px-4 sm:px-10 py-10 overflow-auto">
-      <h1 className="text-3xl sm:text-5xl font-bold mb-6">Messages</h1>
-
+      <div className="flex flex-col gap-3">
+        <Link
+          href="/dashboard"
+          className="bg-black w-fit p-2 rounded-full shadow-2xl cursor-pointer"
+        >
+          <FaArrowLeftLong className="text-white text-2xl" />
+        </Link>
+        <h1 className="text-5xl font-bold">Messages</h1>
+      </div>
       {loading ? (
         <p className="text-center p-4">Loading messages...</p>
       ) : messages.length === 0 ? (
