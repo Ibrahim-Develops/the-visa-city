@@ -5,12 +5,12 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 import { FaCheckCircle } from "react-icons/fa";
 
-import B1 from "../assets/B1.jpg";
-import B2 from "../assets/B2.jpg";
-import B3 from "../assets/B3.jpg";
-import B4 from "../assets/B4.jpg";
-import B5 from "../assets/B5.jpg";
-import B6 from "../assets/B6.jpg";
+import B1 from "../public/B1.jpg";
+import B2 from "../public/B2.jpg";
+import B3 from "../public/B3.jpg";
+import B4 from "../public/B4.jpg";
+import B5 from "../public/B5.jpg";
+import B6 from "../public/B6.jpg";
 
 const blogPosts = [
   {

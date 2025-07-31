@@ -4,7 +4,7 @@ import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import Proud from '@/components/Proud'
 import Travelers from '@/components/Travelers'
-import BG from '../../assets/herobg.png'
+import BG from '../../public/herobg.png'
 import ParticlesCanvas from '@/animations/ParticlesCanvas'
 
 const page = () => {

@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import W1 from '../assets/W1.jpg';
-import W2 from '../assets/W2.jpg';
+import W1 from '../public/W1.jpg';
+import W2 from '../public/W2.jpg';
 import { useState } from 'react';
 
 const WorkPermit2 = () => {

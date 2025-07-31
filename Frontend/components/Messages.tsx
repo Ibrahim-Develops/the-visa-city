@@ -59,7 +59,7 @@ const Messages = () => {
 
   return (
     <div className="px-4 sm:px-10 py-10 overflow-auto">
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 mb-5">
         <Link
           href="/dashboard"
           className="bg-black w-fit p-2 rounded-full shadow-2xl cursor-pointer"

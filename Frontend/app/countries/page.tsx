@@ -4,7 +4,7 @@ import Countries3 from '@/components/Countries3'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import Visas from '@/components/Visas'
-import BG from '../../assets/herobg.png'
+import BG from '../../public/herobg.png'
 import ParticlesCanvas from '@/animations/ParticlesCanvas'
 
 const page = () => {

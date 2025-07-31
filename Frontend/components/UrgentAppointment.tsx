@@ -1,5 +1,5 @@
 import React from 'react'
-import HelpBanner from '../assets/Buildings.png'
+import HelpBanner from '../public/Buildings.png'
 import Image from 'next/image'
 import { FaWhatsapp, FaInstagram, FaFacebook, FaLinkedin, FaYoutube, FaXTwitter } from 'react-icons/fa6';
 import DoorStep from './DoorStep';

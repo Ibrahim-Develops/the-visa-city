@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
-import F1 from '../assets/F1.jpg';
-import Logo from '../assets/logo.png';
+import F1 from '../public/F1.jpg';
+import Logo from '../public/logo.png';
 import { IoCallOutline, IoMailOutline } from 'react-icons/io5';
 import { MdWhatsapp } from 'react-icons/md';
 import { FaFacebook } from "react-icons/fa";
@@ -120,7 +120,7 @@ const Footer = () => {
                     className="flex items-center gap-2"
                 >
                     <IoMailOutline className="text-xl text-[#FFD700]" />
-                    <p>contact@thevisacity.com</p>
+                    <p>info@thevisacity.com</p>
                 </a>
                 <div className="flex justify-center items-center">
                     <IoLocationOutline className='text-xl text-[#FFD700]' />

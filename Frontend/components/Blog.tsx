@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import HelpBanner from '../assets/Buildings.png'
+import HelpBanner from '../public/Buildings.png'
 import { IoChevronForwardSharp } from 'react-icons/io5'
 
 const Blog = () => {

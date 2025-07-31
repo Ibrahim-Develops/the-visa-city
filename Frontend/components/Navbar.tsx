@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import Logo from '../assets/logo.png'
+import Logo from '../public/logo.png'
 import { IoHomeOutline } from "react-icons/io5"
 import { FaGlobeAmericas, FaBlog } from "react-icons/fa"
 import { HiOutlineInformationCircle } from 'react-icons/hi'
@@ -11,7 +11,7 @@ import { MdWorkOutline } from "react-icons/md"
 import { RiBuilding2Line } from "react-icons/ri"
 import { TfiHeadphoneAlt } from "react-icons/tfi"
 import { usePathname } from 'next/navigation'
-``
+
 const Navbar = () => {
   const pathname = usePathname();
 

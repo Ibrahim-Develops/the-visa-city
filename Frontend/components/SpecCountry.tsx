@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import StarRating from './ui/StarRating';
 import Image from 'next/image';
-import Googles from '../assets/google.png';
+import Googles from '../public/google.png';
 import axios from 'axios';
 
 interface Country {

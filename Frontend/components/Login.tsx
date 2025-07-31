@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useForm } from 'react-hook-form';
-import Logo from '../assets/logo2.png';
+import Logo from '../public/logo2.png';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';

@@ -1,7 +1,7 @@
 import React from 'react'
 import StarRating from './ui/StarRating'
 import Image from 'next/image'
-import Googles from '../assets/google.png'
+import Googles from '../public/google.png'
 
 const Google = () => {
     return (

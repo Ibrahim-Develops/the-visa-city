@@ -2,15 +2,15 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import StarRating from './ui/StarRating';
-import Google1 from '../assets/google1.webp';
+import Google1 from '../public/google1.webp';
 import Image from 'next/image';
-import BlueTick from '../assets/bluetick.png';
-import U1 from '../assets/U1.png';
-import U2 from '../assets/U2.png';
-import U3 from '../assets/U3.png';
-import U4 from '../assets/U4.png';
-import U5 from '../assets/U5.png';
-import U6 from '../assets/U6.png';
+import BlueTick from '../public/bluetick.png';
+import U1 from '../public/U1.png';
+import U2 from '../public/U2.png';
+import U3 from '../public/U3.png';
+import U4 from '../public/U4.png';
+import U5 from '../public/U5.png';
+import U6 from '../public/U6.png';
 
 import { Card } from "@/components/ui/card";
 import {

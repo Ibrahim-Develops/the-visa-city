@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import Hero1 from '../assets/Hero1.png'
-import Hero2 from '../assets/Hero2.png'
+import Hero1 from '../public/Hero1.png'
+import Hero2 from '../public/Hero2.png'
 import Image from 'next/image'
 import { AiOutlineGlobal } from "react-icons/ai"
 import { LuShieldCheck } from "react-icons/lu"

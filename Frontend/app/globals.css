@@ -175,7 +175,21 @@
   }
 }
 
-/* .scroll-infinite:hover {
-  animation-play-state: paused;
-} */
+.sidebar {
+  height: 100vh;
+  overflow-y: auto;
+  background-color: white;
+}
 
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: hsl(0, 0%, 91%);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #ffd700;
+  border-radius: 4px;
+}

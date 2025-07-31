@@ -7,9 +7,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
-import C1 from '../assets/C1.webp'
-import C2 from '../assets/C2.webp'
-import C3 from '../assets/C3.webp'
+import C1 from '../public/C1.webp'
+import C2 from '../public/C2.webp'
+import C3 from '../public/C3.webp'
 
 const Carousel = () => {
 

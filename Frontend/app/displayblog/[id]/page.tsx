@@ -3,7 +3,7 @@ import DisplayBlog from '@/components/DisplayBlog'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import React from 'react'
-import BG from '../../../assets/herobg.png'
+import BG from '../../../public/herobg.png'
 
 const page = () => {
   return (

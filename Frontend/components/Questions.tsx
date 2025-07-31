@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { FiMinus, FiPlus } from 'react-icons/fi'
-import People from '../assets/people.png'
+import People from '../public/people.png'
 import { BsWhatsapp } from "react-icons/bs";
 
 const faqs = [

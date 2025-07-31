@@ -50,7 +50,7 @@ const ParticlesCanvas = () => {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = 'yellow';
         ctx.fill();
       }
 

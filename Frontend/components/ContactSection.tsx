@@ -75,7 +75,7 @@ const ContactSection = () => {
           </div>
           <div className="flex items-center gap-2 mt-2">
             <FaEnvelope className="text-[#FFD700]" />
-            <span>contact@thevisacity.com</span>
+            <span>info@thevisacity.com</span>
           </div>
         </div>
       </div>

@@ -9,8 +9,8 @@ import Questions from "@/components/Questions";
 import Reviews from "@/components/Reviews";
 import VisaService from "@/components/VisaService";
 import Navbar from '@/components/Navbar';
-import BG from '../../assets/herobg.png'
-import BG3 from '../../assets/herobg3.png'
+import BG from '../../public/herobg.png'
+import BG3 from '../../public/herobg3.png'
 import ParticlesCanvas from '@/animations/ParticlesCanvas';
 
 const page = () => {

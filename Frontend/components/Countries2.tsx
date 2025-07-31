@@ -1,5 +1,5 @@
 import React from 'react'
-import HelpBanner from '../assets/Buildings.png'
+import HelpBanner from '../public/Buildings.png'
 import Image from 'next/image'
 import { IoChevronForwardSharp } from 'react-icons/io5';
 

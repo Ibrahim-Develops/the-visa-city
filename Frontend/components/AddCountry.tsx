@@ -187,7 +187,7 @@ const AddCountry = () => {
               Add Country
             </button>
           </div>
-
+  
 
           <div className="flex flex-col gap-2 w-full">
             <label className="font-semibold text-lg">Category</label>

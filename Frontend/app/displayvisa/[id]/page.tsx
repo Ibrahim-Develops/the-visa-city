@@ -9,7 +9,7 @@ import VisaDocuments from '@/components/VisaDocuments';
 import VisaRequirementSection from '@/components/VisaRequirementSection';
 import VisaSteps from '@/components/VisaSteps';
 import ParticlesCanvas from '@/animations/ParticlesCanvas';
-import BG from '../../../assets/herobg.png'
+import BG from '../../../public/herobg.png'
 
 const page = () => {
   return (

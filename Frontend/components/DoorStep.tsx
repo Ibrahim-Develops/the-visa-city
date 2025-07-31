@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import DooStep from '../assets/doorstep.png'
+import DooStep from '../public/doorstep.png'
 
 const DoorStep = () => {
   return (
