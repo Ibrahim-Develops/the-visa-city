@@ -47,16 +47,16 @@ const VisaImages = [
 
 const Visas = () => {
   return (
-    <div className="relative overflow-hidden py-8 mx-20">
-      <div className="scroll-infinite flex w-max animate-scroll-left space-x-6 hover:paused">
+    <div className="relative overflow-hidden py-8 px-4 sm:px-10 md:px-16 lg:px-20">
+      <div className="scroll-infinite flex w-max animate-scroll-left space-x-4 sm:space-x-6 hover:[animation-play-state:paused]">
         {[...VisaImages, ...VisaImages].map((item, i) => (
-          <div key={i} className="min-w-[250px]">
+          <div key={i} className="w-[180px] sm:w-[220px] md:w-[250px] flex-shrink-0">
             <Image
               src={item}
               alt={`Visa ${i + 1}`}
               width={250}
               height={250}
-              className="rounded-md shadow-md transition-transform duration-300"
+              className="rounded-md shadow-md object-cover w-full h-auto transition-transform duration-300"
             />
           </div>
         ))}

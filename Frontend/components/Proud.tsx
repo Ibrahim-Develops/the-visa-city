@@ -5,7 +5,7 @@ import Google from '../public/google.png'
 
 const Proud = () => {
   return (
-    <div className="pt-12 pb-36 px-6 md:px-24">
+    <div className="pt-12 py-10 text-center px-6 md:px-24">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
         <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 md:mb-0">
           Proudly Assisted 10,000+ Travelers

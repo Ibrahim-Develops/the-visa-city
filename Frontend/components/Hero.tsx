@@ -11,6 +11,7 @@ import { FaPlaneDeparture } from "react-icons/fa"
 import { IoSearchOutline } from "react-icons/io5"
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+
 interface Country {
   id: number
   name: string
@@ -61,35 +62,38 @@ const Hero = () => {
   }
 
   return (
-    <div className="w-full px-40 pb-10 relative">
-      <div className="flex flex-wrap justify-between items-center gap-8">
-        <Image src={Hero1} alt="hero-left" width={500} className="max-w-full" />
+    <div className="w-full px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40 pb-10 relative">
+      <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
+        <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
+          <Image src={Hero1} alt="hero-left" className="w-full h-auto" />
+        </div>
 
-        <div className="flex flex-col gap-8 justify-center items-center flex-1 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold flex gap-3 flex-wrap justify-center">
+        <div className="flex flex-col gap-8 justify-center items-center text-center flex-1">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold flex flex-wrap justify-center gap-2">
             <span className="text-[#FFD700]">Visa</span>
             <span className="text-[#FFD700]">Simplified</span>
           </h1>
-          <p className="text-white max-w-lg">
+
+          <p className="text-white max-w-md md:max-w-lg text-sm sm:text-base">
             The world is yours to explore, with smart and effortless visa solutions from the UAE.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-6 font-semibold text-white">
-            <div className="flex gap-2 items-center">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 font-semibold text-white">
+            <div className="flex gap-2 items-center text-sm">
               <IoIosFlash className="text-xl text-[#FFD700]" />
-              <p className="text-sm">50+ Countries</p>
+              <p>50+ Countries</p>
             </div>
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center text-sm">
               <AiOutlineGlobal className="text-xl text-[#FFD700]" />
-              <p className="text-sm">Fast & Flexible</p>
+              <p>Fast & Flexible</p>
             </div>
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center text-sm">
               <LuShieldCheck className="text-xl text-[#FFD700]" />
-              <p className="text-sm">Secure</p>
+              <p>Secure</p>
             </div>
           </div>
 
-          <div className="relative w-full max-w-xl border border-gray-300 rounded-2xl px-6 py-3 flex items-center justify-between gap-4 shadow-sm bg-white">
+          <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-xl border border-gray-300 rounded-2xl px-4 sm:px-6 py-3 flex items-center justify-between gap-4 shadow-sm bg-white">
             <div className="flex items-center gap-4 flex-1 relative">
               <FaPlaneDeparture className="text-[#FFD700] text-2xl" />
               <div className="w-full text-left relative">
@@ -136,10 +140,12 @@ const Hero = () => {
           </div>
         </div>
 
-        <Image src={Hero2} alt="hero-right" width={500} className="max-w-full" />
+        <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
+          <Image src={Hero2} alt="hero-right" className="w-full h-auto" />
+        </div>
       </div>
 
-      <div className="custom-dashed-line mt-10"></div>
+      <div className="custom-dashed-line mt-10" />
     </div>
   )
 }

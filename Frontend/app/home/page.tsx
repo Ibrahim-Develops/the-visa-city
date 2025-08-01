@@ -19,7 +19,7 @@ const page = () => {
       <Navbar />
 
       <div
-        className="w-full pt-24 relative bg-cover bg-center bg-no-repeat"
+        className="w-full pt-32 relative bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${BG3.src})` }}
       >
         <Hero />

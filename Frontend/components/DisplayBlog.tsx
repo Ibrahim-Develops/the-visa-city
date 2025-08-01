@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 import { FaCheckCircle } from "react-icons/fa";
 
+// Images
 import B1 from "../public/B1.jpg";
 import B2 from "../public/B2.jpg";
 import B3 from "../public/B3.jpg";
@@ -12,6 +13,7 @@ import B4 from "../public/B4.jpg";
 import B5 from "../public/B5.jpg";
 import B6 from "../public/B6.jpg";
 
+// Blog Data
 const blogPosts = [
   {
     id: 1,
@@ -73,8 +75,9 @@ Make sure your passport is valid for at least 6 months and carry necessary retur
   },
 ];
 
+// Steps Section
 const VisaStepsComponent = ({ blogId }: any) => {
-  let steps = [];
+  let steps: string[] = [];
   let intro = "";
   let note = "";
   let title = "";
@@ -145,14 +148,14 @@ const VisaStepsComponent = ({ blogId }: any) => {
   }
 
   return (
-    <div className="p-6 md:p-10 rounded-xl border border-gray-700 text-white space-y-6">
-      <h2 className="text-2xl font-bold text-yellow-400">{title}</h2>
-      <p className="text-gray-300">{intro}</p>
+    <div className="bg-black border border-gray-700 rounded-xl p-4 sm:p-6 md:p-8 space-y-6">
+      <h2 className="text-xl sm:text-2xl font-bold text-yellow-400">{title}</h2>
+      <p className="text-gray-300 text-sm sm:text-base">{intro}</p>
       <ul className="space-y-3">
         {steps.map((step, idx) => (
           <li key={idx} className="flex items-start gap-3">
-            <FaCheckCircle className="text-green-400 mt-1" />
-            <span>{step}</span>
+            <FaCheckCircle className="text-green-400 mt-1 shrink-0" />
+            <span className="text-sm sm:text-base">{step}</span>
           </li>
         ))}
       </ul>
@@ -163,6 +166,7 @@ const VisaStepsComponent = ({ blogId }: any) => {
   );
 };
 
+// Main Blog Display
 const DisplayBlog = () => {
   const params = useParams();
   const blogId = params?.id ? parseInt(params.id as string) : NaN;
@@ -177,32 +181,36 @@ const DisplayBlog = () => {
   }
 
   return (
-    <section className="min-h-screen px-6 md:px-20 lg:px-40 py-20 text-white animate-fadeIn">
+    <section className="min-h-screen w-full px-4 sm:px-6 md:px-10 lg:px-20 py-12 md:py-20 text-white">
+      {/* Header */}
       <div className="mb-10">
-        <span className="text-sm tracking-widest text-[#FFD700] uppercase">
+        <span className="text-xs sm:text-sm tracking-widest text-[#FFD700] uppercase">
           {blog.category}
         </span>
-        <h1 className="text-4xl md:text-5xl font-extrabold mt-3 leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mt-3 leading-snug">
           {blog.title}
         </h1>
-        <div className="h-1 w-24 bg-[#FFD700] mt-4 rounded-full" />
-        <p className="text-base md:text-lg text-gray-300 mt-4">
+        <div className="h-1 w-20 bg-[#FFD700] mt-4 rounded-full" />
+        <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-4">
           {blog.description}
         </p>
       </div>
 
-      <div className="relative h-80 md:h-[450px] mb-12 shadow-xl rounded-xl overflow-hidden">
+      {/* Image */}
+      <div className="relative h-64 sm:h-80 md:h-[450px] mb-12 shadow-lg rounded-xl overflow-hidden">
         <Image
           src={blog.image}
           alt={blog.title}
-          layout="fill"
-          objectFit="cover"
-          className="rounded-xl"
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+          priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-xl" />
       </div>
 
-      <article className="prose prose-invert max-w-none text-gray-200 prose-p:mb-4 prose-li:marker:text-[#FFD700] prose-strong:text-white prose-ul:pl-6">
+      {/* Article */}
+      <article className="prose prose-invert max-w-none text-gray-200 prose-p:mb-4 prose-ul:pl-6 prose-li:marker:text-[#FFD700] prose-strong:text-white">
         {blog.content === "component" ? (
           <VisaStepsComponent blogId={blogId} />
         ) : (

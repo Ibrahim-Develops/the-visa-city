@@ -5,30 +5,30 @@ import { IoChevronForwardSharp } from 'react-icons/io5'
 
 const About = () => {
     return (
-        <div className="">
-            <div className="relative px-20 text-white overflow-hidden">
-                <div className="items-start justify-between relative z-10">
-                    <div className="text-[#FFD700] font-bold pt-10 flex items-center gap-2 py-8">
+        <div className="bg-black">
+            <div className="relative px-4 md:px-10 lg:px-20 text-white overflow-hidden py-10">
+                <div className="relative z-10">
+                    <div className="text-[#FFD700] font-bold flex items-center gap-2 py-4 text-sm md:text-base">
                         Home <IoChevronForwardSharp className="text-white" /> About
                     </div>
 
                     <div className="mb-10 md:mb-0">
-                        <h1 className="text-5xl font-bold mb-4">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                             About <span className="text-[#FFD700]">The Visa City.</span>
                         </h1>
-                        <div className="h-1 w-40 bg-[#FFD700] mb-6" />
-                        <p className="text-lg text-white max-w-lg font-semibold">
+                        <div className="h-1 w-28 md:w-40 bg-[#FFD700] mb-6" />
+                        <p className="text-base md:text-lg font-semibold max-w-md md:max-w-lg text-white">
                             Hassle-free travel shouldn't just be a dream, and we know how to make it reality.
                         </p>
                     </div>
                 </div>
 
-                <div className="absolute bottom-0 left-0 w-full h-[300px] z-0">
+                <div className="absolute bottom-0 left-0 w-full h-[200px] md:h-[280px] lg:h-[400px] z-0">
                     <Image
                         src={HelpBanner}
                         alt="City Background"
                         layout="fill"
-                        objectFit=""
+                        objectFit="cover"
                         className="pointer-events-none"
                     />
                 </div>

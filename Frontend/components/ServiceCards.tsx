@@ -3,7 +3,6 @@ import { FaBriefcase, FaPlaneDeparture, FaUserClock, FaPassport, FaFileAlt } fro
 
 const services = [
   { icon: <FaBriefcase />, title: 'Business Visa Applications', desc: 'For meetings, negotiations, or expansion plans abroad.' },
-  { icon: <FaPassport />, title: 'Work Permit Assistance', desc: 'End-to-end handling of skilled labor and professional work visas.' },
   { icon: <FaPlaneDeparture />, title: 'Visit Visas for Employees', desc: 'Short-term visits, family meetups, or pre-relocation exploration.' },
   { icon: <FaUserClock />, title: 'Urgent Appointments', desc: 'Ideal for last-minute meetings or critical international travel.' },
   { icon: <FaFileAlt />, title: 'Document Support', desc: 'Invitation letters, NOCs, covering letters, and more.' },

@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Logo from '../public/logo.png'
@@ -11,9 +11,12 @@ import { MdWorkOutline } from "react-icons/md"
 import { RiBuilding2Line } from "react-icons/ri"
 import { TfiHeadphoneAlt } from "react-icons/tfi"
 import { usePathname } from 'next/navigation'
+import { GiHamburgerMenu } from 'react-icons/gi'
+import { IoClose } from 'react-icons/io5'
 
 const Navbar = () => {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
   const getIconClass = (path: string) => {
     return pathname === path
@@ -21,12 +24,14 @@ const Navbar = () => {
       : 'hover:text-yellow-400 hover:border-yellow-400 border border-transparent flex justify-center rounded-xl w-20 h-20 transition-all duration-300';
   }
 
-  return (
-    <nav className="fixed top-0 bg-black border-b-[1px] border-gray-900 left-0 w-full shadow-lg z-50">
-      <div className="flex justify-between text-center items-center px-6 py-3">
-        <Image src={Logo} alt="Logo" className="h-20 w-auto" />
+  const toggleMenu = () => setIsOpen(!isOpen);
 
-        <div className="flex gap-6 text-2xl text-gray-300">
+  return (
+    <nav className="fixed top-0 bg-black border-b text-center border-gray-900 left-0 w-full shadow-lg z-50">
+      <div className="flex justify-between items-center px-6 py-3">
+        <Image src={Logo} alt="Logo" className="h-12 w-auto" />
+
+        <div className="hidden lg:flex gap-6 text-2xl text-gray-300">
           <Link href="/home">
             <div className={`${getIconClass('/home')} flex flex-col items-center gap-1 cursor-pointer`}>
               <IoHomeOutline className="text-xl" />
@@ -48,7 +53,7 @@ const Navbar = () => {
             </div>
           </Link>
 
-          <a href="https://wa.me/971547499849" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+          <a href="https://wa.me/971547499849" target="_blank" rel="noopener noreferrer">
             <div className={`${getIconClass('/urgentappointment')} flex flex-col items-center gap-1 cursor-pointer`}>
               <HiOutlineInformationCircle className="text-xl" />
               <p className="text-xs font-medium">Urgent Appointment</p>
@@ -83,9 +88,42 @@ const Navbar = () => {
             </div>
           </Link>
         </div>
+
+        <div className="lg:hidden block text-gray-300 text-3xl cursor-pointer" onClick={toggleMenu}>
+          {isOpen ? <IoClose /> : <GiHamburgerMenu />}
+        </div>
       </div>
+
+      {isOpen && (
+        <div className="lg:hidden bg-black border-t border-gray-700 px-6 py-4 pb-4 text-gray-300 flex flex-col gap-4">
+          {[
+            { href: '/home', icon: <IoHomeOutline />, label: 'Home' },
+            { href: '/countries', icon: <FaGlobeAmericas />, label: 'Countries' },
+            { href: '/workpermit', icon: <MdWorkOutline />, label: 'Work Permit' },
+            { href: 'https://wa.me/971547499849', icon: <HiOutlineInformationCircle />, label: 'Urgent Appointment', external: true },
+            { href: '/corporatevisa', icon: <RiBuilding2Line />, label: 'Corporate Visa' },
+            { href: '/blog', icon: <FaBlog />, label: 'Blog' },
+            { href: '/about', icon: <HiOutlineInformationCircle />, label: 'About' },
+            { href: '/contact', icon: <TfiHeadphoneAlt />, label: 'Contact' }
+          ].map((item, index) => (
+            item.external ? (
+              <a key={index} href={item.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm hover:text-yellow-400 transition">
+                {item.icon}
+                {item.label}
+              </a>
+            ) : (
+              <Link key={index} href={item.href} onClick={() => setIsOpen(false)}>
+                <div className="flex items-center gap-3 text-sm hover:text-yellow-400 transition">
+                  {item.icon}
+                  {item.label}
+                </div>
+              </Link>
+            )
+          ))}
+        </div>
+      )}
     </nav>
   )
 }
 
-export default Navbar
+export default Navbar;

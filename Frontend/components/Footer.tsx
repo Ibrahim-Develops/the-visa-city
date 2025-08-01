@@ -2,21 +2,18 @@ import Image from 'next/image';
 import React from 'react';
 import F1 from '../public/F1.jpg';
 import Logo from '../public/logo.png';
-import { IoCallOutline, IoMailOutline } from 'react-icons/io5';
+import { IoCallOutline, IoMailOutline, IoLocationOutline } from 'react-icons/io5';
 import { MdWhatsapp } from 'react-icons/md';
-import { FaFacebook } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
-import { FaInstagram } from "react-icons/fa";
-import { FaLinkedinIn } from "react-icons/fa";
-import { IoLocationOutline } from "react-icons/io5";
 import Link from 'next/link';
 
 const Footer = () => {
     return (
-        <footer className="text-white px-6 md:px-20 py-12 space-y-12">
+        <footer className="text-white px-6 md:px-12 py-12 space-y-12 bg-black">
 
-            <div className="bg-black text-white w-full px-6 md:px-12 py-8 rounded-2xl flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
-                <div className="lg:max-w-xl">
+            <div className="w-full px-4 sm:px-6 md:px-12 py-8 rounded-2xl flex flex-col lg:flex-row items-center justify-between gap-10 bg-[#111111]">
+                <div className="lg:max-w-xl text-center lg:text-left">
                     <h2 className="text-3xl lg:text-4xl font-bold mb-4 leading-snug">
                         Get Ready to Explore the World
                     </h2>
@@ -24,10 +21,10 @@ const Footer = () => {
                         Visa applications take time, can be complicated, and need careful attention to detail.
                         We make it easy for you by handling all the paperwork. Your vacation shouldn’t feel like more office work!
                     </p>
-                    <a href="https://wa.me/971547499849" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                    <button className="bg-[#FFD700] hover:scale-105 duration-300 text-black cursor-pointer transition font-bold px-6 py-3 rounded-md text-sm">
-                        Apply Now
-                    </button>
+                    <a href="https://wa.me/971547499849" target="_blank" rel="noopener noreferrer">
+                        <button className="bg-[#FFD700] hover:scale-105 duration-300 text-black transition font-bold px-6 py-3 rounded-md text-sm">
+                            Apply Now
+                        </button>
                     </a>
                 </div>
                 <div className="flex-shrink-0">
@@ -40,11 +37,11 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
 
                 <div className="flex flex-col gap-4">
                     <Image src={Logo} alt="Visa City Logo" width={180} />
-                    <p className="text-sm text-white">
+                    <p className="text-sm text-white leading-relaxed">
                         Hassle-free travel shouldn’t just be a dream. <br />
                         Visa City – Visa Simplified.
                     </p>
@@ -53,18 +50,10 @@ const Footer = () => {
                 <div className="flex flex-col gap-3">
                     <h4 className="text-base font-semibold text-[#FFD700]">Quick Links</h4>
                     <nav className="flex flex-col gap-2 text-sm text-white">
-                        <Link href="/home" className="hover:text-[#FFD700] cursor-pointer">
-                            Home
-                        </Link>
-                        <Link href="/contact" className="hover:text-[#FFD700] cursor-pointer">
-                            Contact
-                        </Link>
-                        <Link href="/about" className="hover:text-[#FFD700] cursor-pointer">
-                            About
-                        </Link>
-                        <Link href="/countries" className="hover:text-[#FFD700] cursor-pointer">
-                            Countries
-                        </Link>
+                        <Link href="/home" className="hover:text-[#FFD700]">Home</Link>
+                        <Link href="/contact" className="hover:text-[#FFD700]">Contact</Link>
+                        <Link href="/about" className="hover:text-[#FFD700]">About</Link>
+                        <Link href="/countries" className="hover:text-[#FFD700]">Countries</Link>
                     </nav>
                 </div>
 
@@ -104,27 +93,30 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="gap-6 flex text-sm text-white">
-                <div className="flex items-center gap-2">
-                    <IoCallOutline className="text-xl text-[#FFD700]" />
+            <div className="flex flex-col sm:flex-row flex-wrap gap-6 text-sm text-white mt-8">
+                <div className="flex items-start gap-2 w-full sm:w-auto">
+                    <IoCallOutline className="text-xl text-[#FFD700] mt-1" />
                     <p>+971 58 5669976</p>
                 </div>
-                <a href="https://wa.me/971547499849" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                    <MdWhatsapp className="text-xl text-[#FFD700]" />
+                <a href="https://wa.me/971547499849" target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 w-full sm:w-auto">
+                    <MdWhatsapp className="text-xl text-[#FFD700] mt-1" />
                     <p>+971 54 7499849</p>
                 </a>
                 <a
                     href="https://mail.google.com/mail/?view=cm&to=contact@thevisacity.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2"
+                    className="flex items-start gap-2 w-full sm:w-auto"
                 >
-                    <IoMailOutline className="text-xl text-[#FFD700]" />
+                    <IoMailOutline className="text-xl text-[#FFD700] mt-1" />
                     <p>info@thevisacity.com</p>
                 </a>
-                <div className="flex justify-center items-center">
-                    <IoLocationOutline className='text-xl text-[#FFD700]' />
-                    <p className="mt-2">19th Floor, Damac Executive Heights, Al Barsha Heights, Dubai, UAE</p>
+                <div className="flex items-start gap-2 w-full sm:w-auto">
+                    <IoLocationOutline className="text-xl text-[#FFD700] mt-1" />
+                    <p className="leading-snug">
+                        19th Floor, Damac Executive Heights, <br className="sm:hidden" />
+                        Al Barsha Heights, Dubai, UAE
+                    </p>
                 </div>
             </div>
 
@@ -134,7 +126,7 @@ const Footer = () => {
                 </div>
                 <div className="flex gap-3 text-xl">
                     <FaFacebook className="hover:text-blue-600 cursor-pointer duration-300" />
-                    <BsTwitterX className="hover:text-black cursor-pointer duration-300" />
+                    <BsTwitterX className="hover:text-white cursor-pointer duration-300" />
                     <FaInstagram className="hover:text-pink-600 cursor-pointer duration-300" />
                     <FaLinkedinIn className="hover:text-blue-600 cursor-pointer duration-300" />
                 </div>
