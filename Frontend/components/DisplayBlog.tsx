@@ -5,7 +5,6 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 import { FaCheckCircle } from "react-icons/fa";
 
-// Images
 import B1 from "../public/B1.jpg";
 import B2 from "../public/B2.jpg";
 import B3 from "../public/B3.jpg";
@@ -13,7 +12,6 @@ import B4 from "../public/B4.jpg";
 import B5 from "../public/B5.jpg";
 import B6 from "../public/B6.jpg";
 
-// Blog Data
 const blogPosts = [
   {
     id: 1,
@@ -75,7 +73,6 @@ Make sure your passport is valid for at least 6 months and carry necessary retur
   },
 ];
 
-// Steps Section
 const VisaStepsComponent = ({ blogId }: any) => {
   let steps: string[] = [];
   let intro = "";
@@ -166,7 +163,6 @@ const VisaStepsComponent = ({ blogId }: any) => {
   );
 };
 
-// Main Blog Display
 const DisplayBlog = () => {
   const params = useParams();
   const blogId = params?.id ? parseInt(params.id as string) : NaN;
@@ -182,7 +178,6 @@ const DisplayBlog = () => {
 
   return (
     <section className="min-h-screen w-full px-4 sm:px-6 md:px-10 lg:px-20 py-12 md:py-20 text-white">
-      {/* Header */}
       <div className="mb-10">
         <span className="text-xs sm:text-sm tracking-widest text-[#FFD700] uppercase">
           {blog.category}
@@ -196,7 +191,6 @@ const DisplayBlog = () => {
         </p>
       </div>
 
-      {/* Image */}
       <div className="relative h-64 sm:h-80 md:h-[450px] mb-12 shadow-lg rounded-xl overflow-hidden">
         <Image
           src={blog.image}
@@ -209,7 +203,6 @@ const DisplayBlog = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-xl" />
       </div>
 
-      {/* Article */}
       <article className="prose prose-invert max-w-none text-gray-200 prose-p:mb-4 prose-ul:pl-6 prose-li:marker:text-[#FFD700] prose-strong:text-white">
         {blog.content === "component" ? (
           <VisaStepsComponent blogId={blogId} />

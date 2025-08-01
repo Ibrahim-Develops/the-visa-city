@@ -5,7 +5,6 @@ import BG from '../../public/herobg.png'
 import ParticlesCanvas from '@/animations/ParticlesCanvas'
 import WorkPermit from '@/components/WorkPermit'
 import WorkPermit2 from '@/components/WorkPermit2'
-import WorkPermit3 from '@/components/WorkPermit3'
 
 const page = () => {
     return (
@@ -20,7 +19,6 @@ const page = () => {
                 <div className="relative z-10">
                   <WorkPermit/>
                   <WorkPermit2/>
-                  <WorkPermit3/>
                 </div>
             </div>
 
