@@ -79,23 +79,19 @@ const fields: {
 ];
 
 const categoryOptions = [
-  { value: "Visa Free", label: "Visa Free" },
-  { value: "Quick", label: "Quick" },
-  { value: "On Arrival", label: "On Arrival" },
   { value: "eVisa", label: "eVisa" },
-  { value: "Short Stay", label: "Short Stay" },
   { value: "Trending", label: "Trending" },
   { value: "Tropical", label: "Tropical" },
   { value: "Winter", label: "Winter" },
   { value: "Leisure", label: "Leisure" },
-  { value: "Adventure", label: "Adventure" },
 ];
 
 const regionOptions = [
   { value: "All", label: "All" },
   { value: "Australia", label: "Australia" },
-  { value: "Antarctica", label: "Antarctica" },
+  { value: "Brazil", label: "Brazil" },
   { value: "South America", label: "South America" },
+  { value: "North America", label: "North America" },
   { value: "Africa", label: "Africa" },
   { value: "Europe", label: "Europe" },
   { value: "Asia", label: "Asia" },

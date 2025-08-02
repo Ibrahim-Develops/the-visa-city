@@ -51,26 +51,30 @@ const ContactSection = () => {
   }
 
   return (
-    <div className="flex flex-col md:flex-row gap-10 px-8 md:px-20 py-16">
+    <div className="flex flex-col lg:flex-row gap-10 px-4 sm:px-8 md:px-16 lg:px-20 py-12">
       <ToastContainer />
 
       <div className="flex-1 z-20">
-        <h2 className="text-3xl font-bold mb-4 text-[#FFD700]">We’re Here to Help You</h2>
-        <p className="text-white mb-6">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-[#FFD700]">We’re Here to Help You</h2>
+        <p className="text-white mb-6 text-sm sm:text-base">
           Contact us for visa consultation, travel guidance, or sponsorship services.
         </p>
 
-        <div className="mb-4 text-white">
+        <div className="mb-4 text-white text-sm sm:text-base">
           <h3 className="font-semibold text-lg text-[#FFD700]">Office Address</h3>
           <p className="mb-2">
             19th Floor, Damac Executive Heights, Al Barsha Heights, Dubai, UAE
           </p>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <FaWhatsapp className="text-[#FFD700]" />
             <span>+971-54-7499849</span>
+            <span className="hidden sm:inline">&nbsp;||&nbsp;</span>
+            <span>+971-58-5669976</span>
           </div>
-          <div className="flex items-center gap-2 mt-2">
+          <div className="flex flex-wrap items-center gap-2 mt-2">
             <FaPhoneAlt className="text-[#FFD700]" />
+            <span>+971-54-7499849</span>
+            <span className="hidden sm:inline">&nbsp;||&nbsp;</span>
             <span>+971-58-5669976</span>
           </div>
           <div className="flex items-center gap-2 mt-2">
@@ -81,14 +85,14 @@ const ContactSection = () => {
       </div>
 
       <div className="flex-1 z-20 bg-black border p-6 rounded-lg shadow-md">
-        <h3 className="text-xl font-semibold mb-4 text-[#FFD700]">Leave Your Message</h3>
+        <h3 className="text-lg sm:text-xl font-semibold mb-4 text-[#FFD700]">Leave Your Message</h3>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-white">
           <input
             type="text"
             name="name"
             required
             placeholder="Enter Your Name"
-            className="p-2 border border-gray-300 rounded bg-black text-white placeholder-gray-400"
+            className="p-2 border border-gray-300 rounded bg-black text-white placeholder-gray-400 text-sm sm:text-base"
             value={form.name}
             onChange={handleChange}
           />
@@ -98,7 +102,7 @@ const ContactSection = () => {
             name="email"
             required
             placeholder="Enter Your Email"
-            className="p-2 border border-gray-300 rounded bg-black text-white placeholder-gray-400"
+            className="p-2 border border-gray-300 rounded bg-black text-white placeholder-gray-400 text-sm sm:text-base"
             value={form.email}
             onChange={handleChange}
           />
@@ -108,7 +112,7 @@ const ContactSection = () => {
             name="phone"
             required
             placeholder="Enter Your Contact"
-            className="p-2 border border-gray-300 rounded bg-black text-white placeholder-gray-400"
+            className="p-2 border border-gray-300 rounded bg-black text-white placeholder-gray-400 text-sm sm:text-base"
             value={form.phone}
             onChange={handleChange}
           />
@@ -118,7 +122,7 @@ const ContactSection = () => {
             name="subject"
             required
             placeholder="Type Your Subject"
-            className="p-2 border border-gray-300 rounded bg-black text-white placeholder-gray-400"
+            className="p-2 border border-gray-300 rounded bg-black text-white placeholder-gray-400 text-sm sm:text-base"
             value={form.subject}
             onChange={handleChange}
           />
@@ -128,14 +132,14 @@ const ContactSection = () => {
             rows={4}
             required
             placeholder="Your Special Requirements"
-            className="p-2 border border-gray-300 rounded bg-black text-white placeholder-gray-400"
+            className="p-2 border border-gray-300 rounded bg-black text-white placeholder-gray-400 text-sm sm:text-base"
             value={form.message}
             onChange={handleChange}
           />
 
           <button
             type="submit"
-            className="bg-[#FFD700] text-black font-bold cursor-pointer py-2 rounded transition"
+            className="bg-[#FFD700] text-black font-bold cursor-pointer py-2 rounded transition hover:bg-yellow-400"
           >
             SUBMIT
           </button>

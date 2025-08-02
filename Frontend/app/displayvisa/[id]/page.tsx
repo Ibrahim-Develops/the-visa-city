@@ -3,7 +3,6 @@
 import React from 'react';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
-import PriceSupport from '@/components/PriceSupport';
 import SpecCountry from '@/components/SpecCountry';
 import VisaDocuments from '@/components/VisaDocuments';
 import VisaRequirementSection from '@/components/VisaRequirementSection';
@@ -16,22 +15,16 @@ const page = () => {
     <div className="w-full flex flex-col justify-center items-center">
       <Navbar />
 
-      <div className="relative px-6 md:px-20 lg:px-[180px] pt-24 w-full bg-black overflow-hidden">
+      <div className="relative px-6 md:px-20 lg:px-[180px] w-full bg-black overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <ParticlesCanvas />
         </div>
 
-        <div className="relative z-10 flex flex-col lg:flex-row gap-10">
-          <div className="flex-1 space-y-10">
-            <SpecCountry />
+        <div className="relative z-10">
+           <SpecCountry />
             <VisaRequirementSection />
             <VisaDocuments />
             <VisaSteps />
-          </div>
-
-          <div className="w-full lg:w-[600px]">
-            <PriceSupport />
-          </div>
         </div>
       </div>
 

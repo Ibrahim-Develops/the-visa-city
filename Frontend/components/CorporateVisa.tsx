@@ -23,7 +23,7 @@ const CorporateVisa = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 w-full h-[400px] md:h-[280px] lg:h-[400px] z-0">
+        <div className="absolute bottom-0 left-0 w-full h-[200px] md:h-[280px] lg:h-[400px] z-0">
           <Image
             src={HelpBanner}
             alt="City Background"

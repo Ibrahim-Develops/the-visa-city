@@ -2,16 +2,11 @@
 
 import React, { useState, useEffect } from 'react'
 import { VscLayers } from "react-icons/vsc";
-import { HiOutlinePercentBadge } from "react-icons/hi2";
-import { IoFlashOutline } from "react-icons/io5";
-import { PiAirplaneLanding } from "react-icons/pi";
 import { CiGlobe } from "react-icons/ci";
-import { BsClockHistory } from "react-icons/bs";
 import { AiOutlineFire } from "react-icons/ai";
 import { PiIslandLight } from "react-icons/pi";
 import { IoSnowOutline } from "react-icons/io5";
 import { ImGlass2 } from "react-icons/im";
-import { PiPersonSimpleThrowLight } from "react-icons/pi";
 import { FaChevronDown } from 'react-icons/fa';
 import Image from 'next/image';
 import axios from 'axios';
@@ -27,22 +22,17 @@ interface Country {
 }
 
 const regions = [
-    'All', 'Australia', 'Antarctica', 'South America', 'North America',
+    'All', 'Australia', 'Brazil', 'South America', 'North America',
     'Africa', 'Europe', 'Asia',
 ];
 
 const tabs = [
     { label: 'All Visas', icon: VscLayers },
-    { label: 'Visa Free', icon: HiOutlinePercentBadge },
-    { label: 'Quick', icon: IoFlashOutline },
-    { label: 'On Arrival', icon: PiAirplaneLanding },
     { label: 'eVisa', icon: CiGlobe },
-    { label: 'Short Stay', icon: BsClockHistory },
     { label: 'Trending', icon: AiOutlineFire },
     { label: 'Tropical', icon: PiIslandLight },
     { label: 'Winter', icon: IoSnowOutline },
     { label: 'Leisure', icon: ImGlass2 },
-    { label: 'Adventure', icon: PiPersonSimpleThrowLight },
 ];
 
 const Countries3 = () => {

@@ -51,21 +51,23 @@ const Footer = () => {
                     <h4 className="text-base font-semibold text-[#FFD700]">Quick Links</h4>
                     <nav className="flex flex-col gap-2 text-sm text-white">
                         <Link href="/home" className="hover:text-[#FFD700]">Home</Link>
+                        <Link href="/countries" className="hover:text-[#FFD700]">Countries</Link>
+                        <Link href="/workpermit" className="hover:text-[#FFD700]">Work Permit</Link>
+                        <Link href="/corporatevisa" className="hover:text-[#FFD700]">Corporate Visa</Link>
+                        <Link href="/blog" className="hover:text-[#FFD700]">Blog</Link>
                         <Link href="/contact" className="hover:text-[#FFD700]">Contact</Link>
                         <Link href="/about" className="hover:text-[#FFD700]">About</Link>
-                        <Link href="/countries" className="hover:text-[#FFD700]">Countries</Link>
                     </nav>
                 </div>
 
                 <div className="flex flex-col gap-3">
                     <h4 className="text-base font-semibold text-[#FFD700]">Our Services</h4>
                     <ul className="text-sm text-white space-y-1">
-                        <li>Immigration Works</li>
                         <li>Visas Apply</li>
                         <li>Passport Apply</li>
                         <li>Work Permits</li>
-                        <li>Green Card</li>
-                        <li>Safety Staying</li>
+                        <li>Visa Assistance</li>
+                        <li>Visa Appointments</li>
                     </ul>
                 </div>
 
@@ -93,32 +95,58 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row flex-wrap gap-6 text-sm text-white mt-8">
-                <div className="flex items-start gap-2 w-full sm:w-auto">
+            <div className="flex flex-col lg:flex-row lg:flex-wrap items-start lg:items-center gap-6 text-sm text-white mt-8">
+                <div className="flex items-start gap-2 w-full lg:w-auto">
                     <IoCallOutline className="text-xl text-[#FFD700] mt-1" />
-                    <p>+971 58 5669976</p>
+                    <div className="flex flex-col sm:flex-row gap-1 sm:gap-4">
+                        <p className="whitespace-nowrap">+971 58 5669976</p>
+                        <span className="hidden sm:inline">||</span>
+                        <p className="whitespace-nowrap">+971 54 7499849</p>
+                    </div>
                 </div>
-                <a href="https://wa.me/971547499849" target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 w-full sm:w-auto">
-                    <MdWhatsapp className="text-xl text-[#FFD700] mt-1" />
-                    <p>+971 54 7499849</p>
-                </a>
+
+                <div className="flex items-center gap-2 w-full lg:w-auto">
+                    <MdWhatsapp className="text-2xl text-[#FFD700] mt-1" />
+                    <div className="flex flex-col sm:flex-row gap-1 sm:gap-4">
+                        <a
+                            href="https://wa.me/+971585669976"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:underline whitespace-nowrap"
+                        >
+                            +971 58 5669976
+                        </a>
+                        <span className="hidden sm:inline">||</span>
+                        <a
+                            href="https://wa.me/971547499849"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:underline whitespace-nowrap"
+                        >
+                            +971 54 7499849
+                        </a>
+                    </div>
+                </div>
+
                 <a
                     href="https://mail.google.com/mail/?view=cm&to=contact@thevisacity.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start gap-2 w-full sm:w-auto"
+                    className="flex items-start gap-2 w-full lg:w-auto"
                 >
                     <IoMailOutline className="text-xl text-[#FFD700] mt-1" />
-                    <p>info@thevisacity.com</p>
+                    <p className="break-all">info@thevisacity.com</p>
                 </a>
-                <div className="flex items-start gap-2 w-full sm:w-auto">
+
+                <div className="flex items-start gap-2 w-full lg:w-auto">
                     <IoLocationOutline className="text-xl text-[#FFD700] mt-1" />
                     <p className="leading-snug">
-                        19th Floor, Damac Executive Heights, <br className="sm:hidden" />
+                        19th Floor, Damac Executive Heights,<br className="sm:hidden" />
                         Al Barsha Heights, Dubai, UAE
                     </p>
                 </div>
             </div>
+
 
             <div className="text-sm flex flex-col md:flex-row justify-between items-center text-white mt-8 border-t pt-4 gap-4">
                 <div>

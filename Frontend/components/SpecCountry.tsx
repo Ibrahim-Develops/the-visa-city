@@ -2,9 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import StarRating from './ui/StarRating';
-import Image from 'next/image';
-import Googles from '../public/google.png';
 import axios from 'axios';
 
 interface Country {
@@ -51,32 +48,25 @@ const SpecCountry = () => {
     if (!data) return <p className="pt-20 px-20">Loading country details...</p>;
 
     return (
-        <div className="flex flex-col justify-start items-start gap-4 pt-20 px-10 w-full">
-            <div>
-                <h1 className='text-4xl font-bold text-[#FFD700]'>Visa for {data.name}</h1>
-                <p>Get complete assistance for your visa from Dubai.</p>
+        <div className="flex flex-col lg:flex-row gap-4 w-full mt-40">
+            <div className="lg:w-[66%] w-full h-[400px] lg:h-[700px] rounded-lg overflow-hidden">
+                <img
+                    src={images[0]}
+                    alt={data.name}
+                    className="w-full h-full object-cover"
+                />
             </div>
 
-            <div className="flex gap-2 w-full max-w-[850px]">
-                <div className="w-[66%] h-[400px] rounded-lg overflow-hidden">
-                    <img
-                        src={images[0]}
-                        alt={data.name}
-                        className="w-full h-full object-cover"
-                    />
-                </div>
-
-                <div className="w-[34%] flex flex-col gap-2">
-                    {images.slice(1, 3).map((img, index) => (
-                        <div key={index} className="h-[196px] rounded-lg overflow-hidden">
-                            <img
-                                src={img}
-                                alt={`Extra ${index + 1}`}
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                    ))}
-                </div>
+            <div className="lg:w-[34%] w-full flex flex-col gap-4">
+                {images.slice(1, 3).map((img, index) => (
+                    <div key={index} className="h-[200px] lg:h-[340px] rounded-lg overflow-hidden">
+                        <img
+                            src={img}
+                            alt={`Extra ${index + 1}`}
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                ))}
             </div>
         </div>
     );
