@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from '../components/Navbar'
+import { FaWhatsapp } from "react-icons/fa";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,12 +29,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-black h-full sidebar">
-  <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black h-full`}>
-    <div className="min-h-screen w-full px-4 lg:px-20 bg-black">
-      {children}
-    </div>
-  </body>
-</html>
-
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black h-full`}>
+        <div className="min-h-screen w-full px-4 lg:px-20 bg-black">
+          {children}
+        </div>
+        <Link
+          href="https://wa.me/971547499849"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-5 right-5 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg z-50"
+        >
+          <FaWhatsapp className="text-2xl" />
+        </Link>
+      </body>
+    </html>
   );
 }

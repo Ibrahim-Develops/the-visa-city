@@ -18,35 +18,44 @@ const ParticlesCanvas = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let width = canvas.width = canvas.clientWidth;
-    let height = canvas.height = canvas.clientHeight;
+    const dpr = window.devicePixelRatio || 1;
+
+    let width = (canvas.width = window.innerWidth * dpr);
+    let height = (canvas.height = window.innerHeight * dpr);
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    ctx.scale(dpr, dpr);
 
     const particles: Particle[] = Array.from({ length: NUM_PARTICLES }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
       vx: (Math.random() - 0.5) * 0.5,
       vy: (Math.random() - 0.5) * 0.5,
     }));
 
     const resize = () => {
-      width = canvas.width = canvas.clientWidth;
-      height = canvas.height = canvas.clientHeight;
+      width = (canvas.width = window.innerWidth * dpr);
+      height = (canvas.height = window.innerHeight * dpr);
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      ctx.scale(dpr, dpr);
     };
 
     window.addEventListener('resize', resize);
 
     const draw = () => {
-      ctx.clearRect(0, 0, width, height);
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
       for (const p of particles) {
         p.x += p.vx;
         p.y += p.vy;
 
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
+        if (p.x < 0 || p.x > window.innerWidth) p.vx *= -1;
+        if (p.y < 0 || p.y > window.innerHeight) p.vy *= -1;
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
@@ -83,11 +92,28 @@ const ParticlesCanvas = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+
+    const updateSize = () => {
+      const isMobile = window.innerWidth <= 640; // or your own breakpoint
+      canvas.width = window.innerWidth;
+      canvas.height = isMobile ? window.innerHeight / 2 : window.innerHeight;
+    };
+
+    updateSize();
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
+
   return (
     <canvas
-  ref={canvasRef}
-  className="absolute inset-0 w-full h-full z-0 pointer-events-none"
-/>
+      ref={canvasRef}
+      className="fixed inset-0 w-full h-full z-[-1] pointer-events-none"
+    />
   );
 };
 

@@ -181,7 +181,7 @@ const Countries = () => {
         <div className="text-center py-6">
           <button
             onClick={handleViewMore}
-            className="px-6 py-2 text-sm font-medium cursor-pointer bg-[#ffd700] text-black rounded transition hover:bg-yellow-400"
+            className="px-6 py-2 text-sm font-medium cursor-pointer bg-[#ffd700] text-black rounded transition"
           >
             View More
           </button>

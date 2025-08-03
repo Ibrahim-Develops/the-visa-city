@@ -10,10 +10,6 @@ const Contact = () => {
   return (
     <section className="relative h-[400px] bg-black w-full bg-cover bg-center text-white overflow-hidden flex items-center px-5 md:px-20">
       <div className="relative z-10 max-w-screen-xl w-full mx-auto">
-        <div className="lg:hidden absolute top-6 right-6 z-20">
-          <GiHamburgerMenu className="text-white text-3xl" />
-        </div>
-
         <div className="text-[#FFD700] font-bold pt-10 flex items-center gap-2 py-8">
           Home <IoChevronForwardSharp className="text-white" /> Contact
         </div>
