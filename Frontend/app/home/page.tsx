@@ -25,7 +25,7 @@ const page = () => {
         <Hero />
       </div>
 
-      <div className="relative px-6 md:px-20 lg:px-[180px] pt-24 w-full bg-black overflow-hidden">
+      <div className="relative pt-24 w-full bg-black overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <ParticlesCanvas />
         </div>

@@ -1,125 +1,232 @@
 'use client';
 
+import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import W1 from '../public/W1.jpg';
-import W2 from '../public/W2.jpg';
-import { useState } from 'react';
+import { FaCheckCircle, FaEnvelope, FaPhone, FaGlobe } from 'react-icons/fa';
+import WP1 from '../public/WP1.png'
+import WP2 from '../public/WP2.png'
+import WP3 from '../public/WP3.png'
+import WP4 from '../public/WP4.png'
+
+const data = [
+  {
+    image: WP1,
+    title: '🇭🇺 Work in the Heart of Europe – Hungary Awaits You',
+    description:
+      'Hungary is quickly becoming a top choice for international professionals. With a booming job market, affordable lifestyle, and central location — it’s the ideal place to build your future.',
+    need:
+      'If you are a UAE resident holding a non-Emirati passport and have received a job offer from a Hungarian employer, you must apply for a Hungary Work Visa (Long-Term Type D) before starting employment.',
+    documents: [
+      'Valid Passport Copy (minimum 6 months validity)',
+      'UAE Residence Visa Copy',
+      'Emirates ID Copy',
+      'Signed Employment Contract from Hungarian Employer',
+      'Employer’s Letter of Intent / Work Permit Application Approval',
+      'Educational & Professional Qualification Documents',
+      'Updated CV / Resume',
+      'Proof of Accommodation in Hungary',
+      'Passport-size Photograph (white background)',
+      'Travel Insurance (initial entry period)',
+      'Police Clearance Certificate (if required)',
+    ],
+    notes: [
+      'The Hungarian employer must initiate the work permit application with the Immigration and Asylum Office in Hungary.',
+      'Once approved, the employee applies for a Type D Work Visa at the Hungarian Consulate.',
+      'Processing times may vary depending on the employer’s documents and embassy workload.',
+    ],
+  },
+  {
+    image: WP2,
+    title: '🇷🇴 Romania Work Permit Visa from Dubai, UAE',
+    description:
+      'Romania is emerging as a hub for skilled professionals across various industries. With affordable living, expanding opportunities, and a strategic European location — it\'s the perfect place to advance your career.',
+    need:
+      'If you are a UAE resident holding a non-Emirati passport and have received a confirmed job offer from a Romanian employer, you must apply for a Long-Stay (D/AM) Work Visa after the employer obtains a work authorization on your behalf from Romanian authorities.',
+    documents: [
+      'Valid Passport Copy (minimum 6 months validity)',
+      'UAE Residence Visa Copy',
+      'Emirates ID Copy',
+      'Official Work Permit from Romanian Immigration',
+      'Signed Employment Contract / Job Offer Letter',
+      'Educational & Professional Qualification Documents',
+      'Updated CV / Resume',
+      'Police Clearance Certificate (attested)',
+      'Proof of Accommodation in Romania',
+      'Passport-size Photograph (white background)',
+      'Travel Insurance (for visa issuance period)',
+      'Visa Application Form (filled and signed)',
+    ],
+    notes: [
+      'The Romanian employer applies for the work authorization inside Romania first.',
+      'Once approved, you apply for the D/AM Long-Stay Work Visa at the Romanian Embassy.',
+      'After arrival in Romania, you must register and obtain a residence permit within 30 days.',
+    ],
+  },
+  {
+    image: WP3,
+    title: '🇵🇹 Portugal Work Permit Visa from Dubai, UAE',
+    description:
+      'With a growing economy, friendly lifestyle, and one of the best climates in Europe — Portugal offers great career opportunities across tech, tourism, construction, agriculture, and more.',
+    need:
+      'If you are a UAE resident holding a non-Emirati passport and have received a confirmed job offer from a Portuguese employer, you must apply for a Long-Stay Work Visa (Type D) after the employer obtains a work contract approved by Portuguese authorities.',
+    documents: [
+      'Valid Passport Copy (minimum 6 months validity)',
+      'UAE Residence Visa Copy',
+      'Emirates ID Copy',
+      'Signed Employment Contract from Portuguese Employer',
+      'Proof of Accommodation in Portugal',
+      'Educational & Professional Certificates',
+      'Updated CV / Resume',
+      'Police Clearance Certificate (attested)',
+      'Medical Travel Insurance',
+      'Passport-size Photograph (white background)',
+      'Visa Application Form (filled and signed)',
+    ],
+    notes: [
+      'Employer applies for a Work Contract or Authorization at SEF (Portuguese Immigration).',
+      'Once approved, the applicant applies for a Long-Stay (D) Work Visa.',
+      'After arriving in Portugal, you must apply for a Residence Permit (within 4 months).',
+      'Family members can apply as dependents under certain visa categories.',
+    ],
+  },
+  {
+    image: WP4,
+    title: '🇲🇹 Malta Work Permit Visa from Dubai, UAE',
+    description:
+      'With its booming economy, English-speaking environment, and beautiful coastal lifestyle, Malta is a rising destination for skilled workers in Europe. From hospitality and healthcare to construction and tech — job opportunities are growing fast.',
+    need:
+      'If you are a UAE resident holding a non-Emirati passport and have a confirmed job offer from a Maltese employer, you will need to apply for a Single Permit (Long-Stay Work Visa) before relocating to Malta.',
+    documents: [
+      'Valid Passport Copy (minimum 6 months validity)',
+      'UAE Residence Visa Copy',
+      'Emirates ID Copy',
+      'Signed Employment Contract from Maltese Employer',
+      'Job Description / Position Details',
+      'CV / Resume with Experience Proof',
+      'Academic & Professional Certificates',
+      'Passport-size Photograph (white background)',
+      'Police Clearance Certificate (attested)',
+      'Proof of Accommodation in Malta',
+      'Travel Insurance (initial period)',
+      'Filled Visa Application Form',
+    ],
+    notes: [
+      'The employer in Malta must submit the Single Permit application on your behalf.',
+      'After approval, you will receive authorization to apply for the National (D) Visa.',
+      'Once you arrive in Malta, you must collect your Residence Permit within 90 days.',
+      'Processing time may take up to 6–8 weeks.',
+    ],
+  },
+];
+
+const WhyChooseVisaCity = () => (
+  <div className="space-y-2">
+    <h3 className="font-semibold text-lg">Why Choose Visa City?</h3>
+    <ul className="space-y-1 text-sm text-white">
+      {[
+        '100% Confidentiality',
+        'Professional support from start to finish',
+        'Accurate documentation & form filling',
+        'On-time submission & biometric scheduling',
+        'Real-time tracking & updates',
+      ].map((item, i) => (
+        <li key={i}>{item}</li>
+      ))}
+    </ul>
+  </div>
+);
+
+const ApplyNow = () => (
+  <div className="space-y-2">
+    <h3 className="font-semibold text-lg">Apply Now</h3>
+    <p className="text-sm">
+      Secure your Hungary work permit the right way with <strong>Visa City</strong>.
+    </p>
+    <ul className="text-sm text-gray-800">
+      <li className="flex items-center gap-2 text-white">
+        <FaEnvelope className="text-[#FFD700]" /> info@thevisacity.com
+      </li>
+      <li className="flex items-center gap-2 text-white">
+        <FaPhone className="text-[#FFD700]" /> +971-54-7499849
+      </li>
+      <li className="flex items-center gap-2">
+        <FaGlobe className="text-white" />
+        <a href="https://www.thevisacity.com" target="_blank" className="text-[#FFD700] underline">
+          www.thevisacity.com
+        </a>
+      </li>
+    </ul>
+  </div>
+);
 
 const WorkPermit2 = () => {
-  const [openSection, setOpenSection] = useState<string | null>(null);
-
-  const toggleSection = (section: string) => {
-    setOpenSection(openSection === section ? null : section);
-  };
-
   return (
-    <section className="px-6 py-20 md:px-20 text-white">
-      <div className="mt-16 flex justify-center items-center gap-10 flex-col md:flex-row">
-        <div className="md:w-1/2">
-          <h2 className="text-2xl font-bold text-[#FFD700] mb-4">Work Permit</h2>
-          <p className="mb-4">
-            The professional activity of foreign citizens on national territory can only be carried out with a <strong>Work Notice</strong> or a <strong>Work Permit</strong>.
-          </p>
-          <p className="mb-4">
-            According to the European Union regulations, every EU/EEA citizen enjoys the same labour rights as the ones applied to Romanian citizens, and thus, they <strong>do not need a work permit</strong>.
-            Foreign citizens who are <strong>third country nationals</strong>, can work in Romania only after obtaining a work permit, and subsequently a long stay visa for work and a residence permit.
-          </p>
-        </div>
+    <div className="space-y-16 p-6 md:p-12 text-[#FFD700]">
+      {data.map((item, index) => (
+        <div
+          key={index}
+          className={`flex flex-col items-center gap-8 lg:gap-16 ${
+            index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'
+          }`}
+        >
+          {/* Image Section */}
+          <div className="w-full lg:w-1/2">
+            <Image
+              src={item.image}
+              alt={item.title}
+              width={700}
+              height={400}
+              className="rounded-md object-cover w-full"
+            />
+          </div>
 
-        <div className="md:w-1/2 w-full">
-          <Image
-            src={W1}
-            alt="Work Permit Writing"
-            width={5000}
-            height={100}
-            className="rounded-md w-full aspect-[3/3] object-cover"
-          />
+          {/* Text Section */}
+          <div className="w-full lg:w-1/2 space-y-4">
+            <h2 className="font-bold text-xl">{item.title}</h2>
+            <p className="text-sm text-white">{item.description}</p>
 
-          <div className="mt-4 space-y-2">
-            <div>
-              <div
-                className="bg-[#FFD700] text-black px-4 py-2 rounded flex justify-between items-center cursor-pointer"
-                onClick={() => toggleSection('conditions')}
-              >
-                <span className="font-semibold">THE CONDITIONS</span>
-                <span>{openSection === 'conditions' ? '−' : '+'}</span>
-              </div>
-              <div
-                className={`transition-all duration-500 overflow-hidden ${
-                  openSection === 'conditions' ? 'max-h-40 p-4' : 'max-h-0 p-0'
-                } bg-[#333] text-white rounded-b`}
-              >
-                <ul className="list-disc ml-6 space-y-2">
-                  <li>Employer must prove no suitable local candidate is available.</li>
-                  <li>All documentation must be provided and translated where needed.</li>
-                  <li>Employer must pay taxes and submit an application to IGI.</li>
-                </ul>
-              </div>
-            </div>
+            <p className="text-sm text-white">
+              Whether you're starting a new job or hiring talent, Visa City makes the work
+              permit process smooth and stress-free from the UAE.
+            </p>
 
-            <div>
-              <div
-                className="bg-[#FFD700] text-black px-4 py-2 rounded flex justify-between items-center cursor-pointer"
-                onClick={() => toggleSection('exempted')}
-              >
-                <span className="font-semibold">CITIZENS WHO ARE <u>EXEMPTED</u></span>
-                <span>{openSection === 'exempted' ? '−' : '+'}</span>
-              </div>
-              <div
-                className={`transition-all duration-500 overflow-hidden ${
-                  openSection === 'exempted' ? 'max-h-40 p-4' : 'max-h-0 p-0'
-                } bg-[#333] text-white rounded-b`}
-              >
-                <ul className="list-disc ml-6 space-y-2">
-                  <li>EU/EEA citizens</li>
-                  <li>Family members of Romanian citizens</li>
-                  <li>Persons with permanent residency in Romania</li>
-                </ul>
-              </div>
-            </div>
+            <h3 className="font-semibold flex items-center gap-2 mt-4">
+              Who Needs a Work Permit Visa?
+            </h3>
+            <p className="text-sm text-white">{item.need}</p>
+
+            <h3 className="font-semibold mt-4 mb-1 flex items-center gap-2">
+              Documents Required
+            </h3>
+            <ul className="list-disc list-inside text-sm text-white space-y-1">
+              {item.documents?.map((doc, idx) => (
+                <li key={idx}>{doc}</li>
+              ))}
+            </ul>
+
+            <h3 className="font-semibold mt-4 mb-1 flex items-center gap-2">
+              Additional Notes
+            </h3>
+            <ul className="text-sm text-white space-y-1">
+              {item.notes?.map((note, i) => (
+                <li key={i} className="flex gap-2">
+                  <FaCheckCircle className="text-green-500 mt-1" />
+                  {note}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      </div>
+      ))}
 
-      <div className="mt-16 flex justify-center items-center gap-10 flex-col-reverse md:flex-row-reverse">
-        <div className="md:w-1/2">
-          <h3 className="text-2xl font-bold text-[#FFD700] mb-4">Types of work permits</h3>
-          <p className="mb-4">
-            There are several <strong>types of work permits</strong> that can be granted to foreign citizens: for permanent workers, seasonal workers, for trainees, for athletes, for cross-border workers, nominal work permit.
-            Depending on the category of your activity, <em>the right to extend</em> your temporary stay for employment purposes can be extended up to 1 year, as a general rule. As far as highly skilled workers are concerned, their stay can be extended up to 2 years.
-          </p>
-        </div>
-        <div className="md:w-1/2 w-full">
-          <Image
-            src={W2}
-            alt="Blocks Numbers"
-            width={5000}
-            height={100}
-            className="rounded-md aspect-[3/3] w-full object-cover"
-          />
-        </div>
+      {/* Sidebar Section */}
+      <div className="grid lg:grid-cols-2 gap-10 mt-16">
+        <WhyChooseVisaCity />
+        <ApplyNow />
       </div>
-
-      {/* Bottom Section */}
-      <div className="mt-16">
-        <h3 className="text-2xl font-bold text-[#FFD700] mb-4">Steps to obtain a work permit</h3>
-        <p className="mb-4">
-          The <strong>steps necessary to obtain a work permit</strong> are initiated by the employer who will submit the necessary files and pay the applicable taxes at the offices of the General Inspectorate for Immigration (IGI).
-          It takes up to 30 days for IGI to solve such requests. For additional information, please visit the official IGI page regarding{' '}
-          <Link href="https://igi.mai.gov.ro/en/work-permits" target="_blank" className="text-[#FFD700] underline">
-            work permits
-          </Link>.
-        </p>
-        <p>
-          More details and prerequisites for foreigners can be found on the official website of the Ministry of Labour, Family, Social Protection and Elderly, Work Section -{' '}
-          <Link href="https://www.mai.gov.ro/en/information-guide-for-third-country-nationals" target="_blank" className="text-[#FFD700] underline">
-            Information guide for third-country nationals
-          </Link>.
-        </p>
-      </div>
-    </section>
+    </div>
   );
 };
+
 
 export default WorkPermit2;

@@ -6,7 +6,7 @@ const page = () => {
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <Navbar />
-      <div className="px-6 md:px-20 lg:px-[180px] pt-24 w-full bg-white">
+      <div className="pt-24 w-full bg-white h-screen">
         <Dashboard />
       </div>
     </div>

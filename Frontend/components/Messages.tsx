@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import Link from 'next/link'
 import { FaArrowLeftLong } from 'react-icons/fa6'
+import { useRouter } from 'next/navigation'
 
 interface Message {
   id: number
@@ -20,8 +21,20 @@ interface Message {
 }
 
 const Messages = () => {
+  const router = useRouter();
+
   const [messages, setMessages] = useState<Message[]>([])
   const [loading, setLoading] = useState(true)
+  const [isAuthorized, setIsAuthorized] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.replace("/login");
+    } else {
+      setIsAuthorized(true);
+    }
+  }, [router]);
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -57,8 +70,10 @@ const Messages = () => {
     }
   }
 
+  if (isAuthorized === null) return null;
+
   return (
-    <div className="px-4 sm:px-10 py-10 overflow-auto">
+    <div className="px-4 sm:px-10 py-10 overflow-auto text-black">
       <div className="flex flex-col gap-3 mb-5">
         <Link
           href="/dashboard"

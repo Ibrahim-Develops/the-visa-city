@@ -18,8 +18,12 @@ const Navbar = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
-  const getIconClass = (path: string) => {
-    return pathname === path
+  const getIconClass = (paths: string | string[]) => {
+    const isActive = Array.isArray(paths)
+      ? paths.some(path => pathname.startsWith(path))
+      : pathname.startsWith(paths);
+
+    return isActive
       ? 'border-2 border-yellow-500 text-yellow-400 bg-black rounded-xl w-20 h-20 flex justify-center shadow-lg'
       : 'hover:text-yellow-400 hover:border-yellow-400 border border-transparent flex justify-center rounded-xl w-20 h-20 transition-all duration-300';
   }
@@ -33,7 +37,7 @@ const Navbar = () => {
 
         <div className="hidden lg:flex gap-6 text-2xl text-gray-300">
           <Link href="/home">
-            <div className={`${getIconClass('/home')} flex flex-col items-center gap-1 cursor-pointer`}>
+            <div className={`${getIconClass(['/home', '/displayvisa'])} flex flex-col items-center gap-1 cursor-pointer`}>
               <IoHomeOutline className="text-xl" />
               <p className="text-xs font-medium">Home</p>
             </div>
@@ -68,7 +72,7 @@ const Navbar = () => {
           </Link>
 
           <Link href="/blog">
-            <div className={`${getIconClass('/blog')} flex flex-col items-center gap-1 cursor-pointer`}>
+            <div className={`${getIconClass(['/blog', '/displayblog'])}flex flex-col items-center gap-1 cursor-pointer`}>
               <FaBlog className="text-xl" />
               <p className="text-xs font-medium">Blog</p>
             </div>
