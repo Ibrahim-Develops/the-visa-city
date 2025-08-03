@@ -1,56 +1,45 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
 
-import B1 from '../public/B1.jpg';
-import B2 from '../public/B2.jpg';
-import B3 from '../public/B3.jpg';
-import B4 from '../public/B4.jpg';
-import B5 from '../public/B5.jpg';
-import B6 from '../public/B6.jpg';
-
-const blogPosts = [
-  {
-    id: 1,
-    title: "Top Visa‑Free Countries for UAE Residents in 2025",
-    category: "TRAVEL TIPS",
-    image: B1,
-  },
-  {
-    id: 2,
-    title: "How to Get a Business Visa for Europe: Step‑by‑Step Guide",
-    category: "CORPORATE VISAS",
-    image: B2,
-  },
-  {
-    id: 3,
-    title: "Visa Application Mistakes You Should Avoid in 2025",
-    category: "VISA GUIDANCE",
-    image: B3,
-  },
-  {
-    id: 4,
-    title: "Top Student Visa Destinations and How to Apply",
-    category: "STUDY ABROAD",
-    image: B4,
-  },
-  {
-    id: 5,
-    title: "Family Visas: Bringing Loved Ones Closer, Legally",
-    category: "FAMILY VISAS",
-    image: B5,
-  },
-  {
-    id: 6,
-    title: "Fast‑Track Visa Services You Should Know About",
-    category: "EXPRESS SERVICES",
-    image: B6,
-  },
-];
+interface BlogPost {
+  id: number;
+  title: string;
+  image: string;
+}
 
 const Blog1 = () => {
+  const [blogs, setBlogs] = useState<BlogPost[]>([]);
+  const [visibleCount, setVisibleCount] = useState(6); // how many to show initially
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const token = localStorage.getItem("token")?.replace(/"/g, "") || "";
+        const response = await axios.get("http://localhost:3000/blog/all", {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setBlogs(response.data.data || []);
+      } catch (error) {
+        console.error("Failed to fetch blogs:", error);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+  const handleViewMore = () => {
+    setVisibleCount((prev) => prev + 6);
+  };
+
+  const visibleBlogs = blogs.slice(0, visibleCount);
+
   return (
     <div className="w-full px-4 sm:px-6 md:px-10 lg:px-1 xl:px-32 py-12 md:py-16">
       <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-10 text-center text-[#FFD700]">
@@ -58,7 +47,7 @@ const Blog1 = () => {
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
-        {blogPosts.map((post) => (
+        {visibleBlogs.map((post) => (
           <Link
             key={post.id}
             href={`/displayblog/${post.id}`}
@@ -76,7 +65,6 @@ const Blog1 = () => {
                 />
               </div>
               <div className="p-4 flex flex-col flex-grow">
-                <p className="text-xs text-[#FFD700] uppercase mb-1">{post.category}</p>
                 <h3 className="text-base sm:text-lg font-semibold text-white leading-snug">
                   {post.title}
                 </h3>
@@ -85,6 +73,17 @@ const Blog1 = () => {
           </Link>
         ))}
       </div>
+
+      {visibleCount < blogs.length && (
+        <div className="flex justify-center mt-10">
+          <button
+            onClick={handleViewMore}
+            className="bg-[#FFD700] text-black cursor-pointer px-6 py-2 rounded-sm font-semibold transition"
+          >
+            View More
+          </button>
+        </div>
+      )}
     </div>
   );
 };

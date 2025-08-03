@@ -119,6 +119,18 @@ const Dashboard = () => {
             Messages
           </Link>
           <Link
+            href="/dashboard/allblogs"
+            className="bg-black px-6 sm:px-16 py-3 sm:py-4 text-white rounded-xl font-bold text-center transition"
+          >
+            All Blogs
+          </Link>
+          <Link
+            href="/dashboard/addblog"
+            className="bg-black px-6 sm:px-16 py-3 sm:py-4 text-white rounded-xl font-bold text-center transition"
+          >
+            + Add Blogs
+          </Link>
+          <Link
             href="/dashboard/addcountry"
             className="bg-black px-6 sm:px-16 py-3 sm:py-4 text-white rounded-xl font-bold text-center transition"
           >
@@ -145,9 +157,9 @@ const Dashboard = () => {
             </TableHeader>
 
             <TableBody>
-              {countries.map((country) => (
+              {countries.map((country, i) => (
                 <TableRow key={country.id}>
-                  <TableCell>{country.id}</TableCell>
+                  <TableCell>{i + 1}</TableCell>
                   <TableCell><ImageCell src={country.mainImage} alt={country.name} /></TableCell>
                   <TableCell><ImageCell src={country.extraImg1} alt={country.name} /></TableCell>
                   <TableCell><ImageCell src={country.extraImg2} alt={country.name} /></TableCell>

@@ -38,11 +38,11 @@ export class Country {
   }, dataSource: DataSource
   ) {
     const repo = dataSource.getRepository(Country);
-    const user = await repo.findOne({
+    const country = await repo.findOne({
       where: options.where,
       select: options.select,
       relations: options.relations,
     });
-    return user
+    return country
   }
 }

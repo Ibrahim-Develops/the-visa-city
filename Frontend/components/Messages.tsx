@@ -39,7 +39,13 @@ const Messages = () => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/contact/all')
+        const token = localStorage.getItem("token")?.replace(/"/g, "") || "";
+        const res = await axios.get('http://localhost:3000/contact/all', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+
         if (Array.isArray(res.data.data)) {
           setMessages(res.data.data)
         } else {
@@ -73,7 +79,7 @@ const Messages = () => {
   if (isAuthorized === null) return null;
 
   return (
-    <div className="px-4 sm:px-10 py-10 overflow-auto text-black">
+    <div className="px-4 sm:px-10 py-10 overflow-auto text-black min-h-screen">
       <div className="flex flex-col gap-3 mb-5">
         <Link
           href="/dashboard"

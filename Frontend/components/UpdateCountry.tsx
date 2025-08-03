@@ -118,12 +118,10 @@ const UpdateCountry = () => {
         form.append("name", data.name.trim());
         form.append("price", data.price.trim());
 
-        // ✅ Append category values one-by-one
         selectedCategories.forEach((c) => {
             form.append("category", c.value);
         });
 
-        // ✅ Append region values one-by-one
         selectedRegions.forEach((r) => {
             form.append("region", r.value);
         });
@@ -133,7 +131,6 @@ const UpdateCountry = () => {
         if (data.extraImg2?.[0]) form.append("extraImg2", data.extraImg2[0]);
         if (data.flag?.[0]) form.append("flag", data.flag[0]);
 
-        // ✅ Debug output
         for (const [key, value] of form.entries()) {
             console.log(`${key}:`, value);
         }
@@ -155,9 +152,8 @@ const UpdateCountry = () => {
         }
     };
 
-
     return (
-        <div className="p-6 max-w-3xl mx-auto">
+        <div className="px-20 py-6 bg-white min-h-screen w-full">
             <div className="flex flex-col mb-5 gap-3">
                 <Link
                     href="/dashboard"
@@ -221,7 +217,7 @@ const UpdateCountry = () => {
 
                 <button
                     type="submit"
-                    className="bg-black cursor-pointer text-white px-6 py-3 rounded hover:bg-gray-800 transition"
+                    className="bg-black cursor-pointer text-white px-6 py-3 rounded transition"
                 >
                     Update Country
                 </button>

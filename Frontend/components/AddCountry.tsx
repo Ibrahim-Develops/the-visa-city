@@ -155,7 +155,7 @@ const AddCountry = () => {
   if (isAuthorized === null) return null;
 
   return (
-    <div className="px-10 py-10 text-black">
+    <div className="px-10 py-10 text-black min-h-screen">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-3">
