@@ -7,6 +7,7 @@ import ContactSection from '@/components/ContactSection'
 import Contact from '@/components/Contact'
 
 const page = () => {
+  
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <Navbar />

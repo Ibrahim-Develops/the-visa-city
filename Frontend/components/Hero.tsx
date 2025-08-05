@@ -62,7 +62,7 @@ const Hero = () => {
   }
 
   return (
-    <div className="w-full px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40 pb-10 relative">
+    <div className="w-full px-4 bg-black z-10 sm:px-6 md:px-10 lg:px-20 xl:px-40 pb-10 relative">
       <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
         <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
           <Image src={Hero1} alt="hero-left" className="w-full h-auto" />

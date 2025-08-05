@@ -45,6 +45,7 @@ const Messages = () => {
             Authorization: `Bearer ${token}`,
           },
         })
+        
 
         if (Array.isArray(res.data.data)) {
           setMessages(res.data.data)
