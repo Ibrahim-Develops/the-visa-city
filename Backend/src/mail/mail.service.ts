@@ -7,7 +7,7 @@ export class MailService {
 
   async create(data: any) {
     await this.mailerService.sendMail({
-      to: 'ibrahimdevelopss@gmail.com',
+      to: 'thevisacity0@gmail.com',
       subject: 'New Messages Added In Dashboard',
       html: `
         <h2>New Contact Details</h2>

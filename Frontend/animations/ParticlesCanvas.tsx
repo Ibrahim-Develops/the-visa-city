@@ -39,7 +39,7 @@ const ParticlesCanvas = () => {
       canvas.style.width = `${window.innerWidth}px`;
       canvas.style.height = `${isMobile ? window.innerHeight / 2 : window.innerHeight}px`;
 
-      ctx.setTransform(1, 0, 0, 1, 0, 0); // reset transform before scaling
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.scale(dpr, dpr);
     };
 

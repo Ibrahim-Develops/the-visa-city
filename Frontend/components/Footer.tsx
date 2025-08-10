@@ -153,10 +153,12 @@ const Footer = () => {
                     © {new Date().getFullYear()} Visa City. All rights reserved.
                 </div>
                 <div className="flex gap-3 text-xl">
-                    <FaFacebook className="hover:text-blue-600 cursor-pointer duration-300" />
-                    <BsTwitterX className="hover:text-white cursor-pointer duration-300" />
-                    <FaInstagram className="hover:text-pink-600 cursor-pointer duration-300" />
-                    <FaLinkedinIn className="hover:text-blue-600 cursor-pointer duration-300" />
+                    <a href="https://www.facebook.com/share/162n4gLbuC/" target='_blank'>
+                        <FaFacebook className="hover:text-[#FFD700] cursor-pointer duration-300" />
+                    </a>
+                    <BsTwitterX className="hover:text-[#FFD700] cursor-pointer duration-300" />
+                    <FaInstagram className="hover:text-[#FFD700] cursor-pointer duration-300" />
+                    <FaLinkedinIn className="hover:text-[#FFD700] cursor-pointer duration-300" />
                 </div>
             </div>
         </footer>
