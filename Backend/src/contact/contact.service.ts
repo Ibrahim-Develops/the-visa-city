@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { CreateContactDto } from './dto/create-contact.dto';
 import { UpdateContactDto } from './dto/update-contact.dto';
 import { Contact } from './entities/contact.entity';
+import { MailService } from 'src/mail/mail.service';
 
 @Injectable()
 export class ContactService {
@@ -11,11 +12,19 @@ export class ContactService {
   constructor(
     @InjectRepository(Contact)
     private contactRepository: Repository<Contact>,
-  ) {}
+    private readonly mailService: MailService
 
-  create(createContactDto: CreateContactDto) {
-    const contact = this.contactRepository.create(createContactDto);
-    return this.contactRepository.save(contact);
+  ) { }
+
+  async create(createContactDto: CreateContactDto) {
+    try {
+      const contact = this.contactRepository.create(createContactDto);
+      const savedContact = await this.contactRepository.save(contact);
+      await this.mailService.create(savedContact);
+      return savedContact;
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   findAll() {

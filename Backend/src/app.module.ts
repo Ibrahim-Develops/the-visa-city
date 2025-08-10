@@ -7,9 +7,11 @@ import { JwtMiddleware } from './middlewares/jwt.middleware';
 import { Country } from './country/entities/country.entity';
 import { ContactModule } from './contact/contact.module';
 import { BlogModule } from './blog/blog.module';
-
+import { ConfigModule } from '@nestjs/config';
+import { MailModule } from './mail/mail.module';
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: '127.0.0.1',
@@ -25,6 +27,7 @@ import { BlogModule } from './blog/blog.module';
     CountryModule,
     ContactModule,
     BlogModule,
+    MailModule,
   ],
   controllers: [],
   providers: [],
