@@ -18,6 +18,5 @@ export class MailService {
         <p><b>Message:</b> ${data.message}</p>
       `,
     });
-    
   }
 }

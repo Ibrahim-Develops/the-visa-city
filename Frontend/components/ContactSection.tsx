@@ -23,7 +23,6 @@ const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    toast.info('Sending your message...', { autoClose: 2000 })
 
     try {
       const response = await axios.post('http://localhost:3000/contact/add', form, {
@@ -52,7 +51,13 @@ const ContactSection = () => {
 
   return (
     <div className="flex flex-col lg:flex-row gap-10 px-4 sm:px-8 md:px-16 lg:px-20 py-12">
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        theme="dark"
+        style={{ zIndex: 999999 }}
+      />
+
 
       <div className="flex-1 z-20">
         <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-[#FFD700]">We’re Here to Help You</h2>

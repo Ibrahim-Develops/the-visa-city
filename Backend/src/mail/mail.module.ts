@@ -6,8 +6,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }), // env load karne ke liye
-
+    ConfigModule.forRoot({ isGlobal: true }),
     MailerModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -17,8 +16,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
           port: 587,
           secure: false,
           auth: {
-            user: 'apikey', // SendGrid ke liye fix hota hai
-            pass: config.get<string>('SENDGRID_API_KEY'), // env se load
+            user: 'apikey', 
+            pass: config.get<string>('SENDGRID_API_KEY'),
           },
         },
         defaults: {

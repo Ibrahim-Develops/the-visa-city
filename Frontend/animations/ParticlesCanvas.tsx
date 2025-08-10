@@ -9,8 +9,8 @@ interface Particle {
   vy: number;
 }
 
-const NUM_PARTICLES = 160;
-const MAX_DIST = 180;
+const NUM_PARTICLES = 120;
+const MAX_DIST = 100;
 
 const ParticlesCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -22,14 +22,6 @@ const ParticlesCanvas = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const dpr = window.devicePixelRatio || 1;
-
-    let width = (canvas.width = window.innerWidth * dpr);
-    let height = (canvas.height = window.innerHeight * dpr);
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    ctx.scale(dpr, dpr);
-
     const particles: Particle[] = Array.from({ length: NUM_PARTICLES }, () => ({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
@@ -38,14 +30,21 @@ const ParticlesCanvas = () => {
     }));
 
     const resize = () => {
-      width = (canvas.width = window.innerWidth * dpr);
-      height = (canvas.height = window.innerHeight * dpr);
-      canvas.style.width = '100%';
-      canvas.style.height = '100%';
+      const dpr = window.devicePixelRatio || 1;
+      const isMobile = window.innerWidth <= 640;
+
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = (isMobile ? window.innerHeight / 2 : window.innerHeight) * dpr;
+
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${isMobile ? window.innerHeight / 2 : window.innerHeight}px`;
+
+      ctx.setTransform(1, 0, 0, 1, 0, 0); // reset transform before scaling
       ctx.scale(dpr, dpr);
     };
 
     window.addEventListener('resize', resize);
+    resize(); // initial
 
     const draw = () => {
       ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
@@ -91,23 +90,6 @@ const ParticlesCanvas = () => {
       window.removeEventListener('resize', resize);
     };
   }, []);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-
-    const updateSize = () => {
-      const isMobile = window.innerWidth <= 640; // or your own breakpoint
-      canvas.width = window.innerWidth;
-      canvas.height = isMobile ? window.innerHeight / 2 : window.innerHeight;
-    };
-
-    updateSize();
-    window.addEventListener("resize", updateSize);
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-
 
   return (
     <canvas
