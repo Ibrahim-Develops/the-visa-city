@@ -41,7 +41,7 @@ export default function RootLayout({
           className="fixed bottom-5 right-5 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg z-50"
         >
           <FaWhatsapp className="text-2xl" />
-          <ToastContainer position="top-right" autoClose={3000} theme="dark" />
+          <ToastContainer position="bottom-left" autoClose={3000} theme="dark" style={{ zIndex: 999999 }} />
         </Link>
       </body>
     </html>

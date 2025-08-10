@@ -1,31 +1,31 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
+import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { FaWhatsapp, FaPhoneAlt, FaEnvelope } from 'react-icons/fa'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
+type FormData = {
+  name: string
+  email: string
+  phone: string
+  subject: string
+  message: string
+}
+
 const ContactSection = () => {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
-  })
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<FormData>()
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
+  const onSubmit = async (data: FormData) => {
     try {
-      const response = await axios.post('http://localhost:3000/contact/add', form, {
+      const response = await axios.post('http://localhost:3000/contact/add', data, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -33,13 +33,7 @@ const ContactSection = () => {
 
       if (response.data?.status === true) {
         toast.success('Message sent successfully!', { autoClose: 3000 })
-        setForm({
-          name: '',
-          email: '',
-          phone: '',
-          subject: '',
-          message: '',
-        })
+        reset()
       } else {
         toast.error('Something went wrong. Try again later.', { autoClose: 3000 })
       }
@@ -51,13 +45,7 @@ const ContactSection = () => {
 
   return (
     <div className="flex flex-col lg:flex-row gap-10 px-4 sm:px-8 md:px-16 lg:px-20 py-12">
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        theme="dark"
-        style={{ zIndex: 999999 }}
-      />
-
+      <ToastContainer position="bottom-left" autoClose={3000} theme="dark" style={{ zIndex: 999999 }} />
 
       <div className="flex-1 z-20">
         <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-[#FFD700]">We’re Here to Help You</h2>
@@ -91,62 +79,69 @@ const ContactSection = () => {
 
       <div className="flex-1 z-20 bg-black border p-6 rounded-lg shadow-md">
         <h3 className="text-lg sm:text-xl font-semibold mb-4 text-[#FFD700]">Leave Your Message</h3>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-white">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 text-white" noValidate>
           <input
             type="text"
-            name="name"
-            required
             placeholder="Enter Your Name"
-            className="p-2 border border-gray-300 rounded bg-black text-white placeholder-gray-400 text-sm sm:text-base"
-            value={form.name}
-            onChange={handleChange}
+            className={`p-2 border rounded bg-black text-white placeholder-gray-400 text-sm sm:text-base ${
+              errors.name ? 'border-red-500' : 'border-gray-300'
+            }`}
+            {...register('name', { required: 'Name is required' })}
           />
+          {errors.name && <p className="text-red-500 text-xs">{errors.name.message}</p>}
 
           <input
             type="email"
-            name="email"
-            required
             placeholder="Enter Your Email"
-            className="p-2 border border-gray-300 rounded bg-black text-white placeholder-gray-400 text-sm sm:text-base"
-            value={form.email}
-            onChange={handleChange}
+            className={`p-2 border rounded bg-black text-white placeholder-gray-400 text-sm sm:text-base ${
+              errors.email ? 'border-red-500' : 'border-gray-300'
+            }`}
+            {...register('email', {
+              required: 'Email is required',
+              pattern: {
+                value: /^\S+@\S+$/i,
+                message: 'Invalid email address',
+              },
+            })}
           />
+          {errors.email && <p className="text-red-500 text-xs">{errors.email.message}</p>}
 
           <input
             type="tel"
-            name="phone"
-            required
             placeholder="Enter Your Contact"
-            className="p-2 border border-gray-300 rounded bg-black text-white placeholder-gray-400 text-sm sm:text-base"
-            value={form.phone}
-            onChange={handleChange}
+            className={`p-2 border rounded bg-black text-white placeholder-gray-400 text-sm sm:text-base ${
+              errors.phone ? 'border-red-500' : 'border-gray-300'
+            }`}
+            {...register('phone', { required: 'Phone number is required' })}
           />
+          {errors.phone && <p className="text-red-500 text-xs">{errors.phone.message}</p>}
 
           <input
             type="text"
-            name="subject"
-            required
             placeholder="Type Your Subject"
-            className="p-2 border border-gray-300 rounded bg-black text-white placeholder-gray-400 text-sm sm:text-base"
-            value={form.subject}
-            onChange={handleChange}
+            className={`p-2 border rounded bg-black text-white placeholder-gray-400 text-sm sm:text-base ${
+              errors.subject ? 'border-red-500' : 'border-gray-300'
+            }`}
+            {...register('subject', { required: 'Subject is required' })}
           />
+          {errors.subject && <p className="text-red-500 text-xs">{errors.subject.message}</p>}
 
           <textarea
-            name="message"
             rows={4}
-            required
             placeholder="Your Special Requirements"
-            className="p-2 border border-gray-300 rounded bg-black text-white placeholder-gray-400 text-sm sm:text-base"
-            value={form.message}
-            onChange={handleChange}
+            className={`p-2 border rounded bg-black text-white placeholder-gray-400 text-sm sm:text-base ${
+              errors.message ? 'border-red-500' : 'border-gray-300'
+            }`}
+            {...register('message', { required: 'Message is required' })}
           />
+          {errors.message && <p className="text-red-500 text-xs">{errors.message.message}</p>}
 
           <button
             type="submit"
-            className="bg-[#FFD700] text-black font-bold cursor-pointer py-2 rounded transition hover:bg-yellow-400"
+            disabled={isSubmitting}
+            className="bg-[#FFD700] text-black font-bold cursor-pointer py-2 rounded transition hover:bg-yellow-400 disabled:opacity-50"
           >
-            SUBMIT
+            {isSubmitting ? 'Sending...' : 'SUBMIT'}
           </button>
         </form>
       </div>
