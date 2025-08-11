@@ -11,23 +11,16 @@ import U3 from '../public/U3.png';
 import U4 from '../public/U4.png';
 import U5 from '../public/U5.png';
 import U6 from '../public/U6.png';
-
 import { Card } from "@/components/ui/card";
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from "@/components/ui/carousel";
+import {Carousel,CarouselContent,CarouselItem,CarouselNext,CarouselPrevious,} from "@/components/ui/carousel";
 
 const profiles = [
-    { image: U1, name: 'Yasir Hassan', date: '10 April 2025', review: 'The team made my UAE visit visa process so smooth and stress-free. Everything was handled with professionalism, and I was updated regularly.' },
-    { image: U2, name: 'Ahmed Raza', date: '12 April 2025', review: 'I highly recommend this agency. They guided me through every step of the UAE work visa application and ensured all documents were perfect.' },
-    { image: U3, name: 'Hania Shahid', date: '15 April 2025', review: 'Incredible service! I applied for a UAE freelance visa and got full assistance. The staff was polite, patient, and always available to answer my questions.' },
-    { image: U4, name: 'Nimra Javed', date: '18 April 2025', review: 'A smooth and efficient process. From consultation to visa approval, they handled everything. Definitely recommend for anyone applying to UAE.' },
-    { image: U5, name: 'Mohammad Al Amir', date: '20 April 2025', review: 'Very satisfied with the support I received. They made the UAE employment visa process easy, even with my tight deadline.' },
-    { image: U6, name: 'Kausar Ali', date: '22 April 2025', review: 'They truly care about their clients. My Dubai residency application was managed flawlessly. Would not hesitate to use their services again.' },
+    { image: U1, name: 'Yasir Hassan', date: '5 May 2021', review: 'The team made my UAE visit visa process so smooth and stress-free. Everything was handled with professionalism, and I was updated regularly.' },
+    { image: U2, name: 'Ahmed Raza', date: '12 August 2022', review: 'I highly recommend this agency. They guided me through every step of the UAE work visa application and ensured all documents were perfect.' },
+    { image: U3, name: 'Hania Shahid', date: '25 September 2023', review: 'Incredible service! I applied for a UAE freelance visa and got full assistance. The staff was polite, patient, and always available to answer my questions.' },
+    { image: U4, name: 'Nimra Javed', date: '18 Januaury 2025', review: 'A smooth and efficient process. From consultation to visa approval, they handled everything. Definitely recommend for anyone applying to UAE.' },
+    { image: U5, name: 'Mohammad Al Amir', date: '20 April 2024', review: 'Very satisfied with the support I received. They made the UAE employment visa process easy, even with my tight deadline.' },
+    { image: U6, name: 'Kausar Ali', date: '30 December 2024', review: 'They truly care about their clients. My Dubai residency application was managed flawlessly. Would not hesitate to use their services again.' },
 ];
 
 const Reviews = () => {

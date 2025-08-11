@@ -33,7 +33,10 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 bg-black border-b text-center border-gray-900 left-0 w-full shadow-lg z-50">
       <div className="flex justify-between items-center px-6 py-3">
-        <Image src={Logo} alt="Logo" className="h-12 w-auto" />
+        <div className='flex justify-center items-center text-xl font-bold'>
+        <Image src={Logo} alt="Logo" className="h-20 w-auto" />
+        <p className='text-white'>The <span className='text-2xl'>Visa City</span></p>
+        </div>
 
         <div className="hidden lg:flex gap-6 text-2xl text-gray-300">
           <Link href="/home">

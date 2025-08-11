@@ -8,29 +8,14 @@ import { BsWhatsapp } from "react-icons/bs";
 
 const faqs = [
     {
-        question: "What is the purpose of obtaining a Schengen Visa?",
-        answer:
-            "The Schengen visa allows you to travel freely between 27 Schengen countries. The visa is stamped by the Embassy/Consulate where you will be travelling.",
-    },
-    {
         question: "Who needs a Schengen Visa?",
         answer:
             "Although certain groups and nationalities of countries are privileged to enter the Schengen visa-free zone, some others must meet all the requirements and attend interviews to get a visa that permits them to enter the Schengen Area.",
     },
     {
-        question: "If I am travelling to multiple countries within the Schengen Area, how should I apply for the visa, and which Embassy/Consulate should I approach?",
+        question: "What’s the role of The Visa City in the visa assistance service?",
         answer:
-            "If you are travelling to more than one country in one trip, you must apply through the Embassy or Consulate in the country where you spend the majority of your time. If you plan to spend an equal amount of time in multiple Schengen countries, your visa application should be made from the country which will be your first entry.",
-    },
-    {
-        question: "What’s the role of The Visa Guy in the visa assistance service?",
-        answer:
-            "Well, we, the Visa Guy, offer visa assistance in Dubai, UAE, provides proper consultation and appointment bookings in VFS or respective consulates/ embassies, and also we assist you in document verification and preparation of necessary documents if required. Please note that while we provide comprehensive visa assistance services, we cannot guarantee visa approval.",
-    },
-    {
-        question: "Is there a guarantee for the Visa?",
-        answer:
-            "Please note that while we provide comprehensive visa assistance services, we cannot guarantee visa approval. Our team is dedicated to ensuring a smooth and efficient visa application process, but the final decision rests with the respective authorities.",
+            "Well, we, the Visa City, offer visa assistance in Dubai, UAE, provides proper consultation and appointment bookings in VFS or respective consulates/ embassies, and also we assist you in document verification and preparation of necessary documents if required. Please note that while we provide comprehensive visa assistance services, we cannot guarantee visa approval.",
     },
     {
         question: "If I intend to travel for business meetings, conferences, or events in the Schengen Area, which visa should I apply for?",
@@ -48,19 +33,9 @@ const faqs = [
             "Yes, you need to pay Visa fees while submitting documents.",
     },
     {
-        question: "How many times can I travel with a multiple-entry Schengen Visa?",
-        answer:
-            "The number of entries allowed will depend on the specific visa type and its duration. Some multiple-entry visas may have restrictions on the maximum number of days or total duration of stay within a given period.",
-    },
-    {
         question: "Is an Interview mandatory for Schengen Visa?",
         answer:
             "No, you must go for a biometric submission, and it is compulsory to take all the applicants (including infants) at the time of submission.",
-    },
-    {
-        question: "Applying for a visa all by myself or rely on a visa consultant service, which is the better choice?",
-        answer:
-            "Using a visa consultant is highly recommended for several reasons. They are experts in handling different visa types and being updated with immigration laws. Applying for a visa on your own can be time-consuming and confusing, and even small mistakes can lead to rejection. With a visa consultant, you can streamline the application process, minimise errors, and increase your chances of success. They provide valuable guidance, ensure accurate document preparation, and help you understand specific visa requirements. By seeking professional assistance, you can save time, avoid errors , and improve the likelihood of a positive visa outcome.",
     },
     {
         question: "How long does it take to get a visa?",
@@ -71,17 +46,7 @@ const faqs = [
         question: "What happens if your visa is rejected?",
         answer:
             "If found ineligible for a visa, don’t feel bad, you could reapply in the future. When you require visa services in the UAE, feel free to ask for our support. We will be glad to be of assistance.",
-    },
-    {
-        question: "Is it possible to get a visa after rejection?",
-        answer:
-            "If your visa application is denied, don’t lose hope. Reapplying can be challenging after a rejection, so it’s important to be extra careful when submitting a new application. Remember, there are experts who provide visa assistance services. They have valuable knowledge and can help you navigate the process. Don’t hesitate to reach out to them for guidance and support",
-    },
-    {
-        question: "To which all countries Visa Guy Provide visa assistance services?",
-        answer:
-            "Visa Guy provide visa assistance services to UK,Turkey",
-    },
+    }
 ]
 
 const Questions = () => {

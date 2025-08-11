@@ -69,7 +69,7 @@ export class CountryController {
   @Delete('delete/:id')
   async remove(@Param('id') id: string) {
     await this.countryService.remove(+id).then((result) => {
-      return apiResponse(true, 'Country Deleted Successfully');
+      return apiResponse(true, 'Country Deleted Successfully', result);
     })
   }
 }

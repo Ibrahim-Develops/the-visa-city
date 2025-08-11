@@ -4,9 +4,9 @@ import F1 from '../public/F1.jpg';
 import Logo from '../public/logo.png';
 import { IoCallOutline, IoMailOutline, IoLocationOutline } from 'react-icons/io5';
 import { MdWhatsapp } from 'react-icons/md';
-import { FaFacebook, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import { BsTwitterX } from "react-icons/bs";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 import Link from 'next/link';
+import { FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
     return (
@@ -95,7 +95,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col lg:flex-row lg:flex-wrap items-start lg:items-center gap-6 text-sm text-white mt-8">
+            <div className="flex flex-col lg:flex-row lg:flex-wrap items-start lg:items-center gap-6 text-white mt-8 text-md">
                 <div className="flex items-start gap-2 w-full lg:w-auto">
                     <IoCallOutline className="text-xl text-[#FFD700] mt-1" />
                     <div className="flex flex-col sm:flex-row gap-1 sm:gap-4">
@@ -105,7 +105,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="flex items-center gap-2 w-full lg:w-auto">
+                <div className="flex items-center gap-2 w-full lg:w-auto ">
                     <MdWhatsapp className="text-2xl text-[#FFD700] mt-1" />
                     <div className="flex flex-col sm:flex-row gap-1 sm:gap-4">
                         <a
@@ -156,9 +156,12 @@ const Footer = () => {
                     <a href="https://www.facebook.com/share/162n4gLbuC/" target='_blank'>
                         <FaFacebook className="hover:text-[#FFD700] cursor-pointer duration-300" />
                     </a>
-                    <BsTwitterX className="hover:text-[#FFD700] cursor-pointer duration-300" />
-                    <FaInstagram className="hover:text-[#FFD700] cursor-pointer duration-300" />
-                    <FaLinkedinIn className="hover:text-[#FFD700] cursor-pointer duration-300" />
+                    <a href="https://www.instagram.com/thevisacity?igsh=bDJseWJhMHBzc25v" target='_blank'>
+                        <FaInstagram className="hover:text-[#FFD700] cursor-pointer duration-300" />
+                    </a>
+                    <a href="" target='_blank'>
+                    <FaYoutube className="hover:text-[#FFD700] cursor-pointer duration-300" />
+                    </a>
                 </div>
             </div>
         </footer>
