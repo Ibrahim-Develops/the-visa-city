@@ -28,7 +28,7 @@ const Hero = () => {
     const fetchCountries = async () => {
       try {
         const token = localStorage.getItem("token")?.replace(/"/g, "")
-        const res = await axios.get("http://localhost:3000/country/all", {
+        const res = await axios.get("http://13.61.35.24:3000/country/all", {
           headers: { Authorization: `Bearer ${token}` },
         })
         if (Array.isArray(res.data.data)) {

@@ -1,18 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import {
-  FaCalendarCheck,
-  FaFileAlt,
-  FaCamera,
-  FaPassport,
-  FaIdCard,
-  FaNotesMedical,
-  FaFileSignature,
-  FaHotel,
-  FaMoneyBillWave,
-  FaChild,
-} from 'react-icons/fa';
+import { FaCalendarCheck, FaFileAlt, FaCamera, FaPassport, FaIdCard, FaNotesMedical, FaFileSignature, FaHotel, FaMoneyBillWave, FaChild, } from 'react-icons/fa';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 const documents = [

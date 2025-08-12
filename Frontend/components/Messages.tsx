@@ -40,7 +40,7 @@ const Messages = () => {
     const fetchMessages = async () => {
       try {
         const token = localStorage.getItem("token")?.replace(/"/g, "") || ""
-        const res = await axios.get('http://localhost:3000/contact/all', {
+        const res = await axios.get('http://13.61.35.24:3000/contact/all', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -67,7 +67,7 @@ const Messages = () => {
     if (!confirmDelete) return
 
     try {
-      await axios.delete(`http://localhost:3000/contact/delete/${id}`)
+      await axios.delete(`http://13.61.35.24:3000/contact/delete/${id}`)
       setMessages((prev) => prev.filter((msg) => msg.id !== id))
       toast.success('Message deleted successfully.')
     } catch (error) {

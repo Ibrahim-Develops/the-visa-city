@@ -37,7 +37,7 @@ const AllBlogs = () => {
         const fetchBlogs = async () => {
             try {
                 const token = localStorage.getItem('token')?.replace(/"/g, '') || '';
-                const res = await axios.get('http://localhost:3000/blog/all', {
+                const res = await axios.get('http://13.61.35.24:3000/blog/all', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -58,7 +58,7 @@ const AllBlogs = () => {
 
         try {
             const token = localStorage.getItem('token')?.replace(/"/g, '') || '';
-            await axios.delete(`http://localhost:3000/blog/delete/${id}`, {
+            await axios.delete(`http://13.61.35.24:3000/blog/delete/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

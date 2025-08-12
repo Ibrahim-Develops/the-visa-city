@@ -20,7 +20,7 @@ const DisplayBlog = () => {
     const fetchBlog = async () => {
       try {
         const token = localStorage.getItem("token")?.replace(/"/g, "") || "";
-        const res = await axios.get(`http://localhost:3000/blog/${blogId}`, {
+        const res = await axios.get(`http://13.61.35.24:3000/blog/${blogId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

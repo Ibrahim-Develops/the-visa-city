@@ -3,7 +3,6 @@
 import React from 'react';
 import HelpBanner from '../public/Buildings.png';
 import { IoChevronForwardSharp } from 'react-icons/io5';
-import { GiHamburgerMenu } from 'react-icons/gi';
 import Image from 'next/image';
 
 const Contact = () => {

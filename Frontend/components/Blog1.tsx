@@ -13,13 +13,13 @@ interface BlogPost {
 
 const Blog1 = () => {
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
-  const [visibleCount, setVisibleCount] = useState(6); // how many to show initially
+  const [visibleCount, setVisibleCount] = useState(6);
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
         const token = localStorage.getItem("token")?.replace(/"/g, "") || "";
-        const response = await axios.get("http://localhost:3000/blog/all", {
+        const response = await axios.get("http://13.61.35.24:3000/blog/all", {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,

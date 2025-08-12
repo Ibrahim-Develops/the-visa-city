@@ -69,7 +69,7 @@ const AddBlog = () => {
 
       const token = localStorage.getItem("token")?.replace(/"/g, "") || "";
 
-      const response = await axios.post("http://localhost:3000/blog/create", data, {
+      const response = await axios.post("http://13.61.35.24:3000/blog/create", data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
@@ -92,7 +92,7 @@ const AddBlog = () => {
   return (
     <div className="px-4 sm:px-6 lg:px-10 py-10 text-black min-h-screen">
       <div className="flex flex-col gap-6">
-        {/* Back button + Title */}
+
         <div className="flex flex-col gap-3">
           <Link
             href="/dashboard"
@@ -103,7 +103,6 @@ const AddBlog = () => {
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold">Blog</h1>
         </div>
 
-        {/* Heading + Button */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <h2 className="font-semibold text-xl sm:text-2xl">Welcome To The Blog Page</h2>
@@ -122,7 +121,6 @@ const AddBlog = () => {
           </button>
         </div>
 
-        {/* Form Fields */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full gap-6 sm:gap-8 lg:gap-10">
           {fields.map((field, i) => (
             <div key={i} className="flex flex-col gap-2 w-full">

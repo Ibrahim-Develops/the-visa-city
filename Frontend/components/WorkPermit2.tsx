@@ -196,7 +196,6 @@ const WorkPermit2 = () => {
           className={`flex flex-col items-center gap-8 lg:gap-16 ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'
             }`}
         >
-          {/* Image Section */}
           <div className="w-full lg:w-1/2">
             <Image
               src={item.image}
@@ -207,7 +206,6 @@ const WorkPermit2 = () => {
             />
           </div>
 
-          {/* Text Section */}
           <div className="w-full lg:w-1/2 space-y-4">
             <h2 className="font-bold text-xl">{item.title}</h2>
             <p className="text-sm text-white">{item.description}</p>
@@ -246,7 +244,6 @@ const WorkPermit2 = () => {
         </div>
       ))}
 
-      {/* Sidebar Section */}
       <div className="grid lg:grid-cols-2 gap-10 mt-16">
         <WhyChooseVisaCity />
         <ApplyNow />

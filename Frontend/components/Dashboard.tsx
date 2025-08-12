@@ -48,7 +48,7 @@ const Dashboard = () => {
     const fetchCountries = async () => {
       try {
         const token = localStorage.getItem("token")?.replace(/"/g, "");
-        const res = await axios.get("http://localhost:3000/country/all", {
+        const res = await axios.get("http://13.61.35.24:3000/country/all", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -74,7 +74,7 @@ const Dashboard = () => {
     if (!window.confirm("Are you sure you want to delete this country?")) return;
     try {
       const token = localStorage.getItem("token")?.replace(/"/g, "");
-      await axios.delete(`http://localhost:3000/country/delete/${id}`, {
+      await axios.delete(`http://13.61.35.24:3000/country/delete/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCountries((prev) => prev.filter((c) => c.id !== id));
@@ -99,7 +99,6 @@ const Dashboard = () => {
 
   return (
     <div className="px-4 sm:px-10 py-10">
-      {/* Header & Buttons */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <h1 className="text-3xl sm:text-5xl font-bold">Countries</h1>
         <div className="flex flex-wrap gap-3">
@@ -110,7 +109,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Table (Desktop) */}
       <div className="hidden md:block border border-gray-200 rounded-lg overflow-x-auto">
         {loading ? (
           <p className="p-4 text-center">Loading countries...</p>
@@ -158,7 +156,6 @@ const Dashboard = () => {
         )}
       </div>
 
-      {/* Cards (Mobile) */}
       <div className="md:hidden space-y-4">
         {loading ? (
           <p className="text-center">Loading countries...</p>

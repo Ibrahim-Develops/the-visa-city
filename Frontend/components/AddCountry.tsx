@@ -134,7 +134,7 @@ const AddCountry = () => {
       const rawToken = localStorage.getItem("token");
       const token = rawToken ? rawToken.replace(/"/g, "") : "";
 
-      const res = await axios.post("http://localhost:3000/country/create", formData, {
+      const res = await axios.post("http://13.61.35.24:3000/country/create", formData, {
         withCredentials: true,
         headers: {
           "Content-Type": "multipart/form-data",
@@ -157,7 +157,7 @@ const AddCountry = () => {
   return (
     <div className="px-4 sm:px-6 lg:px-10 py-8 text-black min-h-screen">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
-        {/* Header */}
+
         <div className="flex flex-col gap-3">
           <Link
             href="/dashboard"
@@ -168,7 +168,6 @@ const AddCountry = () => {
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold">Country</h1>
         </div>
 
-        {/* Intro & Button */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <h2 className="font-semibold text-xl sm:text-2xl">
@@ -187,7 +186,6 @@ const AddCountry = () => {
           </button>
         </div>
 
-        {/* Category */}
         <div className="flex flex-col gap-2 w-full">
           <label className="font-semibold text-lg">Category</label>
           <Select
@@ -204,7 +202,6 @@ const AddCountry = () => {
           )}
         </div>
 
-        {/* Region */}
         <div className="flex flex-col gap-2 w-full">
           <label className="font-semibold text-lg">Region</label>
           <Select
@@ -221,7 +218,6 @@ const AddCountry = () => {
           )}
         </div>
 
-        {/* Fields */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full gap-6 lg:gap-10">
           {fields.map((field, i) => (
             <div key={i} className="flex flex-col gap-2 w-full">
