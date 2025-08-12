@@ -7,6 +7,7 @@ import WP1 from '../public/WP1.png'
 import WP2 from '../public/WP2.png'
 import WP3 from '../public/WP3.png'
 import WP4 from '../public/WP4.png'
+import WP5 from '../public/WP5.png'
 
 const data = [
   {
@@ -93,9 +94,9 @@ const data = [
     image: WP4,
     title: '🇲🇹 Malta Work Permit Visa from Dubai, UAE',
     description:
-      'With its booming economy, English-speaking environment, and beautiful coastal lifestyle, Malta is a rising destination for skilled workers in Europe. From hospitality and healthcare to construction and tech — job opportunities are growing fast.',
+    'With its booming economy, English-speaking environment, and beautiful coastal lifestyle, Malta is a rising destination for skilled workers in Europe. From hospitality and healthcare to construction and tech — job opportunities are growing fast.',
     need:
-      'If you are a UAE resident holding a non-Emirati passport and have a confirmed job offer from a Maltese employer, you will need to apply for a Single Permit (Long-Stay Work Visa) before relocating to Malta.',
+    'If you are a UAE resident holding a non-Emirati passport and have a confirmed job offer from a Maltese employer, you will need to apply for a Single Permit (Long-Stay Work Visa) before relocating to Malta.',
     documents: [
       'Valid Passport Copy (minimum 6 months validity)',
       'UAE Residence Visa Copy',
@@ -115,6 +116,33 @@ const data = [
       'After approval, you will receive authorization to apply for the National (D) Visa.',
       'Once you arrive in Malta, you must collect your Residence Permit within 90 days.',
       'Processing time may take up to 6–8 weeks.',
+    ],
+  },
+  {
+    image: WP5,
+    title: '🇧🇬 Bulgaria Work Permit Visa from Dubai, UAE',
+    description:
+      'Bulgaria is rapidly becoming a destination for skilled professionals in sectors such as IT, construction, hospitality, healthcare, and manufacturing. With its affordable lifestyle, growing economy, and access to the European Union market, Bulgaria offers excellent career opportunities.Whether you’re moving for a job or hiring international staff, The Visa City makes the Bulgaria work permit process simple, fast, and hassle-free from the UAE.',
+    need:
+      'If you are a UAE resident holding a non-Emirati passport and have received a confirmed job offer from a Bulgarian employer, you must apply for a Long-Term Work Visa after your employer obtains a work permit approval from the Bulgarian Employment Agency on your behalf.',
+    documents: [
+      'Valid Passport Copy (minimum 6 months validity)',
+      'UAE Residence Visa Copy',
+      'Emirates ID Copy',
+      'Official Work Permit Approval from Bulgarian Employment Agency',
+      'Signed Employment Contract / Job Offer Letter',
+      'Educational & Professional Qualification Certificates (attested if required)',
+      'Updated CV / Resume',
+      'Police Clearance Certificate (attested)',
+      'Proof of Accommodation in Bulgaria',
+      'Passport-size Photograph (white background)',
+      'Travel Insurance (covering visa validity period)',
+      'Completed Visa Application Form',
+    ],
+    notes: [
+      'The Bulgarian employer applies for your work permit approval first.',
+      'Once approved, you apply for the long-term work visa at the Bulgarian Embassy/Consulate.',
+      'Upon arrival in Bulgaria, you must register and obtain a residence permit within 14 days.',
     ],
   },
 ];
@@ -165,9 +193,8 @@ const WorkPermit2 = () => {
       {data.map((item, index) => (
         <div
           key={index}
-          className={`flex flex-col items-center gap-8 lg:gap-16 ${
-            index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'
-          }`}
+          className={`flex flex-col items-center gap-8 lg:gap-16 ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'
+            }`}
         >
           {/* Image Section */}
           <div className="w-full lg:w-1/2">

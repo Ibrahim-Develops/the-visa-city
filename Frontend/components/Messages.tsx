@@ -9,7 +9,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import Link from 'next/link'
 import { FaArrowLeftLong } from 'react-icons/fa6'
 import { useRouter } from 'next/navigation'
-import * as XLSX from 'xlsx' // ✅ Import xlsx
+import * as XLSX from 'xlsx'
 
 interface Message {
   id: number
@@ -92,7 +92,7 @@ const Messages = () => {
   if (isAuthorized === null) return null
 
   return (
-    <div className="px-4 sm:px-10 py-10 overflow-auto text-black min-h-screen">
+    <div className="px-4 sm:px-6 lg:px-10 py-10 text-black min-h-screen">
       <div className="flex flex-col gap-3 mb-5">
         <Link
           href="/dashboard"
@@ -100,11 +100,11 @@ const Messages = () => {
         >
           <FaArrowLeftLong className="text-white text-2xl" />
         </Link>
-        <div className="flex justify-between items-center">
-          <h1 className="text-5xl font-bold">Messages</h1>
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold">Messages</h1>
           <button
             onClick={handleDownloadExcel}
-            className="bg-green-600 cursor-pointer duration-300 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow-md"
+            className="bg-green-600 cursor-pointer duration-300 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow-md text-sm sm:text-base"
           >
             Download Excel
           </button>
@@ -116,8 +116,8 @@ const Messages = () => {
       ) : messages.length === 0 ? (
         <p className="text-center p-4">No messages found.</p>
       ) : (
-        <div className="border border-gray-200 rounded-lg overflow-auto">
-          <Table>
+        <div className="border border-gray-200 rounded-lg overflow-x-auto">
+          <Table className="min-w-[700px]">
             <TableHeader className="bg-gray-200">
               <TableRow>
                 <TableHead>ID</TableHead>
@@ -135,10 +135,10 @@ const Messages = () => {
                 <TableRow key={msg.id}>
                   <TableCell>{msg.id}</TableCell>
                   <TableCell>{msg.name}</TableCell>
-                  <TableCell>{msg.email}</TableCell>
+                  <TableCell className="break-all">{msg.email}</TableCell>
                   <TableCell>{msg.phone}</TableCell>
                   <TableCell>{msg.subject}</TableCell>
-                  <TableCell>{msg.message}</TableCell>
+                  <TableCell className="break-all">{msg.message}</TableCell>
                   <TableCell>
                     <IoTrashBinOutline
                       className="text-2xl text-red-500 cursor-pointer hover:text-red-700 transition"
