@@ -43,7 +43,6 @@ export class AppModule implements NestModule {
       .apply(JwtMiddleware)
       .exclude({ path: 'user/login', method: RequestMethod.POST })
       .forRoutes(
-        { path: 'user/create', method: RequestMethod.POST },
         { path: 'country/create', method: RequestMethod.POST },
         { path: 'country/delete/:id', method: RequestMethod.DELETE },
         { path: 'country/all', method: RequestMethod.GET },
