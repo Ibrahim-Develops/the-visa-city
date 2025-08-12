@@ -12,17 +12,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const TableHeadData = [
-  "id",
-  "Main Image",
-  "Extra Img 1",
-  "Extra Img 2",
-  "Flag",
-  "Name",
-  "Price",
-  "Category",
-  "Region",
-  "Update",
-  "Delete",
+  "id", "Main Image", "Extra Img 1", "Extra Img 2", "Flag", "Name", "Price", "Category", "Region", "Update", "Delete",
 ];
 
 interface Country {
@@ -99,8 +89,8 @@ const Dashboard = () => {
     <Image
       src={src || '/placeholder.png'}
       alt={alt}
-      width={100}
-      height={100}
+      width={80}
+      height={80}
       className="rounded-full object-cover border border-gray-200"
     />
   );
@@ -108,38 +98,20 @@ const Dashboard = () => {
   if (isAuthorized === null) return null;
 
   return (
-    <div className="px-4 sm:px-10 py-10 overflow-auto">
+    <div className="px-4 sm:px-10 py-10">
+      {/* Header & Buttons */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <h1 className="text-3xl sm:text-5xl font-bold">Countries</h1>
-        <div className='flex gap-5'>
-          <Link
-            href="/dashboard/messages"
-            className="bg-black px-6 sm:px-16 py-3 sm:py-4 text-white rounded-xl font-bold text-center transition"
-          >
-            Messages
-          </Link>
-          <Link
-            href="/dashboard/allblogs"
-            className="bg-black px-6 sm:px-16 py-3 sm:py-4 text-white rounded-xl font-bold text-center transition"
-          >
-            All Blogs
-          </Link>
-          <Link
-            href="/dashboard/addblog"
-            className="bg-black px-6 sm:px-16 py-3 sm:py-4 text-white rounded-xl font-bold text-center transition"
-          >
-            + Add Blogs
-          </Link>
-          <Link
-            href="/dashboard/addcountry"
-            className="bg-black px-6 sm:px-16 py-3 sm:py-4 text-white rounded-xl font-bold text-center transition"
-          >
-            + Add Country
-          </Link>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/dashboard/messages" className="bg-black px-6 py-3 text-white rounded-xl font-bold">Messages</Link>
+          <Link href="/dashboard/allblogs" className="bg-black px-6 py-3 text-white rounded-xl font-bold">All Blogs</Link>
+          <Link href="/dashboard/addblog" className="bg-black px-6 py-3 text-white rounded-xl font-bold">+ Add Blogs</Link>
+          <Link href="/dashboard/addcountry" className="bg-black px-6 py-3 text-white rounded-xl font-bold">+ Add Country</Link>
         </div>
       </div>
 
-      <div className="border border-gray-200 rounded-lg overflow-auto">
+      {/* Table (Desktop) */}
+      <div className="hidden md:block border border-gray-200 rounded-lg overflow-x-auto">
         {loading ? (
           <p className="p-4 text-center">Loading countries...</p>
         ) : countries.length === 0 ? (
@@ -170,12 +142,12 @@ const Dashboard = () => {
                   <TableCell>{country.region}</TableCell>
                   <TableCell>
                     <Link href={`/dashboard/updatecountry/${country.id}`}>
-                      <FaRegEdit className="text-xl text-blue-500 cursor-pointer hover:text-blue-700 transition" />
+                      <FaRegEdit className="text-xl text-blue-500 cursor-pointer hover:text-blue-700" />
                     </Link>
                   </TableCell>
                   <TableCell>
                     <IoTrashBinOutline
-                      className="text-2xl text-red-500 cursor-pointer hover:text-red-700 transition"
+                      className="text-2xl text-red-500 cursor-pointer hover:text-red-700"
                       onClick={() => handleDelete(country.id)}
                     />
                   </TableCell>
@@ -183,6 +155,32 @@ const Dashboard = () => {
               ))}
             </TableBody>
           </Table>
+        )}
+      </div>
+
+      {/* Cards (Mobile) */}
+      <div className="md:hidden space-y-4">
+        {loading ? (
+          <p className="text-center">Loading countries...</p>
+        ) : countries.length === 0 ? (
+          <p className="text-center">No countries found.</p>
+        ) : (
+          countries.map((country, i) => (
+            <div key={country.id} className="border border-gray-200 rounded-lg p-4 space-y-2">
+              <div className="flex items-center gap-3">
+                <ImageCell src={country.mainImage} alt={country.name} />
+                <div>
+                  <h2 className="font-bold">{country.name}</h2>
+                  <p className="text-sm text-gray-500">{country.category} • {country.region}</p>
+                  <p className="font-semibold">{country.price}</p>
+                </div>
+              </div>
+              <div className="flex gap-3 mt-2">
+                <Link href={`/dashboard/updatecountry/${country.id}`} className="flex items-center gap-1 text-blue-500"><FaRegEdit /> Edit</Link>
+                <button onClick={() => handleDelete(country.id)} className="flex items-center gap-1 text-red-500"><IoTrashBinOutline /> Delete</button>
+              </div>
+            </div>
+          ))
         )}
       </div>
 

@@ -159,8 +159,8 @@ const Footer = () => {
                     <a href="https://www.instagram.com/thevisacity?igsh=bDJseWJhMHBzc25v" target='_blank'>
                         <FaInstagram className="hover:text-[#FFD700] cursor-pointer duration-300" />
                     </a>
-                    <a href="" target='_blank'>
-                    <FaYoutube className="hover:text-[#FFD700] cursor-pointer duration-300" />
+                    <a href="https://www.youtube.com/@TheVisaCity1" target='_blank'>
+                        <FaYoutube className="hover:text-[#FFD700] cursor-pointer duration-300" />
                     </a>
                 </div>
             </div>

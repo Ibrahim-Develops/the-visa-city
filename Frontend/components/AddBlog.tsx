@@ -90,8 +90,9 @@ const AddBlog = () => {
   };
 
   return (
-    <div className="px-10 py-10 text-black min-h-screen">
+    <div className="px-4 sm:px-6 lg:px-10 py-10 text-black min-h-screen">
       <div className="flex flex-col gap-6">
+        {/* Back button + Title */}
         <div className="flex flex-col gap-3">
           <Link
             href="/dashboard"
@@ -99,20 +100,21 @@ const AddBlog = () => {
           >
             <FaArrowLeftLong className="text-white text-2xl" />
           </Link>
-          <h1 className="text-5xl font-bold">Blog</h1>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold">Blog</h1>
         </div>
 
-        <div className="flex justify-between items-center">
+        {/* Heading + Button */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h2 className="font-semibold text-2xl">Welcome To The Blog Page</h2>
-            <p className="text-gray-600 text-[15px]">
+            <h2 className="font-semibold text-xl sm:text-2xl">Welcome To The Blog Page</h2>
+            <p className="text-gray-600 text-sm sm:text-[15px]">
               All Fields Are Required To Create A Blog{" "}
               <span className="text-red-600">*</span>
             </p>
           </div>
           <button
             type="button"
-            className="bg-black px-16 py-4 text-white rounded-xl font-bold cursor-pointer"
+            className="bg-black w-full sm:w-auto px-8 sm:px-16 py-3 sm:py-4 text-white rounded-xl font-bold"
             onClick={handleSubmit}
             disabled={loading}
           >
@@ -120,17 +122,18 @@ const AddBlog = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-3 w-full gap-10">
+        {/* Form Fields */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full gap-6 sm:gap-8 lg:gap-10">
           {fields.map((field, i) => (
             <div key={i} className="flex flex-col gap-2 w-full">
-              <label className="font-semibold text-lg">{field.label}</label>
-              <div className="border-[1px] border-gray-300 flex items-center gap-3 p-4 rounded-lg">
+              <label className="font-semibold text-base sm:text-lg">{field.label}</label>
+              <div className="border border-gray-300 flex items-center gap-3 p-3 sm:p-4 rounded-lg">
                 {field.icon}
                 <input
                   type={field.type}
                   placeholder={field.placeholder}
                   accept={field.type === "file" ? "image/*" : undefined}
-                  className="outline-none w-full"
+                  className="outline-none w-full text-sm sm:text-base"
                   name={field.name}
                   onChange={handleChange}
                   value={field.type === "file" ? undefined : (formData as any)[field.name]}

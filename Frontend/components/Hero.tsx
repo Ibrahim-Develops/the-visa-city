@@ -110,13 +110,13 @@ const Hero = () => {
                   className="w-full text-sm text-gray-700 placeholder-gray-400 bg-transparent focus:outline-none"
                 />
 
-                {showDropdown && filteredCountries.length > 0 && (
+                 {showDropdown && filteredCountries.length > 0 && (
                   <ul className="absolute z-10 bg-white border border-gray-300 rounded-md w-full mt-1 max-h-60 overflow-y-auto shadow-md">
                     {filteredCountries.map((country) => (
                       <li
                         key={country.id}
                         className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
-                        onClick={() => handleSelect(country.id, country.name)}
+                        onMouseDown={() => handleSelect(country.id, country.name)}
                       >
                         {country.name}
                       </li>

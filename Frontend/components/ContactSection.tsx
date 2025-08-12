@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css'
 type FormData = {
   name: string
   email: string
-  phone: string
+  phone: number
   subject: string
   message: string
 }

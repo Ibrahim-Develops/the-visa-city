@@ -155,83 +155,95 @@ const AddCountry = () => {
   if (isAuthorized === null) return null;
 
   return (
-    <div className="px-10 py-10 text-black min-h-screen">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-3">
-            <Link
-              href="/dashboard"
-              className="bg-black w-fit p-2 rounded-full shadow-2xl cursor-pointer"
-            >
-              <FaArrowLeftLong className="text-white text-2xl" />
-            </Link>
-            <h1 className="text-5xl font-bold">Country</h1>
+    <div className="px-4 sm:px-6 lg:px-10 py-8 text-black min-h-screen">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+        {/* Header */}
+        <div className="flex flex-col gap-3">
+          <Link
+            href="/dashboard"
+            className="bg-black w-fit p-2 rounded-full shadow-2xl cursor-pointer"
+          >
+            <FaArrowLeftLong className="text-white text-2xl" />
+          </Link>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold">Country</h1>
+        </div>
+
+        {/* Intro & Button */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div>
+            <h2 className="font-semibold text-xl sm:text-2xl">
+              Welcome To The Country Page
+            </h2>
+            <p className="text-gray-600 text-sm sm:text-base">
+              All Fields Are Compulsory To Add a Country{" "}
+              <span className="text-red-600">*</span>
+            </p>
           </div>
+          <button
+            type="submit"
+            className="bg-black w-full sm:w-auto px-8 sm:px-12 lg:px-16 py-3 sm:py-4 text-white rounded-xl font-bold cursor-pointer"
+          >
+            Add Country
+          </button>
+        </div>
 
-          <div className="flex justify-between items-center">
-            <div>
-              <h2 className="font-semibold text-2xl">Welcome To The Country Page</h2>
-              <p className="text-gray-600 text-[15px]">
-                All Fields Are Compulsory To Add a Country{" "}
-                <span className="text-red-600">*</span>
-              </p>
-            </div>
-            <button
-              type="submit"
-              className="bg-black px-16 py-4 text-white rounded-xl font-bold cursor-pointer"
-            >
-              Add Country
-            </button>
-          </div>
-  
+        {/* Category */}
+        <div className="flex flex-col gap-2 w-full">
+          <label className="font-semibold text-lg">Category</label>
+          <Select
+            isMulti
+            options={categoryOptions}
+            value={selectedCategories}
+            onChange={(selected) => setSelectedCategories(selected as any[])}
+            className="border-[1px] border-gray-300 rounded-lg"
+          />
+          {selectedCategories.length === 0 && (
+            <p className="text-red-500 text-sm">
+              Please select at least one category
+            </p>
+          )}
+        </div>
 
-          <div className="flex flex-col gap-2 w-full">
-            <label className="font-semibold text-lg">Category</label>
-            <Select
-              isMulti
-              options={categoryOptions}
-              value={selectedCategories}
-              onChange={(selected) => setSelectedCategories(selected as any[])}
-              className="border-[1px] border-gray-300 rounded-lg"
-            />
-            {selectedCategories.length === 0 && <p className="text-red-500 text-sm">Please select at least one category</p>}
-          </div>
+        {/* Region */}
+        <div className="flex flex-col gap-2 w-full">
+          <label className="font-semibold text-lg">Region</label>
+          <Select
+            isMulti
+            options={regionOptions}
+            value={selectedRegions}
+            onChange={(selected) => setSelectedRegions(selected as any[])}
+            className="border-[1px] border-gray-300 rounded-lg"
+          />
+          {selectedRegions.length === 0 && (
+            <p className="text-red-500 text-sm">
+              Please select at least one region
+            </p>
+          )}
+        </div>
 
-
-          <div className="flex flex-col gap-2 w-full">
-            <label className="font-semibold text-lg">Region</label>
-            <Select
-              isMulti
-              options={regionOptions}
-              value={selectedRegions}
-              onChange={(selected) => setSelectedRegions(selected as any[])}
-              className="border-[1px] border-gray-300 rounded-lg"
-            />
-            {selectedRegions.length === 0 && <p className="text-red-500 text-sm">Please select at least one region</p>}
-          </div>
-
-
-          <div className="grid grid-cols-3 w-full gap-10">
-            {fields.map((field, i) => (
-              <div key={i} className="flex flex-col gap-2 w-full">
-                <label className="font-semibold text-lg">{field.label}</label>
-                <div className="border-[1px] border-gray-300 flex items-center gap-3 p-4 rounded-lg">
-                  {field.icon}
-                  <input
-                    type={field.type || "text"}
-                    accept={field.type === "file" ? "image/*" : undefined}
-                    className="outline-none w-full"
-                    {...register(field.name, {
-                      required: field.requiredMessage,
-                    })}
-                  />
-                </div>
-                {errors[field.name] && (
-                  <p className="text-red-500 text-sm">{errors[field.name]?.message}</p>
-                )}
+        {/* Fields */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full gap-6 lg:gap-10">
+          {fields.map((field, i) => (
+            <div key={i} className="flex flex-col gap-2 w-full">
+              <label className="font-semibold text-lg">{field.label}</label>
+              <div className="border-[1px] border-gray-300 flex items-center gap-3 p-3 sm:p-4 rounded-lg">
+                {field.icon}
+                <input
+                  type={field.type || "text"}
+                  accept={field.type === "file" ? "image/*" : undefined}
+                  className="outline-none w-full text-sm sm:text-base"
+                  {...register(field.name, {
+                    required: field.requiredMessage,
+                  })}
+                />
               </div>
-            ))}
-          </div>
+              {errors[field.name] && (
+                <p className="text-red-500 text-sm">
+                  {errors[field.name]?.message}
+                </p>
+              )}
+            </div>
+          ))}
         </div>
       </form>
       <ToastContainer position="top-center" autoClose={1500} />

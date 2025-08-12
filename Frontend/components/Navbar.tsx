@@ -35,7 +35,7 @@ const Navbar = () => {
       <div className="flex justify-between items-center px-6 py-3">
         <div className='flex justify-center items-center text-xl font-bold'>
         <Image src={Logo} alt="Logo" className="h-20 w-auto" />
-        <p className='text-white'>The <span className='text-2xl'>Visa City</span></p>
+        <p className='text-white hidden sm:block lg:hidden xl:block'>The <span className='text-2xl'>Visa City</span></p>
         </div>
 
         <div className="hidden lg:flex gap-6 text-2xl text-gray-300">

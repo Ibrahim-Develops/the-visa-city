@@ -13,8 +13,7 @@ export class ContactService {
     @InjectRepository(Contact)
     private contactRepository: Repository<Contact>,
     private readonly mailService: MailService
-
-  ) { }
+  ) {}
 
   async create(createContactDto: CreateContactDto) {
     try {

@@ -12,7 +12,7 @@ export class Contact {
   email: string;
 
   @Column()
-  phone: number;
+  phone: string;
 
   @Column()
   subject: string;
