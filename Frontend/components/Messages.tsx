@@ -40,7 +40,7 @@ const Messages = () => {
     const fetchMessages = async () => {
       try {
         const token = localStorage.getItem("token")?.replace(/"/g, "") || ""
-        const res = await axios.get('https://13.61.35.24:3000/contact/all', {
+        const res = await axios.get('https://api.thevisacity.com/contact/all', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -67,7 +67,7 @@ const Messages = () => {
     if (!confirmDelete) return
 
     try {
-      await axios.delete(`https://13.61.35.24:3000/contact/delete/${id}`)
+      await axios.delete(`https://api.thevisacity.com/contact/delete/${id}`)
       setMessages((prev) => prev.filter((msg) => msg.id !== id))
       toast.success('Message deleted successfully.')
     } catch (error) {

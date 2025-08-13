@@ -35,7 +35,7 @@ const UpdateBlog = () => {
     const fetchBlog = async () => {
       try {
         const token = localStorage.getItem('token')?.replace(/"/g, '') || '';
-        const res = await axios.get(`https://13.61.35.24:3000/blog/${id}`, {
+        const res = await axios.get(`https://api.thevisacity.com/blog/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -65,7 +65,7 @@ const UpdateBlog = () => {
     }
 
     try {
-      await axios.patch(`http://13.61.35.24:3000/blog/update/${id}`, form, {
+      await axios.patch(`http://api.thevisacity.com/blog/update/${id}`, form, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,

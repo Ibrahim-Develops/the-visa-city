@@ -48,7 +48,7 @@ const Dashboard = () => {
     const fetchCountries = async () => {
       try {
         const token = localStorage.getItem("token")?.replace(/"/g, "");
-        const res = await axios.get("https://13.61.35.24:3000/country/all", {
+        const res = await axios.get("https://api.thevisacity.com/country/all", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -74,7 +74,7 @@ const Dashboard = () => {
     if (!window.confirm("Are you sure you want to delete this country?")) return;
     try {
       const token = localStorage.getItem("token")?.replace(/"/g, "");
-      await axios.delete(`https://13.61.35.24:3000/country/delete/${id}`, {
+      await axios.delete(`https://api.thevisacity.com/country/delete/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCountries((prev) => prev.filter((c) => c.id !== id));

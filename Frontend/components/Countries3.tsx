@@ -61,7 +61,7 @@ const Countries3 = () => {
       if (region !== 'Region' && region !== 'All') query.append('region', region);
       if (category !== 'All Visas') query.append('category', category);
 
-      const res = await axios.get(`https://13.61.35.24:3000/country/filter?${query.toString()}`, {
+      const res = await axios.get(`https://api.thevisacity.com/country/filter?${query.toString()}`, {
         withCredentials: true,
         headers: { Authorization: `Bearer ${token}` }
       });

@@ -66,7 +66,7 @@ const UpdateCountry = () => {
         const fetchCountry = async () => {
             try {
                 const token = localStorage.getItem("token")?.replace(/"/g, "");
-                const res = await axios.get("https://13.61.35.24:3000/country/all", {
+                const res = await axios.get("https://api.thevisacity.com/country/all", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -136,7 +136,7 @@ const UpdateCountry = () => {
         }
 
         try {
-            await axios.patch(`https://13.61.35.24:3000/country/update/${id}`, form, {
+            await axios.patch(`https://api.thevisacity.com/country/update/${id}`, form, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     Authorization: `Bearer ${token}`,

@@ -58,7 +58,7 @@ const AllBlogs = () => {
 
         try {
             const token = localStorage.getItem('token')?.replace(/"/g, '') || '';
-            await axios.delete(`https://13.61.35.24:3000/blog/delete/${id}`, {
+            await axios.delete(`https://api.thevisacity.com/blog/delete/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
