@@ -27,7 +27,7 @@ const Login = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const res = await axios.post("http://13.61.35.24:3000/user/login", data, { withCredentials: true });
+      const res = await axios.post("https://13.61.35.24:3000/user/login", data, { withCredentials: true });
       console.log(res.data);
       
       if (res.data.status) {

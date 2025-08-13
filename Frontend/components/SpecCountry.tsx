@@ -26,7 +26,7 @@ const SpecCountry = () => {
             try {
                 if (!id) return;
                 const token = localStorage.getItem("token")?.replace(/"/g, "");
-                const res = await axios.get(`http://13.61.35.24:3000/country/${id}`, {
+                const res = await axios.get(`https://13.61.35.24:3000/country/${id}`, {
                     withCredentials: true,
                     headers: { Authorization: `Bearer ${token}` }
                 });

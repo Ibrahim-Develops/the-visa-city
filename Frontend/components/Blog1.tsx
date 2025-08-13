@@ -19,7 +19,7 @@ const Blog1 = () => {
     const fetchBlogs = async () => {
       try {
         const token = localStorage.getItem("token")?.replace(/"/g, "") || "";
-        const response = await axios.get("http://13.61.35.24:3000/blog/all", {
+        const response = await axios.get("https://13.61.35.24:3000/blog/all", {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,

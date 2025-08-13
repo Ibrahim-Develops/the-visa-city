@@ -134,7 +134,7 @@ const AddCountry = () => {
       const rawToken = localStorage.getItem("token");
       const token = rawToken ? rawToken.replace(/"/g, "") : "";
 
-      const res = await axios.post("http://13.61.35.24:3000/country/create", formData, {
+      const res = await axios.post("https://13.61.35.24:3000/country/create", formData, {
         withCredentials: true,
         headers: {
           "Content-Type": "multipart/form-data",

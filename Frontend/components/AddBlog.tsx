@@ -69,7 +69,7 @@ const AddBlog = () => {
 
       const token = localStorage.getItem("token")?.replace(/"/g, "") || "";
 
-      const response = await axios.post("http://13.61.35.24:3000/blog/create", data, {
+      const response = await axios.post("https://13.61.35.24:3000/blog/create", data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,

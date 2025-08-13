@@ -35,7 +35,7 @@ const UpdateBlog = () => {
     const fetchBlog = async () => {
       try {
         const token = localStorage.getItem('token')?.replace(/"/g, '') || '';
-        const res = await axios.get(`http://13.61.35.24:3000/blog/${id}`, {
+        const res = await axios.get(`https://13.61.35.24:3000/blog/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
