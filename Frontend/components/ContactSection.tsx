@@ -27,6 +27,7 @@ const ContactSection = () => {
     try {
       const response = await axios.post('https://api.thevisacity.com/contact/add', data, {
         withCredentials: true,
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
