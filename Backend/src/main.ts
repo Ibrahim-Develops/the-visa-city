@@ -12,19 +12,18 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalFilters(new AllExceptionsFilter());
 
-  const allowedOrigins = [
-    'https://thevisacity.com',
-    'https://www.thevisacity.com',
-    'https://api.thevisacity.com',
-    'https://the-visa-city-i5o6juesv-muhammad-ibrahims-projects-834581e1.vercel.app',
-  ];
+  app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
+  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204);
+  }
+  next();
+});
 
-  app.enableCors({
-    origin: allowedOrigins,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-  });
 
   await app.listen(3000, '0.0.0.0');
 }
