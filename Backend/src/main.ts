@@ -16,7 +16,7 @@ async function bootstrap() {
     'https://the-visa-city-i5o6juesv-muhammad-ibrahims-projects-834581e1.vercel.app',
     'https://thevisacity.com',
     'https://www.thevisacity.com',
-    'https://www.api.thevisacity.com',
+    'https://api.thevisacity.com',  
   ];
 
   app.enableCors({
