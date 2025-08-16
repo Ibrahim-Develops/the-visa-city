@@ -16,6 +16,7 @@ async function bootstrap() {
     'https://thevisacity.com',
     'https://www.thevisacity.com',
     'https://api.thevisacity.com',
+    'https://13.61.35.24:3000',
     'https://the-visa-city-i5o6juesv-muhammad-ibrahims-projects-834581e1.vercel.app',
   ];
 
