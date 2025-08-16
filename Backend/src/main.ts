@@ -12,18 +12,39 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalFilters(new AllExceptionsFilter());
 
-  app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
-  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(204);
-  }
-  next();
-});
+  const allowedOrigins = [
+    'https://thevisacity.com',
+    'https://www.thevisacity.com',
+    'https://api.thevisacity.com',
+    'https://the-visa-city-i5o6juesv-muhammad-ibrahims-projects-834581e1.vercel.app',
+  ];
 
+  const allowedHeaders = [
+    'Origin',
+    'X-Requested-With',
+    'Content-Type',
+    'Accept',
+    'Authentication',
+    'Access-Control-Allow-Credentials',
+    'Access-Control-Allow-Headers',
+    'Access-Control-Allow-Methods',
+    'Access-Control-Allow-Origin',
+    'User-Agent',
+    'Referer',
+    'Accept-Encoding',
+    'Accept-Language',
+    'Access-Control-Request-Headers',
+    'Cache-Control',
+    'Pragma',
+    'Authorization'
+  ];
+
+  app.enableCors({
+    origin: allowedOrigins,
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'UPDATE', 'OPTIONS'],
+    allowedHeaders: allowedHeaders,
+    credentials: true,
+  });
 
   await app.listen(3000, '0.0.0.0');
 }
