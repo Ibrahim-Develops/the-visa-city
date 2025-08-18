@@ -66,8 +66,9 @@ const UpdateBlog = () => {
 
     try {
       await axios.patch(`http://api.thevisacity.com/blog/update/${id}`, form, {
+       withCredentials: true,
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
       });
