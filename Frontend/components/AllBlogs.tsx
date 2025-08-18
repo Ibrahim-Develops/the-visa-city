@@ -37,7 +37,7 @@ const AllBlogs = () => {
         const fetchBlogs = async () => {
             try {
                 const token = localStorage.getItem('token')?.replace(/"/g, '') || '';
-                const res = await axios.get('https://13.61.35.24:3000/blog/all', {
+                const res = await axios.get('https://api.thevisacity.com/blog/all', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
