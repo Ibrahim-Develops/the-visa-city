@@ -65,13 +65,13 @@ const UpdateBlog = () => {
     }
 
     try {
-      await axios.patch(`http://api.thevisacity.com/blog/update/${id}`, form, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await axios.patch(`https://api.thevisacity.com/blog/update/${id}`, form, {
+                withCredentials: true,
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    Authorization: `Bearer ${token}`,
+                },
+            });
 
       toast.success('Blog updated successfully');
       setTimeout(() => router.push('/dashboard/allblogs'), 1500);
