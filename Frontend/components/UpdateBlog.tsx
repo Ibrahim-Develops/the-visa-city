@@ -155,14 +155,14 @@ const UpdateBlog = () => {
           <div className="flex gap-4">
             <button
               type="submit"
-              className="bg-[#FFD700] text-black px-6 py-2 rounded transition"
+              className="bg-[#FFD700] text-black px-6 cursor-pointer py-2 rounded transition"
             >
               Save Changes
             </button>
             <button
               type="button"
               onClick={() => setIsEditing(false)}
-              className="bg-black text-white px-6 py-2 rounded transition"
+              className="bg-black text-white px-6 cursor-pointer py-2 rounded transition"
             >
               Cancel
             </button>
