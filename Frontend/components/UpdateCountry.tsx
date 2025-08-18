@@ -137,6 +137,7 @@ const UpdateCountry = () => {
 
         try {
             await axios.patch(`https://api.thevisacity.com/country/update/${id}`, form, {
+                withCredentials: true,
                 headers: {
                     "Content-Type": "multipart/form-data",
                     Authorization: `Bearer ${token}`,
