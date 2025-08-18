@@ -38,7 +38,9 @@ const AllBlogs = () => {
             try {
                 const token = localStorage.getItem('token')?.replace(/"/g, '') || '';
                 const res = await axios.get('https://api.thevisacity.com/blog/all', {
+                    withCredentials: true,
                     headers: {
+                        "Content-Type": "multipart/form-data",
                         Authorization: `Bearer ${token}`,
                     },
                 });
