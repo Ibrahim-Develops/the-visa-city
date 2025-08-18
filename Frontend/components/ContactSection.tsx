@@ -24,31 +24,27 @@ const ContactSection = () => {
   } = useForm<FormData>()
 
   const onSubmit = async (data: FormData) => {
-  const options = {
-    method: 'POST',
-    url: 'https://api.thevisacity.com/contact/add',
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    },
-    data: data,   // yahan tumhara formData jaayega
-    withCredentials: true,
-  }
+    try {
+      const response = await axios.post('https://api.thevisacity.com/contact/add', data, {
+        withCredentials: true,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+      })
 
-  try {
-    const response = await axios.request(options)
-
-    if (response.data?.status === true) {
-      toast.success('Message sent successfully!', { autoClose: 3000 })
-      reset()
-    } else {
-      toast.error('Something went wrong. Try again later.', { autoClose: 3000 })
+      if (response.data?.status === true) {
+        toast.success('Message sent successfully!', { autoClose: 3000 })
+        reset()
+      } else {
+        toast.error('Something went wrong. Try again later.', { autoClose: 3000 })
+      }
+    } catch (error) {
+      toast.error('Network error. Please try again.', { autoClose: 3000 })
+      console.error('Submission error:', error)
     }
-  } catch (error) {
-    toast.error('Network error. Please try again.', { autoClose: 3000 })
-    console.error('Submission error:', error)
   }
-}
 
   return (
     <div className="flex flex-col lg:flex-row gap-10 px-4 sm:px-8 md:px-16 lg:px-20 py-12">
