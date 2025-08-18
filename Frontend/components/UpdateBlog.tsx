@@ -36,7 +36,11 @@ const UpdateBlog = () => {
       try {
         const token = localStorage.getItem('token')?.replace(/"/g, '') || '';
         const res = await axios.get(`https://api.thevisacity.com/blog/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
+          withCredentials: true,
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
         });
 
         const blog = res.data.data;
@@ -65,13 +69,13 @@ const UpdateBlog = () => {
     }
 
     try {
-      await axios.patch(`https://api.thevisacity.com/blog/update/${id}`, form, {
-                withCredentials: true,
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                    Authorization: `Bearer ${token}`,
-                },
-            });
+      await axios.patch(`http://api.thevisacity.com/blog/update/${id}`, form, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       toast.success('Blog updated successfully');
       setTimeout(() => router.push('/dashboard/allblogs'), 1500);
