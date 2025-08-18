@@ -28,7 +28,6 @@ const Login = () => {
   const onSubmit = async (data: FormData) => {
     try {
       const res = await axios.post("https://api.thevisacity.com/user/login", data, { withCredentials: true });
-      console.log(res.data);
       
       if (res.data.status) {
         toast.success(res.data.message);

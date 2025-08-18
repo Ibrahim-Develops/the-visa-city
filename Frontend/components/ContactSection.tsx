@@ -25,13 +25,7 @@ const ContactSection = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const response = await axios.post('https://api.thevisacity.com/contact/add', data, {
-        withCredentials: true,
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
+      const response = await axios.post("https://api.thevisacity.com/contact/add", data, { withCredentials: true });
 
       if (response.data?.status === true) {
         toast.success('Message sent successfully!', { autoClose: 3000 })
