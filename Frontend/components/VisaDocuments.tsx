@@ -5,16 +5,16 @@ import { FaCalendarCheck, FaFileAlt, FaCamera, FaPassport, FaIdCard, FaNotesMedi
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 const documents = [
-  { icon: <FaCalendarCheck />, title: "Appointment confirmation", content: "You must bring your appointment slip printed or digital." },
-  { icon: <FaFileAlt />, title: "Application Form", content: "Fill out the Schengen visa application form completely." },
-  { icon: <FaCamera />, title: "Passport Size Photo", content: "Provide a recent passport-sized photo (white background)." },
-  { icon: <FaPassport />, title: "Passport", content: "Passport must be valid for at least 6 months with 2 blank pages." },
-  { icon: <FaIdCard />, title: "UAE Residence Visa", content: "A valid UAE residence visa with at least 3 months validity." },
-  { icon: <FaNotesMedical />, title: "Travel Insurance", content: "Insurance must cover €30,000 for medical emergencies." },
-  { icon: <FaFileSignature />, title: "Sponsor’s Letter (NOC)", content: "If sponsored, submit a NOC from your employer/sponsor." },
-  { icon: <FaHotel />, title: "Details About Accommodation", content: "Provide hotel bookings or a confirmed invitation letter." },
-  { icon: <FaMoneyBillWave />, title: "Financial Proof", content: "Include 3 months bank statement showing sufficient funds." },
-  { icon: <FaChild />, title: "For Minors (Under 18)", content: "Birth certificate and consent letter from parents are required." },
+  { icon: <FaCalendarCheck />, title: "Appointment Confirmation", content: "You must bring your appointment slip (printed or digital)." },
+  { icon: <FaFileAlt />, title: "Application Form", content: "Fill out the visa application form completely and accurately." },
+  { icon: <FaCamera />, title: "Passport Size Photo", content: "Provide a recent passport-sized photo with a plain background." },
+  { icon: <FaPassport />, title: "Valid Passport", content: "Passport should be valid for the required duration with empty pages." },
+  { icon: <FaIdCard />, title: "Proof of Legal Residence", content: "Submit proof of your residence permit or national ID if applicable." },
+  { icon: <FaNotesMedical />, title: "Travel Insurance", content: "Insurance should cover emergencies and medical expenses during your trip." },
+  { icon: <FaFileSignature />, title: "Sponsor’s Letter (if applicable)", content: "If sponsored, provide a letter of no objection or sponsorship confirmation." },
+  { icon: <FaHotel />, title: "Accommodation Details", content: "Include hotel bookings or an invitation letter from the host." },
+  { icon: <FaMoneyBillWave />, title: "Financial Proof", content: "Provide recent bank statements or financial documents showing sufficient funds." },
+  { icon: <FaChild />, title: "For Minors (Under 18)", content: "Submit birth certificate and consent letter signed by parents/guardians." },
 ];
 
 const VisaDocuments = () => {
@@ -27,7 +27,7 @@ const VisaDocuments = () => {
   return (
     <div className="px-4 sm:px-6 md:px-10 lg:px-20 py-12 sm:py-16">
       <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-8 text-[#FFD700]">
-        Documents Required for Portugal Visa Application
+        Documents Required for Visa Application
       </h2>
 
       <div className="space-y-4">

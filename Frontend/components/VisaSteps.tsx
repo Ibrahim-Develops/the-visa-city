@@ -14,27 +14,27 @@ const steps = [
   {
     icon: <FaFileAlt />,
     title: "Gather Documents",
-    description: "Collect all required documents like passport, photos, application form, travel insurance, and accommodation proof.",
+    description: "Collect all required documents such as passport, photos, application form, travel insurance, and accommodation proof.",
   },
   {
     icon: <FaCalendarCheck />,
     title: "Book an Appointment",
-    description: "Schedule your visa appointment online through the official consulate or visa center.",
+    description: "Schedule your visa appointment online through the official embassy, consulate, or visa center.",
   },
   {
     icon: <FaWpforms />,
     title: "Fill Out the Application",
-    description: "Carefully complete the Schengen visa form and ensure all information is accurate.",
+    description: "Complete the visa application form carefully and ensure all information is accurate.",
   },
   {
     icon: <FaUserClock />,
     title: "Attend the Appointment",
-    description: "Reach the visa center on time with all original documents and attend the biometric appointment.",
+    description: "Visit the visa center on time with all original documents and attend your biometric appointment if required.",
   },
   {
     icon: <FaMoneyBillAlt />,
     title: "Pay the Visa Fee",
-    description: "Visa fee can be paid at the center or online, depending on the provider. Keep the receipt for proof.",
+    description: "Pay the applicable visa fee at the center or online (depending on the provider) and keep the receipt for proof.",
   },
 ];
 
@@ -48,7 +48,7 @@ const VisaSteps = () => {
   return (
     <div className="px-4 sm:px-6 md:px-10 lg:px-20 py-12">
       <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-10 text-[#FFD700]">
-        How to Apply for a Portugal Visa For UAE Residents
+        How to Apply for a Visa
       </h2>
 
       <div className="relative">
@@ -98,7 +98,7 @@ const VisaSteps = () => {
         >
           <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z" />
         </svg>
-        <span>All dates are estimated and may vary depending on the applicant.</span>
+        <span>Processing times and requirements may vary depending on the applicant.</span>
       </div>
     </div>
   );
