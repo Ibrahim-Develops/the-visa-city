@@ -5,7 +5,7 @@ const VisaRequirementSection = () => {
   return (
     <div className="px-4 sm:px-6 md:px-10 lg:px-20 py-8 sm:py-10">
       <h2 className="text-xl sm:text-2xl font-bold mb-6 text-[#FFD700]">
-        Who needs a Portugal Visa?
+        Who needs a Visa?
       </h2>
 
       <div className="space-y-6">
