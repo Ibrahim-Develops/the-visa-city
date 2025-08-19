@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "The Visa City",
   description: "Fast, reliable visa application services for global travel.",
   icons: {
-    icon: "/favicon.png",
+    icon: "/favicon.ico",
   },
 };
 
