@@ -10,16 +10,16 @@ const VisaRequirementSection = () => {
 
       <div className="space-y-6">
         <div className="border-l-2 border-gray-300 pl-4">
-          <h3 className="text-md sm:text-lg font-semibold text-[#FFD700]">UAE Citizens</h3>
+          <h3 className="text-md sm:text-lg font-semibold text-[#FFD700]">Travelers</h3>
           <p className="text-sm sm:text-base text-white">
-            UAE citizens need to apply for a Schengen visa in Dubai to visit Portugal as tourists.
+            Travelers may need to apply for a visa depending on their nationality and purpose of visit.
           </p>
         </div>
 
         <div className="border-l-2 border-gray-300 pl-4">
-          <h3 className="text-md sm:text-lg font-semibold text-[#FFD700]">UAE Residents</h3>
+          <h3 className="text-md sm:text-lg font-semibold text-[#FFD700]">Residents</h3>
           <p className="text-sm sm:text-base text-white">
-            <Link href="#" className="text-[#FFD700] underline">Contact us</Link> to know the eligibility.
+            <Link href="#" className="text-[#FFD700] underline">Contact us</Link> to check your visa eligibility.
           </p>
         </div>
       </div>
@@ -28,3 +28,4 @@ const VisaRequirementSection = () => {
 };
 
 export default VisaRequirementSection;
+  
