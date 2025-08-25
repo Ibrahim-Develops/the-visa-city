@@ -1,5 +1,5 @@
-import { User } from 'src/user/entities/user.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, FindOptionsWhere, DataSource, FindOptionsSelect } from 'typeorm';
+import { Step } from 'src/step/entities/step.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, FindOptionsWhere, DataSource, FindOptionsSelect, JoinColumn, OneToOne } from 'typeorm';
 
 @Entity()
 export class Country {
@@ -30,6 +30,8 @@ export class Country {
   @Column()
   flag: string;
 
+  @OneToOne(() => Step, (step) => step.country)
+  step: Step;
 
   static async existingUCountry(options: {
     where: FindOptionsWhere<Country>,

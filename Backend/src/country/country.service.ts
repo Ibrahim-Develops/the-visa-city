@@ -82,7 +82,7 @@ export class CountryService {
   }
 
   async findOne(id: number): Promise<Country> {
-    const country = await this.countryRepository.findOne({ where: { id } });
+    const country = await this.countryRepository.findOne({ where: { id }, relations: ['step'] });
     if (!country) {
       throw new NotFoundException(`Country with ID ${id} not found.`);
     }

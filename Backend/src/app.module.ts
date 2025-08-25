@@ -9,6 +9,7 @@ import { ContactModule } from './contact/contact.module';
 import { BlogModule } from './blog/blog.module';
 import { MailModule } from './mail/mail.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { StepModule } from './step/step.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     ContactModule,
     BlogModule,
     MailModule,
+    StepModule,
   ],
   controllers: [],
   providers: [],
