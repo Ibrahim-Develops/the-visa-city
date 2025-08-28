@@ -5,11 +5,9 @@ import V3 from '../public/V3.webp';
 import V4 from '../public/V4.webp';
 import V5 from '../public/V5.webp';
 import V6 from '../public/V6.webp';
-import V7 from '../public/V7.webp';
 import V8 from '../public/V8.webp';
 import V9 from '../public/V9.webp';
 import V10 from '../public/V10.webp';
-import V11 from '../public/V11.webp';
 import V12 from '../public/V12.webp';
 import V14 from '../public/V14.webp';
 import V15 from '../public/V15.webp';
@@ -23,7 +21,6 @@ import V22 from '../public/V22.webp';
 import V23 from '../public/V23.webp';
 import V24 from '../public/V24.webp';
 import V25 from '../public/V25.webp';
-import V26 from '../public/V26.webp';
 import V27 from '../public/V27.webp';
 import V28 from '../public/V28.webp';
 import V29 from '../public/V29.webp';
@@ -39,9 +36,9 @@ import V38 from '../public/V38.webp';
 import Image from 'next/image';
 
 const VisaImages = [
-  V1, V2, V3, V4, V5, V6, V7, V8, V9, V10,
-  V11, V12, V14, V15, V16, V17, V18, V19, V20,
-  V21, V22, V23, V24, V25, V26, V27, V28, V29, V30,
+  V1, V2, V3, V4, V5, V6, V8, V9, V10,
+  V12, V14, V15, V16, V17, V18, V19, V20,
+  V21, V22, V23, V24, V25, V27, V28, V29, V30,
   V31, V32, V33, V34, V35, V36, V37, V38,
 ];
 
