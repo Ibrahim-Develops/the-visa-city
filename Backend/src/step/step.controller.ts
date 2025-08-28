@@ -12,7 +12,7 @@ export class StepController {
     return this.stepService.create(dto);
   }
 
-  @Get()
+  @Get('all')
   findAll() {
     return this.stepService.findAll();
   }
@@ -22,12 +22,12 @@ export class StepController {
     return this.stepService.findOne(+id);
   }
 
-  @Put(':id')
+  @Put('update/:id')
   update(@Param('id') id: string, @Body() dto: UpdateStepDto) {
     return this.stepService.update(+id, dto);
   }
 
-  @Delete(':id')
+  @Delete('delete/:id')
   remove(@Param('id') id: string) {
     return this.stepService.remove(+id);
   }

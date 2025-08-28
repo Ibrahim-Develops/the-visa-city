@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
-import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useForm } from 'react-hook-form';
-import Link from 'next/link';
-import { FaArrowLeftLong } from 'react-icons/fa6';
+import { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useForm } from "react-hook-form";
+import Link from "next/link";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 type BlogFormInputs = {
   title: string;
@@ -28,151 +28,125 @@ const UpdateBlog = () => {
   } = useForm<BlogFormInputs>();
 
   const [existingImage, setExistingImage] = useState<string | null>(null);
-  const [blogData, setBlogData] = useState<any>(null);
-  const [isEditing, setIsEditing] = useState(false);
 
+  // Fetch blog data on mount
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const token = localStorage.getItem('token')?.replace(/"/g, '') || '';
-        const res = await axios.get(`https://api.thevisacity.com/blog/${id}`, {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const token = localStorage.getItem("token")?.replace(/"/g, "") || "";
+        const res = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/blog/${id}`,
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         const blog = res.data.data;
-        setBlogData(blog);
-        setValue('title', blog.title);
-        setValue('description', blog.description);
+        setValue("title", blog.title);
+        setValue("description", blog.description);
         setExistingImage(blog.image);
       } catch (err) {
-        console.error('Error fetching blog:', err);
-        toast.error('Failed to fetch blog');
+        console.error("Error fetching blog:", err);
+        toast.error("Failed to fetch blog");
       }
     };
 
     if (id) fetchBlog();
   }, [id, setValue]);
 
+  // Handle form submission
   const onSubmit = async (data: BlogFormInputs) => {
-    const token = localStorage.getItem('token')?.replace(/"/g, '') || '';
+    const token = localStorage.getItem("token")?.replace(/"/g, "") || "";
     const form = new FormData();
 
-    form.append('title', data.title.trim());
-    form.append('description', data.description.trim());
-
+    form.append("title", data.title.trim());
+    form.append("description", data.description.trim());
     if (data.image?.[0]) {
-      form.append('image', data.image[0]);
+      form.append("image", data.image[0]);
     }
 
     try {
-      await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/blog/update/${id}`, form, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await axios.patch(
+        `${process.env.NEXT_PUBLIC_API_URL}/blog/update/${id}`,
+        form,
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-      toast.success('Blog updated successfully');
-      setTimeout(() => router.push('/dashboard/allblogs'), 1500);
+      toast.success("Blog updated successfully!");
+      setTimeout(() => router.push("/dashboard/allblogs"), 1500);
     } catch (err) {
-      console.error('Update failed:', err);
-      toast.error('Update failed');
+      console.error("Update failed:", err);
+      toast.error("Update failed");
     }
   };
 
-  if (!blogData) return <p className="text-center py-20 text-white">Loading...</p>;
-
   return (
-    <div className="p-6 max-w-2xl mx-auto">
+    <div className="px-20 py-6 bg-white min-h-screen w-full">
       <div className="flex flex-col mb-5 gap-3">
         <Link
-          href="/dashboard"
+          href="/dashboard/allblogs"
           className="bg-black w-fit p-2 rounded-full shadow-2xl cursor-pointer"
         >
           <FaArrowLeftLong className="text-white text-2xl" />
         </Link>
-        <h1 className="text-3xl font-bold">Blog Details</h1>
+        <h1 className="text-4xl font-bold">Update Blog</h1>
       </div>
 
-      {!isEditing ? (
-        <>
-          <div className="space-y-4 text-lg">
-            <p><strong>Title:</strong> {blogData.title}</p>
-            <p><strong>Description:</strong> {blogData.description}</p>
-            {blogData.image && (
-              <img
-                src={blogData.image}
-                alt="Blog"
-                className="h-40 w-full object-cover rounded"
-              />
-            )}
-          </div>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+        <input
+          type="text"
+          {...register("title", { required: true })}
+          placeholder="Blog Title"
+          className="w-full p-2 border rounded"
+        />
+        {errors.title && (
+          <p className="text-red-500 text-sm">Title is required</p>
+        )}
 
-          <button
-            onClick={() => setIsEditing(true)}
-            className="mt-6 bg-[#FFD700] text-black cursor-pointer px-6 py-2 rounded transition"
-          >
-            Edit Blog
-          </button>
-        </>
-      ) : (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-          <input
-            type="text"
-            {...register('title', { required: true })}
-            placeholder="Blog Title"
-            className="w-full p-2 border rounded"
-          />
-          {errors.title && <p className="text-red-500 text-sm">Title is required</p>}
+        <textarea
+          {...register("description", { required: true })}
+          placeholder="Blog Description"
+          className="w-full p-2 border rounded"
+          rows={5}
+        />
+        {errors.description && (
+          <p className="text-red-500 text-sm">Description is required</p>
+        )}
 
-          <textarea
-            {...register('description', { required: true })}
-            placeholder="Blog Description"
-            className="w-full p-2 border rounded"
-          />
-          {errors.description && (
-            <p className="text-red-500 text-sm">Description is required</p>
-          )}
-
-          <div>
-            <label className="block mb-1 font-medium">Blog Image</label>
-            {existingImage && (
-              <img
-                src={existingImage}
-                alt="Blog"
-                className="h-24 mb-2 rounded-md object-cover"
-              />
-            )}
-            <input
-              type="file"
-              {...register('image')}
-              accept="image/*"
-              className="w-full"
+        <div>
+          <label className="block mb-1 font-medium">Blog Image</label>
+          {existingImage && (
+            <img
+              src={existingImage}
+              alt="Blog"
+              className="h-24 mb-2 rounded-md object-cover"
             />
-          </div>
+          )}
+          <input
+            type="file"
+            {...register("image")}
+            accept="image/*"
+            className="w-full"
+          />
+        </div>
 
-          <div className="flex gap-4">
-            <button
-              type="submit"
-              className="bg-[#FFD700] text-black px-6 cursor-pointer py-2 rounded transition"
-            >
-              Save Changes
-            </button>
-            <button
-              type="button"
-              onClick={() => setIsEditing(false)}
-              className="bg-black text-white px-6 cursor-pointer py-2 rounded transition"
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
-      )}
+        <button
+          type="submit"
+          className="bg-black cursor-pointer text-white px-6 py-3 rounded transition"
+        >
+          Update Blog
+        </button>
+      </form>
 
       <ToastContainer position="top-center" autoClose={1500} />
     </div>

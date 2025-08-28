@@ -40,7 +40,7 @@ const Messages = () => {
     const fetchMessages = async () => {
       try {
         const token = localStorage.getItem("token")?.replace(/"/g, "") || ""
-        const res = await axios.get('https://api.thevisacity.com/contact/all', {
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/contact/all`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

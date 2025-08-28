@@ -1,28 +1,67 @@
 'use client';
 
-import React, { useState } from 'react';
-import { FaCalendarCheck, FaFileAlt, FaCamera, FaPassport, FaIdCard, FaNotesMedical, FaFileSignature, FaHotel, FaMoneyBillWave, FaChild, } from 'react-icons/fa';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
+import axios from 'axios';
+import { FaFileAlt } from 'react-icons/fa';
 
-const documents = [
-  { icon: <FaCalendarCheck />, title: "Appointment Confirmation", content: "You must bring your appointment slip (printed or digital)." },
-  { icon: <FaFileAlt />, title: "Application Form", content: "Fill out the visa application form completely and accurately." },
-  { icon: <FaCamera />, title: "Passport Size Photo", content: "Provide a recent passport-sized photo with a plain background." },
-  { icon: <FaPassport />, title: "Valid Passport", content: "Passport should be valid for the required duration with empty pages." },
-  { icon: <FaIdCard />, title: "Proof of Legal Residence", content: "Submit proof of your residence permit or national ID if applicable." },
-  { icon: <FaNotesMedical />, title: "Travel Insurance", content: "Insurance should cover emergencies and medical expenses during your trip." },
-  { icon: <FaFileSignature />, title: "Sponsor’s Letter (if applicable)", content: "If sponsored, provide a letter of no objection or sponsorship confirmation." },
-  { icon: <FaHotel />, title: "Accommodation Details", content: "Include hotel bookings or an invitation letter from the host." },
-  { icon: <FaMoneyBillWave />, title: "Financial Proof", content: "Provide recent bank statements or financial documents showing sufficient funds." },
-  { icon: <FaChild />, title: "For Minors (Under 18)", content: "Submit birth certificate and consent letter signed by parents/guardians." },
-];
+interface Step {
+  title: string;
+  description: string;
+}
+
+interface Country {
+  id: number;
+  name: string;
+  price: string;
+  flag: string;
+  mainImage: string;
+  extraImg1: string;
+  extraImg2: string;
+  category: string[];
+  region: string[];
+  step: {
+    id: number;
+    steps: Step[];
+  };
+}
 
 const VisaDocuments = () => {
+  const { id } = useParams();
+  const [data, setData] = useState<Country | null>(null);
+  const [images, setImages] = useState<string[]>([]);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleAccordion = (index: number) => {
     setOpenIndex(prev => (prev === index ? null : index));
   };
+
+  useEffect(() => {
+    const fetchCountry = async () => {
+      try {
+        if (!id) return;
+        const token = localStorage.getItem("token")?.replace(/"/g, "");
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/country/${id}`, {
+          withCredentials: true,
+          headers: { Authorization: `Bearer ${token}` }
+        });
+
+        const countryData: Country = res.data.data;
+        setData(countryData);
+
+        const imgArray = [countryData.mainImage];
+        if (countryData.extraImg1) imgArray.push(countryData.extraImg1);
+        if (countryData.extraImg2) imgArray.push(countryData.extraImg2);
+        setImages(imgArray);
+      } catch (error) {
+        console.error("Failed to fetch country:", error);
+      }
+    };
+    fetchCountry();
+  }, [id]);
+
+  if (!data) return <p className="pt-20 px-20">Loading documents details...</p>;
 
   return (
     <div className="px-4 sm:px-6 md:px-10 lg:px-20 py-12 sm:py-16">
@@ -31,7 +70,7 @@ const VisaDocuments = () => {
       </h2>
 
       <div className="space-y-4">
-        {documents.map((doc, index) => (
+        {data.step.steps.map((doc, index) => (
           <div key={index} className="border-b pb-3">
             <button
               className="flex w-full items-start justify-between text-left gap-3"
@@ -39,7 +78,7 @@ const VisaDocuments = () => {
             >
               <div className="flex items-start gap-3">
                 <div className="bg-black border p-2 rounded-lg text-[#FFD700] text-lg">
-                  {doc.icon}
+                  <FaFileAlt />
                 </div>
                 <p className="text-[#FFD700] font-medium text-sm sm:text-base">
                   {doc.title}
@@ -56,7 +95,7 @@ const VisaDocuments = () => {
               }`}
             >
               <p className="ml-12 text-sm text-white pr-6">
-                {doc.content}
+                {doc.description}
               </p>
             </div>
           </div>

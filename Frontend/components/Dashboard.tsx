@@ -12,7 +12,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const TableHeadData = [
-  "id", "Main Image", "Extra Img 1", "Extra Img 2", "Flag", "Name", "Price", "Category", "Region", "Update", "Delete",
+  "Id", "CountryId", "Main Image", "Extra Img 1", "Extra Img 2", "Flag", "Name", "Price", "Category", "Region", "Update", "Delete",
 ];
 
 interface Country {
@@ -74,7 +74,7 @@ const Dashboard = () => {
     if (!window.confirm("Are you sure you want to delete this country?")) return;
     try {
       const token = localStorage.getItem("token")?.replace(/"/g, "");
-      await axios.delete(`https://api.thevisacity.com/country/delete/${id}`, {
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/country/delete/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCountries((prev) => prev.filter((c) => c.id !== id));
@@ -103,6 +103,7 @@ const Dashboard = () => {
         <h1 className="text-3xl sm:text-5xl font-bold">Countries</h1>
         <div className="flex flex-wrap gap-3">
           <Link href="/dashboard/messages" className="bg-black px-6 py-3 text-white rounded-xl font-bold">Messages</Link>
+          <Link href="/dashboard/allsteps" className="bg-black px-6 py-3 text-white rounded-xl font-bold">All Steps</Link>
           <Link href="/dashboard/allblogs" className="bg-black px-6 py-3 text-white rounded-xl font-bold">All Blogs</Link>
           <Link href="/dashboard/addblog" className="bg-black px-6 py-3 text-white rounded-xl font-bold">+ Add Blogs</Link>
           <Link href="/dashboard/addcountry" className="bg-black px-6 py-3 text-white rounded-xl font-bold">+ Add Country</Link>
@@ -130,6 +131,7 @@ const Dashboard = () => {
               {countries.map((country, i) => (
                 <TableRow key={country.id}>
                   <TableCell>{i + 1}</TableCell>
+                  <TableCell>{country.id}</TableCell>
                   <TableCell><ImageCell src={country.mainImage} alt={country.name} /></TableCell>
                   <TableCell><ImageCell src={country.extraImg1} alt={country.name} /></TableCell>
                   <TableCell><ImageCell src={country.extraImg2} alt={country.name} /></TableCell>

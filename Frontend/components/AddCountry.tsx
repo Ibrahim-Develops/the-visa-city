@@ -1,81 +1,31 @@
 "use client";
 
-import React, { JSX, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, useFieldArray } from "react-hook-form";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { IoCashOutline } from "react-icons/io5";
-import { GrGlobe } from "react-icons/gr";
-import { CiFlag1, CiImageOn } from "react-icons/ci";
 import Select from "react-select";
 import axios from "axios";
+import { FaPlus, FaTrash } from "react-icons/fa";
 
-interface FormValues {
+type FormValues = {
   countryName: string;
   visaAmount: string;
   countryflag: FileList;
   countrydisplayimage: FileList;
   countryextraimage1: FileList;
   countryextraimage2: FileList;
-}
+  steps: { title: string; description: string }[];
+};
 
-const fields: {
-  label: string;
-  name: keyof FormValues;
-  placeholder: string;
-  requiredMessage: string;
-  icon: JSX.Element;
-  type?: string;
-}[] = [
-  {
-    label: "Country Name",
-    name: "countryName",
-    placeholder: "Enter country name",
-    requiredMessage: "Country Name Is Required",
-    icon: <GrGlobe className="text-2xl" />,
-  },
-  {
-    label: "Visa Amount",
-    name: "visaAmount",
-    placeholder: "Enter visa amount",
-    requiredMessage: "Visa Amount is required",
-    icon: <IoCashOutline className="text-2xl" />,
-  },
-  {
-    label: "Country Flag",
-    name: "countryflag",
-    placeholder: "",
-    requiredMessage: "Country Flag Is Required",
-    icon: <CiFlag1 className="text-2xl" />,
-    type: "file",
-  },
-  {
-    label: "Country Display Image",
-    name: "countrydisplayimage",
-    placeholder: "",
-    requiredMessage: "Country Display Image Is Required",
-    icon: <CiImageOn className="text-2xl" />,
-    type: "file",
-  },
-  {
-    label: "Country Extra Image1",
-    name: "countryextraimage1",
-    placeholder: "",
-    requiredMessage: "Country Extra Image1 Is Required",
-    icon: <CiImageOn className="text-2xl" />,
-    type: "file",
-  },
-  {
-    label: "Country Extra Image2",
-    name: "countryextraimage2",
-    placeholder: "",
-    requiredMessage: "Country Extra Image2 Is Required",
-    icon: <CiImageOn className="text-2xl" />,
-    type: "file",
-  },
+const fileFields: (keyof FormValues)[] = [
+  "countryflag",
+  "countrydisplayimage",
+  "countryextraimage1",
+  "countryextraimage2",
 ];
 
 const categoryOptions = [
@@ -104,7 +54,15 @@ const AddCountry = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormValues>();
+    control,
+  } = useForm<FormValues>({
+    defaultValues: { steps: [{ title: "", description: "" }] },
+  });
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "steps",
+  });
 
   const [selectedCategories, setSelectedCategories] = useState<any[]>([]);
   const [selectedRegions, setSelectedRegions] = useState<any[]>([]);
@@ -120,44 +78,56 @@ const AddCountry = () => {
   }, [router]);
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    try {
-      const formData = new FormData();
-      formData.append("name", data.countryName);
-      formData.append("price", data.visaAmount);
-      formData.append("category", JSON.stringify(selectedCategories.map((c) => c.value)));
-      formData.append("region", JSON.stringify(selectedRegions.map((r) => r.value)));
-      formData.append("flag", data.countryflag[0]);
-      formData.append("mainImage", data.countrydisplayimage[0]);
-      formData.append("extraImg1", data.countryextraimage1[0]);
-      formData.append("extraImg2", data.countryextraimage2[0]);
+  try {
+    const formData = new FormData();
+    formData.append("name", data.countryName);
+    formData.append("price", data.visaAmount);
+    formData.append("category", JSON.stringify(selectedCategories.map((c) => c.value)));
+    formData.append("region", JSON.stringify(selectedRegions.map((r) => r.value)));
+    formData.append("flag", data.countryflag[0]);
+    formData.append("mainImage", data.countrydisplayimage[0]);
+    formData.append("extraImg1", data.countryextraimage1[0]);
+    formData.append("extraImg2", data.countryextraimage2[0]);
 
-      const rawToken = localStorage.getItem("token");
-      const token = rawToken ? rawToken.replace(/"/g, "") : "";
+    const rawToken = localStorage.getItem("token");
+    const token = rawToken ? rawToken.replace(/"/g, "") : "";
 
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/country/create`, formData, {
+    const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/country/create`, formData, {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const resid = res.data.id;
+
+    await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}/steps/create`,
+      {
+        steps: data.steps,
+        countryId: String(resid),
+      },
+      {
         withCredentials: true,
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (res.status === 201 || res.status === 200) {
-        toast.success("Country added successfully!");
-        reset();
+        headers: { Authorization: `Bearer ${token}` },
       }
-    } catch (error) {
-      console.error("Error:", error);
-      toast.error("Failed to add country. Please try again.");
-    }
-  };
+    );
+
+    toast.success("Country added successfully!");
+    reset();
+  } catch (error) {
+    console.error("Error:", error);
+    toast.error("Failed to add country. Please try again.");
+  }
+};
+
 
   if (isAuthorized === null) return null;
 
   return (
     <div className="px-4 sm:px-6 lg:px-10 py-8 text-black min-h-screen">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
-
         <div className="flex flex-col gap-3">
           <Link
             href="/dashboard"
@@ -219,29 +189,82 @@ const AddCountry = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full gap-6 lg:gap-10">
-          {fields.map((field, i) => (
-            <div key={i} className="flex flex-col gap-2 w-full">
-              <label className="font-semibold text-lg">{field.label}</label>
-              <div className="border-[1px] border-gray-300 flex items-center gap-3 p-3 sm:p-4 rounded-lg">
-                {field.icon}
-                <input
-                  type={field.type || "text"}
-                  accept={field.type === "file" ? "image/*" : undefined}
-                  className="outline-none w-full text-sm sm:text-base"
-                  {...register(field.name, {
-                    required: field.requiredMessage,
-                  })}
-                />
-              </div>
-              {errors[field.name] && (
-                <p className="text-red-500 text-sm">
-                  {errors[field.name]?.message}
-                </p>
+          <div className="flex flex-col gap-2 w-full">
+            <label className="font-semibold text-lg">Country Name</label>
+            <input
+              type="text"
+              className="border p-3 rounded-lg"
+              {...register("countryName", { required: "Country Name is required" })}
+            />
+            {errors.countryName && (
+              <p className="text-red-500 text-sm">{errors.countryName.message}</p>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-2 w-full">
+            <label className="font-semibold text-lg">Visa Amount</label>
+            <input
+              type="text"
+              className="border p-3 rounded-lg"
+              {...register("visaAmount", { required: "Visa Amount is required" })}
+            />
+            {errors.visaAmount && (
+              <p className="text-red-500 text-sm">{errors.visaAmount.message}</p>
+            )}
+          </div>
+
+          {fileFields.map((field) => (
+            <div key={field} className="flex flex-col gap-2 w-full">
+              <label className="font-semibold text-lg">{field}</label>
+              <input
+                type="file"
+                accept="image/*"
+                className="border p-3 rounded-lg"
+                {...register(field, { required: `${field} is required` })}
+              />
+              {errors[field] && (
+                <p className="text-red-500 text-sm">{errors[field]?.message}</p>
               )}
             </div>
           ))}
         </div>
+
+        {/* Dynamic Steps */}
+        <div className="flex flex-col gap-4">
+          <h2 className="text-xl font-bold">Documents / Steps</h2>
+          {fields.map((field, index) => (
+            <div key={field.id} className="border p-4 rounded-lg flex flex-col gap-2 relative">
+              <div className="flex flex-col sm:flex-row gap-4">
+                <input
+                  placeholder="Step Title"
+                  className="border p-2 rounded-lg flex-1"
+                  {...register(`steps.${index}.title`, { required: "Step title is required" })}
+                />
+                <input
+                  placeholder="Step Description"
+                  className="border p-2 rounded-lg flex-1"
+                  {...register(`steps.${index}.description`, { required: "Step description is required" })}
+                />
+              </div>
+              <button
+                type="button"
+                onClick={() => remove(index)}
+                className="cursor-pointer m-4 text-red-500"
+              >
+                <FaTrash />
+              </button>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={() => append({ title: "", description: "" })}
+            className="bg-green-600 cursor-pointer text-white px-4 py-2 rounded-lg flex items-center gap-2 w-fit"
+          >
+            <FaPlus /> Add Step
+          </button>
+        </div>
       </form>
+
       <ToastContainer position="top-center" autoClose={1500} />
     </div>
   );

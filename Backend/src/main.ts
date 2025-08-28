@@ -12,7 +12,7 @@ async function bootstrap() {
   app.useGlobalFilters(new AllExceptionsFilter());
 
   app.enableCors({
-    origin: ['https://www.thevisacity.com', 'https://thevisacity.com', 'https://api.thevisacity.com'],
+    origin: ['https://www.thevisacity.com', 'https://thevisacity.com', 'https://api.thevisacity.com', 'http://localhost:3001', 'http://localhost:3000'],
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'X-Requested-With'],
     credentials: true,

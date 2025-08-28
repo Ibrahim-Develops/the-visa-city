@@ -29,6 +29,7 @@ const Login = () => {
     try {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/login`, data, { withCredentials: true });
       
+      
       if (res.data.status) {
         toast.success(res.data.message);
         localStorage.setItem("token", JSON.stringify(res.data.data.token));

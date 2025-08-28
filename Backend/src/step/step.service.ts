@@ -29,14 +29,11 @@ export class StepService {
   }
 
   async update(id: number, dto: UpdateStepDto): Promise<Step> {
-    const step = await this.findOne(id);
+  await this.findOne(id); 
+  await this.stepRepo.update(id, dto);
+  return this.findOne(id); 
+}
 
-    if (dto.steps !== undefined) {
-      step.steps = dto.steps;
-    }
-
-    return this.stepRepo.save(step);
-  }
 
   async remove(id: number): Promise<void> {
     const step = await this.findOne(id);
