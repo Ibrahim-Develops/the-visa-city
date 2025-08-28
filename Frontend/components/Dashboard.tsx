@@ -48,7 +48,7 @@ const Dashboard = () => {
     const fetchCountries = async () => {
       try {
         const token = localStorage.getItem("token")?.replace(/"/g, "");
-        const res = await axios.get("https://api.thevisacity.com/country/all", {
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/country/all`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

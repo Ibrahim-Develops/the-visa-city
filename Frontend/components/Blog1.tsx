@@ -19,7 +19,7 @@ const Blog1 = () => {
     const fetchBlogs = async () => {
       try {
         const token = localStorage.getItem("token")?.replace(/"/g, "") || "";
-        const response = await axios.get("https://api.thevisacity.com/blog/all", {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/blog/all`, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,

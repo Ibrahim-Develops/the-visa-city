@@ -20,7 +20,7 @@ const DisplayBlog = () => {
     const fetchBlog = async () => {
       try {
         const token = localStorage.getItem("token")?.replace(/"/g, "") || "";
-        const res = await axios.get(`https://api.thevisacity.com/blog/${blogId}`, {
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/blog/${blogId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

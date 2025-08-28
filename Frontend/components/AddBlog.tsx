@@ -69,7 +69,7 @@ const AddBlog = () => {
 
       const token = localStorage.getItem("token")?.replace(/"/g, "") || "";
 
-      const response = await axios.post("https://api.thevisacity.com/blog/create", data, {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/blog/create`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,

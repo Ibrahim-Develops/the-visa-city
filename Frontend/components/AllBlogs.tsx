@@ -37,7 +37,7 @@ const AllBlogs = () => {
         const fetchBlogs = async () => {
             try {
                 const token = localStorage.getItem('token')?.replace(/"/g, '') || '';
-                const res = await axios.get('https://api.thevisacity.com/blog/all', {
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/blog/all`, {
                     withCredentials: true,
                     headers: {
                         "Content-Type": "multipart/form-data",
@@ -60,7 +60,7 @@ const AllBlogs = () => {
 
         try {
             const token = localStorage.getItem('token')?.replace(/"/g, '') || '';
-            await axios.delete(`https://api.thevisacity.com/blog/delete/${id}`, {
+            await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/blog/delete/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

@@ -136,7 +136,7 @@ const UpdateCountry = () => {
         }
 
         try {
-            await axios.patch(`https://api.thevisacity.com/country/update/${id}`, form, {
+            await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/country/update/${id}`, form, {
                 withCredentials: true,
                 headers: {
                     "Content-Type": "multipart/form-data",

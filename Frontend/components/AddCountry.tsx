@@ -134,7 +134,7 @@ const AddCountry = () => {
       const rawToken = localStorage.getItem("token");
       const token = rawToken ? rawToken.replace(/"/g, "") : "";
 
-      const res = await axios.post("https://api.thevisacity.com/country/create", formData, {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/country/create`, formData, {
         withCredentials: true,
         headers: {
           "Content-Type": "multipart/form-data",

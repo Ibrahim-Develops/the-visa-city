@@ -67,7 +67,7 @@ const Messages = () => {
     if (!confirmDelete) return
 
     try {
-      await axios.delete(`https://api.thevisacity.com/contact/delete/${id}`)
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/contact/delete/${id}`)
       setMessages((prev) => prev.filter((msg) => msg.id !== id))
       toast.success('Message deleted successfully.')
     } catch (error) {

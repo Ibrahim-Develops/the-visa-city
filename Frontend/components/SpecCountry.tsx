@@ -26,7 +26,7 @@ const SpecCountry = () => {
             try {
                 if (!id) return;
                 const token = localStorage.getItem("token")?.replace(/"/g, "");
-                const res = await axios.get(`https://api.thevisacity.com/country/${id}`, {
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/country/${id}`, {
                     withCredentials: true,
                     headers: { Authorization: `Bearer ${token}` }
                 });

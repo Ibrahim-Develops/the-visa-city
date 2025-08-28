@@ -69,7 +69,7 @@ const UpdateBlog = () => {
     }
 
     try {
-      await axios.patch(`http://api.thevisacity.com/blog/update/${id}`, form, {
+      await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/blog/update/${id}`, form, {
         withCredentials: true,
         headers: {
           "Content-Type": "multipart/form-data",
