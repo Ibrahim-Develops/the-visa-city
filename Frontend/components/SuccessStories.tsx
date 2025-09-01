@@ -12,7 +12,7 @@ interface Story {
 
 const SuccessStories = () => {
   const [stories, setStories] = useState<Story[]>([]);
-  const [visibleCount, setVisibleCount] = useState(8);
+  const [visibleCount, setVisibleCount] = useState(6); // show first 6
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const SuccessStories = () => {
   }, []);
 
   const handleSeeMore = () => {
-    setVisibleCount((prev) => prev + 8);
+    setVisibleCount((prev) => prev + 6); // load next 6
   };
 
   const visibleStories = stories.slice(0, visibleCount);
@@ -85,7 +85,7 @@ const SuccessStories = () => {
 
       {/* Modal */}
       {selectedImage && (
-        <div className="fixed inset-0 bg-transparent-me bg-opacity-80 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
           <div className="relative max-w-3xl w-full px-4">
             <button
               onClick={() => setSelectedImage(null)}

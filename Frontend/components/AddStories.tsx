@@ -81,7 +81,7 @@ const AddStories = () => {
           </div>
           <button
             type="button"
-            className="bg-black w-full sm:w-auto px-8 sm:px-16 py-3 sm:py-4 text-white rounded-xl font-bold"
+            className="bg-black w-full cursor-pointer sm:w-auto px-8 sm:px-16 py-3 sm:py-4 text-white rounded-xl font-bold"
             onClick={handleSubmit}
             disabled={loading}
           >
