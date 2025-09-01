@@ -175,6 +175,10 @@
   }
 }
 
+.bg-transparent-me{
+  background-color: rgba(0, 0, 0, 0.603);
+}
+
 .sidebar {
   height: 100vh;
   overflow-y: auto;

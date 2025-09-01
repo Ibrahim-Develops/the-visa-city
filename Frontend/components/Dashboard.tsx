@@ -98,13 +98,15 @@ const Dashboard = () => {
   if (isAuthorized === null) return null;
 
   return (
-    <div className="px-4 sm:px-10 py-10">
+    <div className="px-4 sm:px-10 py-10 bg-white">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <h1 className="text-3xl sm:text-5xl font-bold">Countries</h1>
         <div className="flex flex-wrap gap-3">
           <Link href="/dashboard/messages" className="bg-black px-6 py-3 text-white rounded-xl font-bold">Messages</Link>
           <Link href="/dashboard/allsteps" className="bg-black px-6 py-3 text-white rounded-xl font-bold">All Steps</Link>
           <Link href="/dashboard/allblogs" className="bg-black px-6 py-3 text-white rounded-xl font-bold">All Blogs</Link>
+          <Link href="/dashboard/allstories" className="bg-black px-6 py-3 text-white rounded-xl font-bold">All Stories</Link>
+          <Link href="/dashboard/addstories" className="bg-black px-6 py-3 text-white rounded-xl font-bold">+ Add Stories</Link>
           <Link href="/dashboard/addblog" className="bg-black px-6 py-3 text-white rounded-xl font-bold">+ Add Blogs</Link>
           <Link href="/dashboard/addcountry" className="bg-black px-6 py-3 text-white rounded-xl font-bold">+ Add Country</Link>
         </div>

@@ -10,6 +10,7 @@ import { BlogModule } from './blog/blog.module';
 import { MailModule } from './mail/mail.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { StepModule } from './step/step.module';
+import { StoriesModule } from './stories/stories.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { StepModule } from './step/step.module';
     BlogModule,
     MailModule,
     StepModule,
+    StoriesModule,
   ],
   controllers: [],
   providers: [],

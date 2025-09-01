@@ -13,6 +13,7 @@ import { TfiHeadphoneAlt } from "react-icons/tfi"
 import { usePathname } from 'next/navigation'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { IoClose } from 'react-icons/io5'
+import { PiMaskHappyLight } from 'react-icons/pi'
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -92,6 +93,13 @@ const Navbar = () => {
             <div className={`${getIconClass('/contact')} flex flex-col items-center gap-1 cursor-pointer`}>
               <TfiHeadphoneAlt className="text-xl" />
               <p className="text-xs font-medium">Contact</p>
+            </div>
+          </Link>
+
+          <Link href="/successstories">
+            <div className={`${getIconClass('/successstories')} flex flex-col items-center gap-1 cursor-pointer`}>
+              <PiMaskHappyLight className="text-xl" />
+              <p className="text-xs font-medium">Success Stories</p>
             </div>
           </Link>
         </div>
