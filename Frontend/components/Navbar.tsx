@@ -53,6 +53,13 @@ const Navbar = () => {
               <p className="text-xs font-medium">Countries</p>
             </div>
           </Link>
+          
+          <Link href="/successstories">
+            <div className={`${getIconClass('/successstories')} flex flex-col items-center gap-1 cursor-pointer`}>
+              <PiMaskHappyLight className="text-xl" />
+              <p className="text-xs font-medium">Success Stories</p>
+            </div>
+          </Link>
 
           <Link href="/workpermit">
             <div className={`${getIconClass('/workpermit')} flex flex-col items-center gap-1 cursor-pointer`}>
@@ -95,13 +102,6 @@ const Navbar = () => {
               <p className="text-xs font-medium">Contact</p>
             </div>
           </Link>
-
-          <Link href="/successstories">
-            <div className={`${getIconClass('/successstories')} flex flex-col items-center gap-1 cursor-pointer`}>
-              <PiMaskHappyLight className="text-xl" />
-              <p className="text-xs font-medium">Success Stories</p>
-            </div>
-          </Link>
         </div>
 
         <div className="lg:hidden block text-gray-300 text-3xl cursor-pointer" onClick={toggleMenu}>
@@ -110,33 +110,49 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="lg:hidden bg-black border-t border-gray-700 px-6 py-4 pb-4 text-gray-300 flex flex-col gap-4">
-          {[
-            { href: '/home', icon: <IoHomeOutline />, label: 'Home' },
-            { href: '/countries', icon: <FaGlobeAmericas />, label: 'Countries' },
-            { href: '/workpermit', icon: <MdWorkOutline />, label: 'Work Permit' },
-            { href: 'https://wa.me/971547499849', icon: <HiOutlineInformationCircle />, label: 'Urgent Appointment', external: true },
-            { href: '/corporatevisa', icon: <RiBuilding2Line />, label: 'Corporate Visa' },
-            { href: '/blog', icon: <FaBlog />, label: 'Blog' },
-            { href: '/about', icon: <HiOutlineInformationCircle />, label: 'About' },
-            { href: '/contact', icon: <TfiHeadphoneAlt />, label: 'Contact' }
-          ].map((item, index) => (
-            item.external ? (
-              <a key={index} href={item.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm hover:text-yellow-400 transition">
-                {item.icon}
-                {item.label}
-              </a>
-            ) : (
-              <Link key={index} href={item.href} onClick={() => setIsOpen(false)}>
-                <div className="flex items-center gap-3 text-sm hover:text-yellow-400 transition">
-                  {item.icon}
-                  {item.label}
-                </div>
-              </Link>
-            )
-          ))}
-        </div>
-      )}
+  <div className="lg:hidden bg-black border-t border-gray-700 px-6 py-4 pb-4 text-gray-300 flex flex-col gap-2">
+    {[
+      { href: '/home', icon: <IoHomeOutline />, label: 'Home' },
+      { href: '/countries', icon: <FaGlobeAmericas />, label: 'Countries' },
+      { href: '/successstories', icon: <PiMaskHappyLight />, label: 'Success Stories' },
+      { href: '/workpermit', icon: <MdWorkOutline />, label: 'Work Permit' },
+      { href: 'https://wa.me/971547499849', icon: <HiOutlineInformationCircle />, label: 'Urgent Appointment', external: true },
+      { href: '/corporatevisa', icon: <RiBuilding2Line />, label: 'Corporate Visa' },
+      { href: '/blog', icon: <FaBlog />, label: 'Blog' },
+      { href: '/about', icon: <HiOutlineInformationCircle />, label: 'About' },
+      { href: '/contact', icon: <TfiHeadphoneAlt />, label: 'Contact' }
+    ].map((item, index) => {
+      const isActive = pathname.startsWith(item.href);
+
+      return item.external ? (
+        <a
+          key={index}
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`flex items-center gap-3 text-sm px-3 py-2 rounded-md transition ${
+            isActive ? "border-l-4 border-yellow-500 text-yellow-400 bg-gray-900" : "hover:text-yellow-400"
+          }`}
+        >
+          {item.icon}
+          {item.label}
+        </a>
+      ) : (
+        <Link key={index} href={item.href} onClick={() => setIsOpen(false)}>
+          <div
+            className={`flex items-center gap-3 text-sm px-3 py-2 rounded-md transition ${
+              isActive ? "border-l-4 border-yellow-500 text-yellow-400 bg-gray-900" : "hover:text-yellow-400"
+            }`}
+          >
+            {item.icon}
+            {item.label}
+          </div>
+        </Link>
+      );
+    })}
+  </div>
+)}
+
     </nav>
   )
 }
